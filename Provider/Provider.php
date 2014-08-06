@@ -55,9 +55,9 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     /**
      * {@inheritDoc}
      */
-    public function createComponent($container)
+    public function createComponent()
     {
-        return $this->componentProvider->createComponent($container);
+        return $this->componentProvider->createComponent();
     }
 
     /**
