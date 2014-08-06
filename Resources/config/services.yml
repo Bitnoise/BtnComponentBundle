@@ -3,7 +3,7 @@ services:
     btn_webplatform.container_provider.default:
         class: %btn_webplatform.container_provider_class%
         calls:
-            - [setContainers, ['%btn_webplatform.containers%']]
+            - [setContainers, ['%btn_webplatform.static_containers%']]
 
     btn_webplatform.component_provider.default:
         class: %btn_webplatform.component_provider_class%

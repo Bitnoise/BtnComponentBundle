@@ -49,7 +49,7 @@ class BtnWebplatformExtension extends Extension
         $container->setAlias('btn_webplatform.renderer', $config['renderer_id']);
         $container->setAlias('btn_webplatform.manager', $config['manager_id']);
 
-        $container->setParameter('btn_webplatform.containers', $config['containers']);
+        $container->setParameter('btn_webplatform.static_containers', $config['static_containers']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
