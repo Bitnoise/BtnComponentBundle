@@ -4,6 +4,6 @@ namespace Btn\WebplatformBundle\Model;
 
 use Doctrine\ORM\EntityRepository;
 
-abstract class ComponentRepository extends EntityRepository
+abstract class AbstractContainerRepository extends EntityRepository
 {
 }

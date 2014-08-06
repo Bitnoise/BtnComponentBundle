@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\MappedSuperclass()
  */
-abstract class Container implements ContainerInterface, HydratableInterface
+abstract class AbstractContainer implements ContainerInterface, HydratableInterface
 {
     /**
      * @ORM\Column(name="name", type="string", length=100)
