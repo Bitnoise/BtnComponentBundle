@@ -5,7 +5,8 @@ namespace Btn\WebplatformBundle\Provider;
 interface ContainerProviderInterface
 {
     public function setContainers(array $containers);
-    public function addContainer(array $container);
-    public function getContainer($container);
-    public function isContainerExists($container);
+    public function getContainers();
+    public function registerContainer(array $container, $alias = null);
+    public function getContainer($alias);
+    public function isContainerExists($alias);
 }

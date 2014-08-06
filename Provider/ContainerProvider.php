@@ -28,26 +28,46 @@ class ContainerProvider implements ContainerProviderInterface
     /**
      *
      */
-    public function addContainer(array $container)
+    public function getContainers()
     {
-        $this->containers[] = $container;
+        return $this->containers;
     }
 
     /**
      *
      */
-    public function isContainerExists($container)
+    public function registerContainer(array $container, $alias = null)
     {
-        return isset($this->containers[$container]) ? true : false;
+        if (null === $alias) {
+            if (!empty($container['alias'])) {
+                $alias = $container['alias'];
+            } elseif (!empty($container['name'])) {
+                $alias = $container['name'];
+            }
+        }
+
+        if (!$alias) {
+            throw new \Exception('Cannot register container without alias');
+        }
+
+        $this->containers[$alias] = $container;
     }
 
     /**
      *
      */
-    public function getContainer($container)
+    public function isContainerExists($alias)
     {
-        if ($this->isContainerExists($container)) {
-            return $this->containers[$container];
+        return isset($this->containers[$alias]) ? true : false;
+    }
+
+    /**
+     *
+     */
+    public function getContainer($alias)
+    {
+        if ($this->isContainerExists($alias)) {
+            return $this->containers[$alias];
         }
 
         return false;

@@ -54,9 +54,17 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     /**
      * {@inheritDoc}
      */
-    public function addContainer(array $container)
+    public function getContainers()
     {
-        return $this->containerProvider->addContainer($container);
+        return $this->containerProvider->getContainers();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function registerContainer(array $container, $alias = null)
+    {
+        return $this->containerProvider->registerContainer($container, $alias);
     }
 
     /**
