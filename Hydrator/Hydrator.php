@@ -2,6 +2,7 @@
 
 namespace Btn\WebplatformBundle\Hydrator;
 
+use Btn\WebplatformBundle\Model\ComponentInterface;
 use Btn\WebplatformBundle\Model\HydratableInterface;
 use Doctrine\ORM\EntityManager;
 
@@ -46,13 +47,13 @@ class Hydrator implements HydratorInterface
     /**
      *
      */
-    public function dry(HydratableInterface $component)
+    public function dry(HydratableInterface $object)
     {
-        if ($component && $component->isHydrated()) {
-            $componentHydrator = $this->getComponentHydrator($component->getName());
-            if ($componentHydrator) {
-                $componentHydrator->setEntityManager($this->em)->dry($component);
-                $component->dried();
+        if ($object instanceof ComponentInterface && $object->isHydrated()) {
+            $objectHydrator = $this->getComponentHydrator($object->getName());
+            if ($objectHydrator) {
+                $objectHydrator->setEntityManager($this->em)->dry($object);
+                $object->dried();
             }
         }
     }
@@ -60,13 +61,13 @@ class Hydrator implements HydratorInterface
     /**
      *
      */
-    public function hydrate(HydratableInterface $component)
+    public function hydrate(HydratableInterface $object)
     {
-        if ($component && $component->isDried()) {
-            $componentHydrator = $this->getComponentHydrator($component->getName());
-            if ($componentHydrator) {
-                $componentHydrator->setEntityManager($this->em)->hydrate($component);
-                $component->hydrated();
+        if ($object instanceof ComponentInterface && $object->isDried()) {
+            $objectHydrator = $this->getComponentHydrator($object->getName());
+            if ($objectHydrator) {
+                $objectHydrator->setEntityManager($this->em)->hydrate($object);
+                $object->hydrated();
             }
         }
     }

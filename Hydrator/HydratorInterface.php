@@ -10,6 +10,6 @@ interface HydratorInterface
     public function setEntityManager(EntityManager $em);
     public function registerComponentHydrator(ComponentHydratorInterface $componentHydrator, $alias);
     public function getComponentHydrator($alias);
-    public function hydrate(HydratableInterface $component);
-    public function dry(HydratableInterface $component);
+    public function hydrate(HydratableInterface $object);
+    public function dry(HydratableInterface $object);
 }
