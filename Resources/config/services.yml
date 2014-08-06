@@ -61,7 +61,7 @@ services:
             componentProvider: @btn_webplatform.component_provider
 
     btn_webplatform.form_handler.component:
-        class: Btn\WebplatformBundle\FormHandler\ComponentFormHandler
+        class: Btn\WebplatformBundle\Form\Handler\ComponentFormHandler
         arguments:
             manager: @btn_webplatform.manager
 

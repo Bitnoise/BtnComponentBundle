@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\FormHandler;
+namespace Btn\WebplatformBundle\Form\Handler;
 
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
