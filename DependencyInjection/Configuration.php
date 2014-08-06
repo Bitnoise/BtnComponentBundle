@@ -44,9 +44,22 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('manager_id')->defaultValue('btn_webplatform.manager.default')->end()
 
                 ->arrayNode('static_containers')
+                    ->beforeNormalization()
+                        ->ifArray()
+                        ->then(function ($v) {
+                            foreach ($v as $key => $value) {
+                                if (empty($value['name'])) {
+                                    $v[$key]['name'] = $key;
+                                }
+                            }
+
+                            return $v;
+                        })
+                    ->end()
                     ->prototype('array')
                         ->children()
-                            ->scalarNode('name')->isRequired()->end()
+                            ->scalarNode('name')->defaultValue(null)->end()
+                            ->scalarNode('title')->isRequired()->end()
                             ->scalarNode('type')->defaultValue('static')->end()
                             ->booleanNode('editable')->defaultValue(false)->end()
                             ->booleanNode('manageable')->defaultValue(false)->end()

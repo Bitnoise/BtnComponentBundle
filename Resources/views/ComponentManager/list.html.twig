@@ -36,4 +36,8 @@
 
     <a href="{{ path('btn_webplatform_containermanager_index') }}" class="btn btn-default">&laquo; {% trans %}crud.back{% endtrans %}</a>
 
+    {% if container.manageable %}
+        <a href="{{ path('btn_webplatform_componentmanager_new', {container: container.name}) }}" class="btn btn-primary">{% trans %}crud.create_new{% endtrans %}</a>
+    {% endif %}
+
 {% endblock %}

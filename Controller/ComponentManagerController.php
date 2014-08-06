@@ -37,6 +37,12 @@ class ComponentManagerController extends BaseController
      */
     public function newAction(Request $request, $container)
     {
+        $provider = $this->get('btn_webplatform.provider');
+
+        if (!$provider->isContainerExists($container)) {
+            return $this->createNotFoundException(sprintf('Container "%s" was not found', $container));
+        }
+
 
 
         return array();
