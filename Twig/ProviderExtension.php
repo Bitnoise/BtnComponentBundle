@@ -52,17 +52,17 @@ class ProviderExtension extends \Twig_Extension
     /**
      *
      */
-    public function getComponent($name, $container, $position)
+    public function getComponent($type, $container, $position)
     {
-        return $this->provider->getComponent($name, $container, $position);
+        return $this->provider->getComponent($type, $container, $position);
     }
 
     /**
      *
      */
-    public function getComponentParameters($name, $container, $position)
+    public function getComponentParameters($type, $container, $position)
     {
-        $component = $this->provider->getComponent($name, $container, $position);
+        $component = $this->provider->getComponent($type, $container, $position);
 
         return $component ? $component->getParameters() : null;
     }

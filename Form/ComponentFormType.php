@@ -43,7 +43,7 @@ class ComponentFormType extends AbstractType
         ));
 
         $resolver->setDefaults(array(
-            'data_class' => 'Btn\\WebplatformBundle\\Model\\Component',
+            'data_class' => 'Btn\\WebplatformBundle\\Model\\AbstractComponent',
             'manageable' => false,
             'editable'   => true,
         ));

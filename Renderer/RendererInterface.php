@@ -9,12 +9,12 @@ interface RendererInterface
     /**
      *
      */
-    public function registerComponentRenderer(ComponentRendererInterface $componentRenderer, $alias);
+    public function registerComponentRenderer(ComponentRendererInterface $componentRenderer, $type);
 
     /**
      *
      */
-    public function getComponentRenderer($alias);
+    public function getComponentRenderer($type);
 
     /**
      *
@@ -24,7 +24,7 @@ interface RendererInterface
     /**
      *
      */
-    public function componentGetAndRender($name, $container, $position, array $containerParameters = null);
+    public function componentGetAndRender($type, $container, $position, array $containerParameters = null);
 
     /**
      *
@@ -34,6 +34,6 @@ interface RendererInterface
     /**
      *
      */
-    public function render($name, array $componentParameters = null, array $containerParameters = null);
+    public function render($type, array $componentParameters = null, array $containerParameters = null);
 }
 ;

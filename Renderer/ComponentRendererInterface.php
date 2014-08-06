@@ -15,10 +15,10 @@ interface ComponentRendererInterface
     /**
      *
      */
-    public function setAlias($alias);
+    public function setType($type);
 
     /**
      *
      */
-    public function getAlias();
+    public function getType();
 }

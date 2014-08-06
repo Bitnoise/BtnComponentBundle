@@ -10,8 +10,8 @@ class ComponentManagerAbstract implements ComponentManagerInterface
     /** @var \Doctrine\ORM\EntityManager $em */
     protected $em;
 
-    /** @var string alias from service tag */
-    protected $alias;
+    /** @var string type from service tag */
+    protected $type;
 
     /**
      *
@@ -24,17 +24,17 @@ class ComponentManagerAbstract implements ComponentManagerInterface
     /**
      *
      */
-    public function setAlias($alias)
+    public function setType($type)
     {
-        $this->alias = $alias;
+        $this->type = $type;
     }
 
     /**
      *
      */
-    public function getAlias()
+    public function getType()
     {
-        return $this->alias;
+        return $this->type;
     }
 
     /**

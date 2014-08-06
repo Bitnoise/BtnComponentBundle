@@ -7,7 +7,7 @@ use Btn\WebplatformBundle\Model\ComponentInterface;
 interface ComponentManagerInterface
 {
     public function getParametersForm();
-    public function setAlias($alias);
-    public function getAlias();
+    public function setType($type);
+    public function getType();
     public function save(ComponentInterface $component);
 }

@@ -24,32 +24,32 @@ class Manager implements ManagerInterface
     /**
      *
      */
-    public function registerComponentManager(ComponentManagerInterface $componentManager, $alias)
+    public function registerComponentManager(ComponentManagerInterface $componentManager, $type)
     {
-        $this->componentManagers[$alias] = $componentManager;
+        $this->componentManagers[$type] = $componentManager;
     }
 
     /**
      *
      */
-    public function getComponentManager($alias)
+    public function getComponentManager($type)
     {
-        if (!isset($this->componentManagers[$alias])) {
-            throw new \Exception(sprintf('No manager for component %s', $alias));
+        if (!isset($this->componentManagers[$type])) {
+            throw new \Exception(sprintf('No manager for component %s', $type));
         }
 
-        return $this->componentManagers[$alias];
+        return $this->componentManagers[$type];
     }
 
     /**
      *
      */
-    public function getComponentParametersForm($alias)
+    public function getComponentParametersForm($type)
     {
-        if ($alias instanceof ComponentInterface) {
-            $componentManager = $this->getComponentManager($alias->getName());
+        if ($type instanceof ComponentInterface) {
+            $componentManager = $this->getComponentManager($type->getName());
         } else {
-            $componentManager = $this->getComponentManager($alias);
+            $componentManager = $this->getComponentManager($type);
         }
 
         return $componentManager->getParametersForm();
@@ -60,7 +60,7 @@ class Manager implements ManagerInterface
      */
     public function componentSave(ComponentInterface $component)
     {
-        $componentManager = $this->getComponentManager($component->getName());
+        $componentManager = $this->getComponentManager($component->getType());
 
         return $componentManager->save($component);
     }

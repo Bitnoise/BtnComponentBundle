@@ -20,7 +20,7 @@
         {% for entity in components %}
             <tr>
                 <td class="btn-control-column-id">{{ entity.id }}</td>
-                <td width="300">{{ entity.name|trans }}</td>
+                <td width="300">{{ entity.name ? entity.name : entity.type|trans }}</td>
                 {% if container.manageable %}
                     <td>{{ entity.visible ? '<span class="glyphicon glyphicon-ok"></span>' : '<span class="glyphicon glyphicon-remove"></span>' }}</td>
                 {% endif %}

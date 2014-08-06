@@ -26,31 +26,31 @@ class Renderer implements RendererInterface
     /**
      *
      */
-    public function registerComponentRenderer(ComponentRendererInterface $componentRenderer, $alias)
+    public function registerComponentRenderer(ComponentRendererInterface $componentRenderer, $type)
     {
-        $this->componentRenderers[$alias] = $componentRenderer;
+        $this->componentRenderers[$type] = $componentRenderer;
     }
 
     /**
      *
      */
-    public function getComponentRenderer($alias)
+    public function getComponentRenderer($type)
     {
-        if (!isset($this->componentRenderers[$alias])) {
-            throw new \Exception(sprintf('No renderer for component %s', $alias));
+        if (!isset($this->componentRenderers[$type])) {
+            throw new \Exception(sprintf('No renderer for component %s', $type));
         }
 
-        return $this->componentRenderers[$alias];
+        return $this->componentRenderers[$type];
     }
 
     /**
      *
      */
-    public function render($name, array $componentParameters = null, array $containerParameters = null)
+    public function render($type, array $componentParameters = null, array $containerParameters = null)
     {
-        $renderer = $this->getComponentRenderer($name);
+        $renderer = $this->getComponentRenderer($type);
 
-        return new ComponentView($name, $renderer->render($componentParameters ?: array(), $containerParameters));
+        return new ComponentView($type, $renderer->render($componentParameters ?: array(), $containerParameters));
     }
 
     /**
@@ -58,15 +58,15 @@ class Renderer implements RendererInterface
      */
     public function componentRender(ComponentInterface $component, array $containerParameters = null)
     {
-        return $this->render($component->getName(), $component->getParameters(), $containerParameters);
+        return $this->render($component->getType(), $component->getParameters(), $containerParameters);
     }
 
     /**
      *
      */
-    public function componentGetAndRender($name, $container, $position, array $containerParameters = null)
+    public function componentGetAndRender($type, $container, $position, array $containerParameters = null)
     {
-        $component = $this->provider->getComponent($name, $container, $position, true);
+        $component = $this->provider->getComponent($type, $container, $position, true);
 
         return $this->componentRender($component, $containerParameters);
     }

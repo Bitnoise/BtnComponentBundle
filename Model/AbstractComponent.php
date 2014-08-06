@@ -15,6 +15,11 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
     protected $name;
 
     /**
+     * @ORM\Column(name="type", type="string", length=100)
+     */
+    protected $type;
+
+    /**
      * @ORM\Column(name="container", type="string", length=100)
      */
     protected $container;
@@ -42,6 +47,14 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
     /**
      *
      */
+    public function __construct()
+    {
+
+    }
+
+    /**
+     *
+     */
     public function setName($name)
     {
         $this->name = $name;
@@ -55,6 +68,24 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     *
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     *
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**

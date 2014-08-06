@@ -27,18 +27,18 @@ class Hydrator implements HydratorInterface
     /**
      *
      */
-    public function registerComponentHydrator(ComponentHydratorInterface $componentHydrator, $alias)
+    public function registerComponentHydrator(ComponentHydratorInterface $componentHydrator, $type)
     {
-        $this->componentHydrators[$alias] = $componentHydrator;
+        $this->componentHydrators[$type] = $componentHydrator;
     }
 
     /**
      *
      */
-    public function getComponentHydrator($alias)
+    public function getComponentHydrator($type)
     {
-        if (isset($this->componentHydrators[$alias])) {
-            return $this->componentHydrators[$alias];
+        if (isset($this->componentHydrators[$type])) {
+            return $this->componentHydrators[$type];
         }
 
         return false;
@@ -50,7 +50,7 @@ class Hydrator implements HydratorInterface
     public function dry(HydratableInterface $object)
     {
         if ($object instanceof ComponentInterface && $object->isHydrated()) {
-            $objectHydrator = $this->getComponentHydrator($object->getName());
+            $objectHydrator = $this->getComponentHydrator($object->getType());
             if ($objectHydrator) {
                 $objectHydrator->setEntityManager($this->em)->dry($object);
                 $object->dried();
@@ -64,7 +64,7 @@ class Hydrator implements HydratorInterface
     public function hydrate(HydratableInterface $object)
     {
         if ($object instanceof ComponentInterface && $object->isDried()) {
-            $objectHydrator = $this->getComponentHydrator($object->getName());
+            $objectHydrator = $this->getComponentHydrator($object->getType());
             if ($objectHydrator) {
                 $objectHydrator->setEntityManager($this->em)->hydrate($object);
                 $object->hydrated();

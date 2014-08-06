@@ -38,9 +38,9 @@ class ComponentProvider implements ComponentProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function getComponent($name, $container, $position, $readonly = true)
+    public function getComponent($type, $container, $position, $readonly = true)
     {
-        $component = $this->repo->findOneBy(array('name' => $name, 'container' => $container, 'position' =>$position));
+        $component = $this->repo->findOneBy(array('type' => $type, 'container' => $container, 'position' =>$position));
 
         if ($readonly && $component) {
             $this->em->detach($component);

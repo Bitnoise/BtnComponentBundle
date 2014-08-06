@@ -30,9 +30,9 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     /**
      * {@inheritDoc}
      */
-    public function getComponent($name, $container, $position, $readonly = true)
+    public function getComponent($type, $container, $position, $readonly = true)
     {
-        return $this->componentProvider->getComponent($name, $container, $position, $readonly);
+        return $this->componentProvider->getComponent($type, $container, $position, $readonly);
     }
 
     /**

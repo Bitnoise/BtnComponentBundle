@@ -4,8 +4,8 @@ namespace Btn\WebplatformBundle\View;
 
 class ComponentView
 {
-    /** @var string $name name of component */
-    protected $name;
+    /** @var string $type type of component */
+    protected $type;
 
     /** @var string $content rendered html from component */
     protected $content;
@@ -13,18 +13,18 @@ class ComponentView
     /**
      *
      */
-    public function __construct($name, $content)
+    public function __construct($type, $content)
     {
-        $this->name    = $name;
+        $this->type    = $type;
         $this->content = $content;
     }
 
     /**
      *
      */
-    public function getName()
+    public function getType()
     {
-        return $this->name;
+        return $this->type;
     }
 
     /**

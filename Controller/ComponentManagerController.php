@@ -54,7 +54,7 @@ class ComponentManagerController extends BaseController
         }
 
         $container      = $provider->getContainer($component->getContainer());
-        $parametersType = $manager->getComponentParametersForm($component->getName());
+        $parametersType = $manager->getComponentParametersForm($component->getType());
 
         $form = $this->createForm(new ComponentFormType(), $component, array(
             'parameters_type' => $parametersType,

@@ -12,7 +12,7 @@ abstract class AbstractComponentHydrator implements ComponentHydratorInterface
     private $em;
 
     /** @var string */
-    private $alias;
+    private $type;
 
     /**
      *
@@ -39,17 +39,17 @@ abstract class AbstractComponentHydrator implements ComponentHydratorInterface
     /**
      *
      */
-    public function setAlias($alias)
+    public function setType($type)
     {
-        $this->alias = $alias;
+        $this->type = $type;
     }
 
     /**
      *
      */
-    public function getAlias()
+    public function getType()
     {
-        return $this->alias;
+        return $this->type;
     }
 
     /**

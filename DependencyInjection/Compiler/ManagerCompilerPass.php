@@ -25,9 +25,9 @@ class ManagerCompilerPass implements CompilerPassInterface
             foreach ($taggedServices as $id => $tagAttributes) {
                 foreach ($tagAttributes as $attributes) {
                     $componentManager = $container->getDefinition($id);
-                    $componentManager->addMethodCall('setAlias', array($attributes['alias']));
-                    $manager->addMethodCall('registerComponentManager', array(new Reference($id), $attributes['alias']));
-                    $managers[$attributes['alias']] = $id;
+                    $componentManager->addMethodCall('setType', array($attributes['type']));
+                    $manager->addMethodCall('registerComponentManager', array(new Reference($id), $attributes['type']));
+                    $managers[$attributes['type']] = $id;
                 }
             }
         }

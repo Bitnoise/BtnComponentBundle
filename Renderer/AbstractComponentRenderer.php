@@ -7,8 +7,8 @@ abstract class AbstractComponentRenderer implements ComponentRendererInterface
     /** @var \Twig_Environment */
     protected $twig;
 
-    /** @var string alias from service tag */
-    protected $alias;
+    /** @var string type from service tag */
+    protected $type;
 
     /**
      *
@@ -21,17 +21,17 @@ abstract class AbstractComponentRenderer implements ComponentRendererInterface
     /**
      *
      */
-    public function setAlias($alias)
+    public function setType($type)
     {
-        $this->alias = $alias;
+        $this->type = $type;
     }
 
     /**
      *
      */
-    public function getAlias()
+    public function getType()
     {
-        return $this->alias;
+        return $this->type;
     }
 
     /**

@@ -46,9 +46,9 @@ class RendererExtension extends \Twig_Extension
     /**
      *
      */
-    public function containerRender($name, array $containerParameters = null)
+    public function containerRender($type, array $containerParameters = null)
     {
-        return $this->renderer->containerRender($name, $containerParameters);
+        return $this->renderer->containerRender($type, $containerParameters);
     }
 
     /**
@@ -62,17 +62,17 @@ class RendererExtension extends \Twig_Extension
     /**
      *
      */
-    public function componentGetAndRender($name, $container, $position, array $containerParameters = null)
+    public function componentGetAndRender($type, $container, $position, array $containerParameters = null)
     {
-        return $this->renderer->componentGetAndRender($name, $container, $position, $containerParameters);
+        return $this->renderer->componentGetAndRender($type, $container, $position, $containerParameters);
     }
 
     /**
      *
      */
-    public function render($name, $parameters = null)
+    public function render($type, $parameters = null)
     {
-        return $this->renderer->render($name, $parameters);
+        return $this->renderer->render($type, $parameters);
     }
 
     /**
