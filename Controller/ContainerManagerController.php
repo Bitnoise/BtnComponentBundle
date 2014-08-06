@@ -10,6 +10,7 @@ use Btn\WebplatformBundle\Form\ContainerFormType;
 
 /**
  * @Route("/webplatform/containertmanager")
+ * @Template()
  */
 class ContainerManagerController extends BaseController
 {
@@ -22,8 +23,8 @@ class ContainerManagerController extends BaseController
 
         $containers = $provider->getContainers();
 
-        return $this->render($this->container->getParameter('btn_webplatform.control.container_manager.index_template'), array(
+        return array(
             'containers' => $containers,
-        ));
+        );
     }
 }

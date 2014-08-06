@@ -15,6 +15,7 @@ class ComponentManagerController extends BaseController
 {
     /**
      * @Route("/{container}/list", name="btn_webplatform_componentmanager_list")
+     * @Template()
      */
     public function listAction(Request $request, $container)
     {
@@ -24,10 +25,10 @@ class ComponentManagerController extends BaseController
             return $this->createNotFoundException(sprintf('Container "%s" was not found', $container));
         }
 
-        return $this->render($this->container->getParameter('btn_webplatform.control.component_manager.list_template'), array(
+        return array(
             'components' => $provider->getComponentsForContainer($container),
             'container'  => $provider->getContainer($container),
-        ));
+        );
     }
 
     /**

@@ -51,9 +51,6 @@ class BtnWebplatformExtension extends Extension
 
         $container->setParameter('btn_webplatform.containers', $config['containers']);
 
-        $container->setParameter('btn_webplatform.control.container_manager.index_template', $config['control']['container_manager']['index_template']);
-        $container->setParameter('btn_webplatform.control.component_manager.list_template', $config['control']['component_manager']['list_template']);
-
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
