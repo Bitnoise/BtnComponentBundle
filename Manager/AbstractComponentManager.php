@@ -5,7 +5,7 @@ namespace Btn\WebplatformBundle\Manager;
 use Btn\WebplatformBundle\Model\ComponentInterface;
 use Doctrine\ORM\EntityManager;
 
-class ComponentManagerAbstract implements ComponentManagerInterface
+class AbstractComponentManager implements ComponentManagerInterface
 {
     /** @var \Doctrine\ORM\EntityManager $em */
     protected $em;

@@ -50,7 +50,7 @@ services:
             - { name: twig.extension }
 
     btn_webplatform.abstract_component_manager:
-        class: Btn\WebplatformBundle\Manager\ComponentManagerAbstract
+        class: Btn\WebplatformBundle\Manager\AbstractComponentManager
         abstract: true
         arguments:
             em: @doctrine.orm.entity_manager
