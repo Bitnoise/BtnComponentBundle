@@ -6,7 +6,7 @@
 
     <form action="{{ form.vars.action }}" method="post" {{ form_enctype(form) }} class="well form-horizontal" novalidate>
         <fieldset>
-            <legend>{{ 'component.edit'|trans({'%component_name%': component.name|trans, '%container_name%' : container.name}) }}</legend>
+            <legend>{{ 'btn_webplatform.component.edit'|trans({'%component_name%': component.type|trans, '%container_name%' : container.name}) }}</legend>
 
             {% if form.visible is defined %}
                 {{ form_row(form.visible) }}
