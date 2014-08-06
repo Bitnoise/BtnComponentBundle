@@ -32,11 +32,13 @@ class ComponentManagerController extends BaseController
     }
 
     /**
-     * @Route("/new", name="btn_webplatform_componentmanager_new")
+     * @Route("/{container}/new", name="btn_webplatform_componentmanager_new")
      * @Template()
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $container)
     {
+
+
         return array();
     }
 

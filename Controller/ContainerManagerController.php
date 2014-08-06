@@ -27,4 +27,13 @@ class ContainerManagerController extends BaseController
             'containers' => $containers,
         );
     }
+
+    /**
+     * @Route("/new", name="btn_webplatform_containermanager_new")
+     * @Template()
+     */
+    public function newAction(Request $request)
+    {
+        $form = new ContainerFormType();
+    }
 }
