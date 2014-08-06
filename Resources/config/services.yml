@@ -1,0 +1,73 @@
+services:
+
+    btn_webplatform.container_provider.default:
+        class: %btn_webplatform.container_provider_class%
+        calls:
+            - [setContainers, ['%btn_webplatform.containers%']]
+
+    btn_webplatform.component_provider.default:
+        class: %btn_webplatform.component_provider_class%
+        arguments:
+            em: @doctrine.orm.entity_manager
+            className: %btn_webplatform.component_class%
+
+    btn_webplatform.provider.default:
+        class: %btn_webplatform.provider_class%
+        arguments:
+            containerProvider: @btn_webplatform.container_provider
+            componentProvider: @btn_webplatform.component_provider
+
+    btn_webplatform.hydrator.default:
+        class: %btn_webplatform.hydrator_class%
+
+    btn_webplatform.abstract_component_hydrator:
+        class: Btn\WebplatformBundle\Hydrator\AbstractComponentHydrator
+        abstract: true
+
+    btn_webplatform.abstract_component_renderer:
+        class: Btn\WebplatformBundle\Renderer\AbstractComponentRenderer
+        abstract: true
+        arguments:
+            twig: @twig
+
+    btn_webplatform.renderer.default:
+        class: %btn_webplatform.renderer_class%
+        arguments:
+            provider: @btn_webplatform.provider
+
+    btn_webplatform.twig.renderer_extension:
+        class: Btn\WebplatformBundle\Twig\RendererExtension
+        arguments:
+            renderer: @btn_webplatform.renderer
+        tags:
+            - { name: twig.extension }
+
+    btn_webplatform.twig.provider_extension:
+        class: Btn\WebplatformBundle\Twig\ProviderExtension
+        arguments:
+            provider: @btn_webplatform.provider
+        tags:
+            - { name: twig.extension }
+
+    btn_webplatform.abstract_component_manager:
+        class: Btn\WebplatformBundle\Manager\ComponentManagerAbstract
+        abstract: true
+        arguments:
+            em: @doctrine.orm.entity_manager
+
+    btn_webplatform.manager.default:
+        class: %btn_webplatform.manager_class%
+        arguments:
+            componentProvider: @btn_webplatform.component_provider
+
+    btn_webplatform.form_handler.component:
+        class: Btn\WebplatformBundle\FormHandler\ComponentFormHandler
+        arguments:
+            manager: @btn_webplatform.manager
+
+    btn_webplatform.event_listener.hydrator_subscriber:
+        class: Btn\WebplatformBundle\EventListener\HydratorSubscriber
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        arguments:
+            hydrator: @btn_webplatform.hydrator

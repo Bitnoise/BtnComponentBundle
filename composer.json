@@ -1,0 +1,27 @@
+{
+    "name": "bitnoise/webplatform-bundle",
+    "type": "symfony-bundle",
+    "description": "The BtnBaseBundle makes us (bitnoi.se team) happy",
+    "keywords": [ "bitnoise"],
+    "homepage": "https://github.com/Bitnoise/BtnWebplatformBundle",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Bitnoise Team",
+            "homepage": "http://www.bitnoi.se/",
+            "email": "labs@bitnoi.se"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.3.*",
+        "bitnoise/base-bundle": "~2.0",
+    },
+    "suggest": {},
+    "autoload": {
+        "psr-0": { "Btn\\WebplatformBundle": "" }
+    },
+    "target-dir": "Btn/WebplatformBundle"
+}

@@ -1,0 +1,11 @@
+component.edit: 'Edit %component_name% for %container_name%'
+component.list: '%container_name% component list'
+component.list_global: 'Global component list'
+component.id: 'Id'
+component.name: 'Component name'
+component.visible: 'Visible'
+
+container.list: 'Container list'
+container.name: 'Container name'
+
+btn_webplatform.show_components: 'Show components'

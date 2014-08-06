@@ -1,0 +1,39 @@
+{% extends 'BtnWebplatformBundle::layout.html.twig' %}
+
+{% block btn_webplatform_content %}
+    <div class="page-header">
+        <h1>{{ 'component.list'|trans({'%container_name%': container.name}) }}</h1>
+    </div>
+
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th class="btn-control-column-id">{{ 'component.id'|trans }}</th>
+                <th>{{ 'component.name'|trans }}</th>
+                {% if container.manageable %}
+                    <th>{{ 'component.visible'|trans }}</th>
+                {% endif %}
+                <th>{% trans %}crud.actions{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in components %}
+            <tr>
+                <td class="btn-control-column-id">{{ entity.id }}</td>
+                <td width="300">{{ entity.name|trans }}</td>
+                {% if container.manageable %}
+                    <td>{{ entity.visible ? '<span class="glyphicon glyphicon-ok"></span>' : '<span class="glyphicon glyphicon-remove"></span>' }}</td>
+                {% endif %}
+                <td>
+                    {% if container.manageable or container.editable %}
+                        <a href="{{ path('btn_webplatform_componentmanager_edit', { 'id': entity.id }) }}" class="btn btn-primary">{% trans %}crud.edit{% endtrans %}</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('btn_webplatform_componentmanager_index') }}" class="btn btn-default">&laquo; {% trans %}crud.back{% endtrans %}</a>
+
+{% endblock %}
