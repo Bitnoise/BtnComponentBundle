@@ -23,10 +23,5 @@
     "autoload": {
         "psr-0": { "Btn\\WebplatformBundle": "" }
     },
-    "target-dir": "Btn/WebplatformBundle",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
-    }
+    "target-dir": "Btn/WebplatformBundle"
 }
