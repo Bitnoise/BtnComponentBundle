@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class AbstractContainer implements ContainerInterface, HydratableInterface
 {
     /**
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     */
+    protected $title;
+
+    /**
      * @ORM\Column(name="name", type="string", length=100)
      */
     protected $name;
@@ -30,6 +35,24 @@ abstract class AbstractContainer implements ContainerInterface, HydratableInterf
     public function __construct()
     {
         $this->setName(substr(md5(uniqid(rand(), true)), 0, 6));
+    }
+
+    /**
+     *
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     *
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**

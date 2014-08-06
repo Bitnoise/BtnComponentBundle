@@ -10,9 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class AbstractComponent implements ComponentInterface, HydratableInterface
 {
     /**
-     * @ORM\Column(name="name", type="string", length=100)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
-    protected $name;
+    protected $title;
 
     /**
      * @ORM\Column(name="type", type="string", length=100)
@@ -49,15 +49,14 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
      */
     public function __construct()
     {
-
     }
 
     /**
      *
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
@@ -65,9 +64,9 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
     /**
      *
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
