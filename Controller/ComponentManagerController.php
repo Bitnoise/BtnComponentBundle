@@ -13,19 +13,6 @@ use Btn\WebplatformBundle\Form\ComponentFormType;
  */
 class ComponentManagerController extends BaseController
 {
-
-    /**
-     * @Route("/", name="btn_webplatform_componentmanager_index")
-     */
-    public function indexAction()
-    {
-        $containers = $this->container->getParameter('btn_webplatform.containers');
-
-        return $this->render($this->container->getParameter('btn_webplatform.control.component_manager.index_template'), array(
-            'containers' => $containers,
-        ));
-    }
-
     /**
      * @Route("/{container}/list", name="btn_webplatform_componentmanager_list")
      */
