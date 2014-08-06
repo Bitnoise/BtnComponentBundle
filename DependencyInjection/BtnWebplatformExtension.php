@@ -23,6 +23,7 @@ class BtnWebplatformExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('btn_webplatform.component_class', $config['component_class']);
+        $container->setParameter('btn_webplatform.container_class', $config['container_class']);
 
         $container->setParameter('btn_webplatform.container_provider_class', $config['container_provider_class']);
         $container->setParameter('btn_webplatform.container_provider_id', $config['container_provider_id']);
