@@ -9,4 +9,6 @@ interface ContainerProviderInterface
     public function registerContainer(array $container, $alias = null);
     public function getContainer($alias);
     public function isContainerExists($alias);
+    public function getContainerClass();
+    public function createContainer();
 }

@@ -13,4 +13,6 @@ interface ComponentProviderInterface
      */
     public function getComponent($name, $container, $position, $readonly = true);
     public function getComponentsForContainer($container, $readonly = true);
+    public function getComponentClass();
+    public function createComponent();
 }

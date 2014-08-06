@@ -43,6 +43,23 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
         return $this->componentProvider->getComponentsForContainer($container, $readonly);
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getComponentClass()
+    {
+        return $this->componentProvider->getComponentClass();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function createComponent($container)
+    {
+        return $this->componentProvider->createComponent($container);
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -81,5 +98,21 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     public function getContainer($container)
     {
         return $this->containerProvider->getContainer($container);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getContainerClass()
+    {
+        return $this->containerProvider->getContainerClass();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function createContainer()
+    {
+        return $this->containerProvider->createContainer();
     }
 }

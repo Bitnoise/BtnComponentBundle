@@ -3,6 +3,7 @@
 namespace Btn\WebplatformBundle\Manager;
 
 use Btn\WebplatformBundle\Model\ComponentInterface;
+use Btn\WebplatformBundle\Model\ContainerInterface;
 use Btn\WebplatformBundle\Provider\ComponentProviderInterface;
 
 class Manager implements ManagerInterface
@@ -63,5 +64,13 @@ class Manager implements ManagerInterface
         $componentManager = $this->getComponentManager($component->getType());
 
         return $componentManager->save($component);
+    }
+
+    /**
+     *
+     */
+    public function containerSave(ContainerInterface $container)
+    {
+        //@TODO
     }
 }

@@ -2,19 +2,27 @@
 
 namespace Btn\WebplatformBundle\Provider;
 
+use Doctrine\ORM\EntityManager;
+
 class ContainerProvider implements ContainerProviderInterface
 {
+    /** @var string */
+    protected $containerClass;
+    /** @var \Doctrine\ORM\EntityManager */
+    protected $em;
+    /** @var \Btn\WebplatformBundle\Model\AbstractContainerRepository $repo */
+    protected $repo;
     /** @var array $containers */
-    protected $containers = array();
+    protected $containers;
 
     /**
      *
      */
-    public function __construct(array $containers = null)
+    public function __construct($containerClass, EntityManager $em)
     {
-        if ($containers) {
-            $this->setContainers($containers);
-        }
+        $this->containerClass = $containerClass;
+        $this->em             = $em;
+        $this->repo           = $em->getRepository($this->containerClass);
     }
 
     /**
@@ -71,5 +79,24 @@ class ContainerProvider implements ContainerProviderInterface
         }
 
         return false;
+    }
+
+    /**
+     *
+     */
+    public function getContainerClass()
+    {
+        return $this->containerClass;
+    }
+
+    /**
+     *
+     */
+    public function createContainer()
+    {
+        $containerClass = $this->getContainerClass();
+        $container = new $containerClass();
+
+        return $container;
     }
 }

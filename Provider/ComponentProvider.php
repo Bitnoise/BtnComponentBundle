@@ -6,19 +6,20 @@ use Doctrine\ORM\EntityManager;
 
 class ComponentProvider implements ComponentProviderInterface
 {
+    /** @var string */
+    protected $componentClass;
     /** @var \Doctrine\ORM\EntityManager */
     protected $em;
-    /** @var string */
-    protected $entityClass;
-
+    /** @var \Btn\WebplatformBundle\Model\AbstractComponentRepository $repo */
+    protected $repo;
     /**
      *
      */
-    public function __construct(EntityManager $em, $entityClass)
+    public function __construct($componentClass, EntityManager $em)
     {
-        $this->em          = $em;
-        $this->entityClass = $entityClass;
-        $this->repo        = $em->getRepository($this->entityClass);
+        $this->componentClass = $componentClass;
+        $this->em             = $em;
+        $this->repo           = $em->getRepository($this->componentClass);
     }
 
     /**
@@ -36,7 +37,7 @@ class ComponentProvider implements ComponentProviderInterface
     }
 
     /**
-     * {@inheritDoc}
+     *
      */
     public function getComponent($type, $container, $position, $readonly = true)
     {
@@ -62,5 +63,24 @@ class ComponentProvider implements ComponentProviderInterface
         }
 
         return $components;
+    }
+
+    /**
+     *
+     */
+    public function getComponentClass()
+    {
+        return $this->getComponentClass;
+    }
+
+    /**
+     *
+     */
+    public function createComponent()
+    {
+        $componentClass = $this->getComponentClass();
+        $component = new $componentClass();
+
+        return $component;
     }
 }
