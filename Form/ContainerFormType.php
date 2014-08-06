@@ -5,7 +5,7 @@ namespace Btn\WebplatformBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class ContainerType extends AbstractType
+class ContainerFormType extends AbstractType
 {
     protected $containers;
 

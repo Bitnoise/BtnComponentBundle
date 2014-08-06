@@ -6,7 +6,7 @@ use Btn\BaseBundle\Controller\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use Btn\WebplatformBundle\Form\ComponentType;
+use Btn\WebplatformBundle\Form\ComponentFormType;
 
 /**
  * @Route("/webplatform/componentmanager")
@@ -69,7 +69,7 @@ class ComponentManagerController extends BaseController
         $container      = $provider->getContainer($component->getContainer());
         $parametersType = $manager->getComponentParametersForm($component->getName());
 
-        $form = $this->createForm(new ComponentType(), $component, array(
+        $form = $this->createForm(new ComponentFormType(), $component, array(
             'parameters_type' => $parametersType,
             'action'          => $this->generateUrl('btn_webplatform_componentmanager_edit', array('id' => $id)),
             'manageable'      => $container['manageable'],
