@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th class="btn-control-column-id">{{ 'component.id'|trans }}</th>
-                <th>{{ 'btn_webplatform.component.name'|trans }}</th>
+                <th>{{ 'btn_webplatform.component.title'|trans }}</th>
                 {% if container.manageable %}
                     <th>{{ 'btn_webplatform.component.visible'|trans }}</th>
                 {% endif %}
@@ -20,13 +20,13 @@
         {% for entity in components %}
             <tr>
                 <td class="btn-control-column-id">{{ entity.id }}</td>
-                <td width="300">{{ entity.title ? entity.title : entity.type|trans }}</td>
+                <td>{{ entity.title ?: entity.type|trans }}</td>
                 {% if container.manageable %}
                     <td>{{ entity.visible ? '<span class="glyphicon glyphicon-ok"></span>' : '<span class="glyphicon glyphicon-remove"></span>' }}</td>
                 {% endif %}
                 <td>
                     {% if container.manageable or container.editable %}
-                        <a href="{{ path('btn_webplatform_componentmanager_edit', { 'id': entity.id }) }}" class="btn btn-primary">{% trans %}crud.edit{% endtrans %}</a>
+                        <a href="{{ path('btn_webplatform_componentcontrol_edit', { 'id': entity.id }) }}" class="btn btn-primary">{% trans %}crud.edit{% endtrans %}</a>
                     {% endif %}
                 </td>
             </tr>
@@ -34,10 +34,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('btn_webplatform_containermanager_index') }}" class="btn btn-default">&laquo; {% trans %}crud.back{% endtrans %}</a>
+    <a href="{{ path('btn_webplatform_containercontrol_index') }}" class="btn btn-default">&laquo; {% trans %}crud.back{% endtrans %}</a>
 
     {% if container.manageable %}
-        <a href="{{ path('btn_webplatform_componentmanager_new', {container: container.name}) }}" class="btn btn-primary">{% trans %}crud.create_new{% endtrans %}</a>
+        <a href="{{ path('btn_webplatform_componentcontrol_new', {container: container.name}) }}" class="btn btn-primary">{% trans %}crud.create_new{% endtrans %}</a>
     {% endif %}
 
 {% endblock %}

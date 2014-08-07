@@ -1,0 +1,25 @@
+{% extends 'BtnWebplatformBundle::layout.html.twig' %}
+
+{% block btn_webplatform_content %}
+
+    {% set legend = 'btn_webplatform.component.edit'|trans({'%component_title%': component.title ?: component.type|trans, '%container_title%' : container.title}) %}
+    {% include 'BtnWebplatformBundle:ComponentControl:_form.html.twig' with {form: form, legend: legend} only %}
+
+    <a href="{{ path('btn_webplatform_componentcontrol_list', {container: component.container}) }}" class="btn btn-default">&laquo; {% trans %}crud.back{% endtrans %}</a>
+
+    {% if container.manageable %}
+        <a data-confirmation href="{{ csrf_path('btn_webplatform_componentcontrol_delete', {id: component.id}) }}" class="btn btn-danger delete">{% trans %}crud.delete{% endtrans %}</a>
+    {% endif %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/color.css') }}">
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/color.js') }}"></script>
+    <script src="{{ asset('js/embeded.js') }}"></script>
+{% endblock %}

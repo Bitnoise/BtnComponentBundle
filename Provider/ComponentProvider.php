@@ -10,16 +10,25 @@ class ComponentProvider implements ComponentProviderInterface
     protected $componentClass;
     /** @var \Doctrine\ORM\EntityManager */
     protected $em;
-    /** @var \Btn\WebplatformBundle\Model\AbstractComponentRepository $repo */
-    protected $repo;
+    /** @var \Btn\WebplatformBundle\Model\AbstractComponentRepository $componentRepository */
+    protected $componentRepository;
+
     /**
      *
      */
     public function __construct($componentClass, EntityManager $em)
     {
-        $this->componentClass = $componentClass;
-        $this->em             = $em;
-        $this->repo           = $em->getRepository($this->componentClass);
+        $this->componentClass      = $componentClass;
+        $this->em                  = $em;
+        $this->componentRepository = $em->getRepository($this->componentClass);
+    }
+
+    /**
+     *
+     */
+    public function getComponentRepository()
+    {
+        return $this->componentRepository;
     }
 
     /**
@@ -27,7 +36,7 @@ class ComponentProvider implements ComponentProviderInterface
      */
     public function getComponentById($id, $readonly = true)
     {
-        $component = $this->repo->find($id);
+        $component = $this->componentRepository->find($id);
 
         if ($readonly && $component) {
             $this->em->detach($component);
@@ -41,7 +50,7 @@ class ComponentProvider implements ComponentProviderInterface
      */
     public function getComponent($type, $container, $position, $readonly = true)
     {
-        $component = $this->repo->findOneBy(array('type' => $type, 'container' => $container, 'position' =>$position));
+        $component = $this->componentRepository->findOneBy(array('type' => $type, 'container' => $container, 'position' =>$position));
 
         if ($readonly && $component) {
             $this->em->detach($component);
@@ -55,7 +64,7 @@ class ComponentProvider implements ComponentProviderInterface
      */
     public function getComponentsForContainer($container, $readonly = true)
     {
-        $components = $this->repo->findByContainer($container, array('position' => 'ASC'));
+        $components = $this->componentRepository->findByContainer($container, array('position' => 'ASC'));
         if ($readonly && $components) {
             foreach ($components as $component) {
                 $this->em->detach($component);
@@ -70,7 +79,7 @@ class ComponentProvider implements ComponentProviderInterface
      */
     public function getComponentClass()
     {
-        return $this->getComponentClass;
+        return $this->componentClass;
     }
 
     /**

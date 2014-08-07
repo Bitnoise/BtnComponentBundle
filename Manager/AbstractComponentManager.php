@@ -40,19 +40,33 @@ class AbstractComponentManager implements ComponentManagerInterface
     /**
      *
      */
-    public function getParametersForm()
+    public function getComponentParametersForm()
     {
     }
 
     /**
      *
      */
-    public function save(ComponentInterface $component)
+    public function saveComponent(ComponentInterface $component, $andFlush = true)
     {
         if (!$component->getId()) {
             $this->em->persist($component);
         }
 
-        $this->em->flush();
+        if ($andFlush) {
+            $this->em->flush($component);
+        }
+    }
+
+    /**
+     *
+     */
+    public function deleteComponent(ComponentInterface $component, $andFlush = true)
+    {
+        $this->em->remove($component);
+
+        if ($andFlush) {
+            $this->em->flush($component);
+        }
     }
 }

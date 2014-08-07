@@ -2,6 +2,8 @@
 
 namespace Btn\WebplatformBundle\Provider;
 
+use Btn\WebplatformBundle\Model\ContainerInterface;
+
 class Provider implements ProviderInterface, ContainerProviderInterface, ComponentProviderInterface
 {
     /** @var \Btn\WebplatformBundle\Provider\ContainerProviderInterface */
@@ -11,7 +13,7 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     private $componentProvider;
 
     /**
-     * {@inheritDoc}
+     *
      */
     public function __construct(ContainerProviderInterface $containerProvider, ComponentProviderInterface $componentProvider)
     {
@@ -20,7 +22,15 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     }
 
     /**
-     * {@inheritDoc}
+     *
+     */
+    public function getComponentRepository()
+    {
+        return $this->componentProvider->getComponentRepository();
+    }
+
+    /**
+     *
      */
     public function getComponentById($id, $readonly = true)
     {
@@ -28,7 +38,7 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     }
 
     /**
-     * {@inheritDoc}
+     *
      */
     public function getComponent($type, $container, $position, $readonly = true)
     {
@@ -36,16 +46,15 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     }
 
     /**
-     * {@inheritDoc}
+     *
      */
     public function getComponentsForContainer($container, $readonly = true)
     {
         return $this->componentProvider->getComponentsForContainer($container, $readonly);
     }
 
-
     /**
-     * {@inheritDoc}
+     *
      */
     public function getComponentClass()
     {
@@ -53,7 +62,7 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     }
 
     /**
-     * {@inheritDoc}
+     *
      */
     public function createComponent()
     {
@@ -61,7 +70,15 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     }
 
     /**
-     * {@inheritDoc}
+     *
+     */
+    public function getContainerRepository()
+    {
+        return $this->componentProvider->getContainerRepository();
+    }
+
+    /**
+     *
      */
     public function setContainers(array $containers)
     {
@@ -69,7 +86,7 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     }
 
     /**
-     * {@inheritDoc}
+     *
      */
     public function getContainers()
     {
@@ -77,31 +94,39 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     }
 
     /**
-     * {@inheritDoc}
+     *
      */
-    public function registerContainer(array $container, $alias = null)
+    public function registerContainer(ContainerInterface $container)
     {
-        return $this->containerProvider->registerContainer($container, $alias);
+        return $this->containerProvider->registerContainer($container);
     }
 
     /**
-     * {@inheritDoc}
+     *
      */
-    public function isContainerExists($container)
+    public function isContainerExists($name)
     {
-        return $this->containerProvider->isContainerExists($container);
+        return $this->containerProvider->isContainerExists($name);
     }
 
     /**
-     * {@inheritDoc}
+     *
      */
-    public function getContainer($container)
+    public function getContainerById($id)
     {
-        return $this->containerProvider->getContainer($container);
+        return $this->containerProvider->getContainerById($id);
     }
 
     /**
-     * {@inheritDoc}
+     *
+     */
+    public function getContainer($name)
+    {
+        return $this->containerProvider->getContainer($name);
+    }
+
+    /**
+     *
      */
     public function getContainerClass()
     {
@@ -109,7 +134,7 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     }
 
     /**
-     * {@inheritDoc}
+     *
      */
     public function createContainer()
     {

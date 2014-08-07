@@ -1,0 +1,9 @@
+{% extends 'BtnWebplatformBundle::layout.html.twig' %}
+
+{% block btn_webplatform_content %}
+
+    {% include 'BtnWebplatformBundle:ContainerControl:_form.html.twig' with {form: form, legend: 'btn_webplatform.container.create'|trans} only %}
+
+    <a href="{{ path('btn_webplatform_containercontrol_index') }}" class="btn btn-default">&laquo; {% trans %}crud.back{% endtrans %}</a>
+
+{% endblock %}

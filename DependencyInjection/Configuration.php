@@ -40,10 +40,37 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('renderer_class')->defaultValue('Btn\WebplatformBundle\Renderer\Renderer')->end()
                 ->scalarNode('renderer_id')->defaultValue('btn_webplatform.renderer.default')->end()
 
+                ->scalarNode('container_manager_class')->defaultValue('Btn\WebplatformBundle\Manager\ContainerManager')->end()
+                ->scalarNode('container_manager_id')->defaultValue('btn_webplatform.container_manager.default')->end()
+
                 ->scalarNode('manager_class')->defaultValue('Btn\WebplatformBundle\Manager\Manager')->end()
                 ->scalarNode('manager_id')->defaultValue('btn_webplatform.manager.default')->end()
 
-                ->arrayNode('static_containers')
+                ->arrayNode('components')
+                    ->beforeNormalization()
+                        ->ifArray()
+                        ->then(function ($v) {
+                            foreach ($v as $key => $value) {
+                                if (is_string($value) || is_null($value)) {
+                                    $v[$key] = array('title' => $value);
+                                }
+                                if (empty($value['name'])) {
+                                    $v[$key]['name'] = $key;
+                                }
+                            }
+
+                            return $v;
+                        })
+                    ->end()
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('name')->defaultValue(null)->end()
+                            ->scalarNode('title')->end()
+                        ->end()
+                    ->end()
+                ->end()
+
+                ->arrayNode('containers')
                     ->beforeNormalization()
                         ->ifArray()
                         ->then(function ($v) {
@@ -60,13 +87,14 @@ class Configuration implements ConfigurationInterface
                         ->children()
                             ->scalarNode('name')->defaultValue(null)->end()
                             ->scalarNode('title')->isRequired()->end()
-                            ->scalarNode('type')->defaultValue('static')->end()
                             ->booleanNode('editable')->defaultValue(false)->end()
                             ->booleanNode('manageable')->defaultValue(false)->end()
-                            ->arrayNode('avalible_components')
-                                ->defaultValue(array())
-                                ->treatNullLike(array())
-                                ->prototype('scalar')->end()
+                            ->arrayNode('parameters')
+                                    ->children()
+                                        ->arrayNode('avalible_components')
+                                            ->prototype('scalar')->end()
+                                        ->end()
+                                    ->end()
                             ->end()
                         ->end()
                     ->end()

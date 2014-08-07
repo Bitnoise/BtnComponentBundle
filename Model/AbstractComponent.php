@@ -37,7 +37,7 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
     /**
      * @ORM\Column(name="parameters", type="array")
      */
-    protected $parameters = array();
+    protected $parameters;
 
     /**
      *
@@ -49,6 +49,8 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
      */
     public function __construct()
     {
+        $this->setParameters(array());
+        $this->setVisible(true);
     }
 
     /**
@@ -92,7 +94,13 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
      */
     public function setContainer($container)
     {
-        $this->container = $container;
+        if ($container instanceof ContainerInterface) {
+            $this->container = $container->getName();
+        } elseif (is_string($container)) {
+            $this->container = $container;
+        } else {
+            throw new \Exception('Invalid parameter for setContainer() method');
+        }
 
         return $this;
     }
@@ -190,7 +198,7 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
      */
     public function isDried()
     {
-        return !$this->hydrated;
+        return $this->isHydrated() ? false : true;
     }
 
     /**

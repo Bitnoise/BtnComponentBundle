@@ -1,10 +1,17 @@
-btn_webplatform.component.edit: 'Edit %component_name% for %container_name%'
-btn_webplatform.component.list: '%container_name% component list'
+btn_webplatform.component.edit: 'Edit %component_title% for %container_title%'
+btn_webplatform.component.create: 'Create component for %container_title%'
+btn_webplatform.component.list: '%container_title% component list'
 btn_webplatform.component.id: 'Id'
-btn_webplatform.component.name: 'Component name'
-btn_webplatform.component.visible: 'Visible'
+btn_webplatform.component.title: 'Component name'
+btn_webplatform.component.visible: 'Component visible'
+btn_webplatform.component.title: 'Component title'
+btn_webplatform.component.type: 'Component type'
 
 btn_webplatform.container.list: 'Container list'
 btn_webplatform.container.name: 'Container name'
 
 btn_webplatform.show_components: 'Show components'
+
+btn_webplatform.container.create: 'Container create'
+btn_webplatform.container.edit: 'Container edit'
+btn_webplatform.container.title: 'Container name'

@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Btn\WebplatformBundle\Manager\ManagerInterface;
 
-class ComponentFormHandler
+class ContainerFormHandler
 {
     /** @var \Btn\WebplatformBundle\Manager\ManagerInterface $manager */
     private $manager;
@@ -27,7 +27,7 @@ class ComponentFormHandler
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->manager->saveComponent($form->getData());
+            $this->manager->saveContainer($form->getData());
 
             return true;
         }

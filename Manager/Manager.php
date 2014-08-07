@@ -4,22 +4,46 @@ namespace Btn\WebplatformBundle\Manager;
 
 use Btn\WebplatformBundle\Model\ComponentInterface;
 use Btn\WebplatformBundle\Model\ContainerInterface;
-use Btn\WebplatformBundle\Provider\ComponentProviderInterface;
+use Btn\WebplatformBundle\Provider\ProviderInterface;
 
 class Manager implements ManagerInterface
 {
     /** @var \Btn\WebplatformBundle\Provider\ComponentProviderInterface */
-    protected $componentProvider;
+    protected $provider;
 
-    /** @var \Btn\WebplatformBundle\Renderer\ComponentManagerInterface[] */
+    /** @var \Btn\WebplatformBundle\Manager\ComponentManagerInterface[] */
     protected $componentManagers = array();
+
+    /** @var \Btn\WebplatformBundle\Renderer\ContainerManagerInterface */
+    protected $containerManager;
+
+    /** @var array $components */
+    protected $components;
 
     /**
      *
      */
-    public function __construct(ComponentProviderInterface $componentProvider)
+    public function __construct(ProviderInterface $provider, ContainerManagerInterface $containerManager, array $components)
     {
-        $this->componentProvider = $componentProvider;
+        $this->provider         = $provider;
+        $this->containerManager = $containerManager;
+        $this->components       = $components;
+    }
+
+    /**
+     *
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     *
+     */
+    public function getComponents()
+    {
+        return $this->components;
     }
 
     /**
@@ -53,24 +77,42 @@ class Manager implements ManagerInterface
             $componentManager = $this->getComponentManager($type);
         }
 
-        return $componentManager->getParametersForm();
+        return $componentManager->getComponentParametersForm();
     }
 
     /**
      *
      */
-    public function componentSave(ComponentInterface $component)
+    public function saveComponent(ComponentInterface $component, $andFlush = true)
     {
         $componentManager = $this->getComponentManager($component->getType());
 
-        return $componentManager->save($component);
+        return $componentManager->saveComponent($component, $andFlush);
     }
 
     /**
      *
      */
-    public function containerSave(ContainerInterface $container)
+    public function deleteComponent(ComponentInterface $component, $andFlush = true)
     {
-        //@TODO
+        $componentManager = $this->getComponentManager($component->getType());
+
+        return $componentManager->deleteComponent($component, $andFlush);
+    }
+
+    /**
+     *
+     */
+    public function saveContainer(ContainerInterface $container)
+    {
+        $this->containerManager->saveContainer($container);
+    }
+
+    /**
+     *
+     */
+    public function deleteContainer(ContainerInterface $container)
+    {
+        $this->containerManager->deleteContainer($container);
     }
 }

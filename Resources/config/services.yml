@@ -6,7 +6,7 @@ services:
             containerClass: %btn_webplatform.container_class%
             em: @doctrine.orm.entity_manager
         calls:
-            - [setContainers, ['%btn_webplatform.static_containers%']]
+            - [setContainers, ['%btn_webplatform.containers%']]
 
     btn_webplatform.component_provider.default:
         class: %btn_webplatform.component_provider_class%
@@ -58,15 +58,17 @@ services:
         arguments:
             em: @doctrine.orm.entity_manager
 
+    btn_webplatform.container_manager.default:
+        class: %btn_webplatform.container_manager_class%
+        arguments:
+            em: @doctrine.orm.entity_manager
+
     btn_webplatform.manager.default:
         class: %btn_webplatform.manager_class%
         arguments:
-            componentProvider: @btn_webplatform.component_provider
-
-    btn_webplatform.form_handler.component:
-        class: Btn\WebplatformBundle\Form\Handler\ComponentFormHandler
-        arguments:
-            manager: @btn_webplatform.manager
+            provider: @btn_webplatform.provider
+            containerManager: @btn_webplatform.container_manager
+            components: %btn_webplatform.components%
 
     btn_webplatform.event_listener.hydrator_subscriber:
         class: Btn\WebplatformBundle\EventListener\HydratorSubscriber
@@ -74,3 +76,39 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
         arguments:
             hydrator: @btn_webplatform.hydrator
+
+    btn_webplatform.event_listener.component_subscriber:
+        class: Btn\WebplatformBundle\EventListener\ComponentSubscriber
+        arguments:
+            componentClass: %btn_webplatform.component_class%
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
+    btn_webplatform.form.component:
+        class: Btn\WebplatformBundle\Form\ComponentForm
+        arguments:
+            manager: @btn_webplatform.manager
+        tags:
+            - { name: form.type, alias: btn_webplatform_form_component }
+
+    btn_webplatform.form_handler.component:
+        class: Btn\WebplatformBundle\Form\Handler\ComponentFormHandler
+        arguments:
+            manager: @btn_webplatform.manager
+
+    btn_webplatform.form.container:
+        class: Btn\WebplatformBundle\Form\ContainerForm
+        tags:
+            - { name: form.type, alias: btn_webplatform_form_container }
+
+    btn_webplatform.form_handler.container:
+        class: Btn\WebplatformBundle\Form\Handler\ContainerFormHandler
+        arguments:
+            manager: @btn_webplatform.manager
+
+    btn_webplatform.form.type.component_type:
+        class: Btn\WebplatformBundle\Form\Type\ComponentTypeType
+        arguments:
+            manager: @btn_webplatform.manager
+        tags:
+            - { name: form.type, alias: btn_webplatform_type_component_type }

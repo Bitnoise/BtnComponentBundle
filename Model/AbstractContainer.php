@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\MappedSuperclass()
  */
-abstract class AbstractContainer implements ContainerInterface, HydratableInterface
+abstract class AbstractContainer implements \ArrayAccess, ContainerInterface, HydratableInterface
 {
     /**
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
@@ -18,6 +18,21 @@ abstract class AbstractContainer implements ContainerInterface, HydratableInterf
      * @ORM\Column(name="name", type="string", length=100)
      */
     protected $name;
+
+    /**
+     * @ORM\Column(name="type", type="smallint")
+     */
+    protected $type;
+
+    /**
+     * @ORM\Column(name="manageable", type="boolean")
+     */
+    protected $manageable;
+
+    /**
+     * @ORM\Column(name="editable", type="boolean")
+     */
+    protected $editable;
 
     /**
      * @ORM\Column(name="parameters", type="array")
@@ -35,6 +50,9 @@ abstract class AbstractContainer implements ContainerInterface, HydratableInterf
     public function __construct()
     {
         $this->setName(substr(md5(uniqid(rand(), true)), 0, 6));
+        $this->setType(self::TYPE_DYNAMIC);
+        $this->setEditable(true);
+        $this->setmanageable(true);
     }
 
     /**
@@ -76,6 +94,76 @@ abstract class AbstractContainer implements ContainerInterface, HydratableInterf
     /**
      *
      */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     *
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     *
+     */
+    public function setManageable($manageable)
+    {
+        $this->manageable = $manageable;
+
+        return $this;
+    }
+
+    /**
+     *
+     */
+    public function getManageable()
+    {
+        return $this->manageable;
+    }
+
+    /**
+     *
+     */
+    public function isManageable()
+    {
+        return $this->getManageable();
+    }
+
+    /**
+     *
+     */
+    public function setEditable($editable)
+    {
+        $this->editable = $editable;
+
+        return $this;
+    }
+
+    /**
+     *
+     */
+    public function getEditable()
+    {
+        return $this->editable;
+    }
+
+    /**
+     *
+     */
+    public function isEditable()
+    {
+        return $this->getEditable();
+    }
+
+    /**
+     *
+     */
     public function setParameters(array $parameters)
     {
         $this->parameters = $parameters;
@@ -89,6 +177,29 @@ abstract class AbstractContainer implements ContainerInterface, HydratableInterf
     public function getParameters()
     {
         return $this->parameters;
+    }
+
+    /**
+     *
+     */
+    public function __toString()
+    {
+        return $this->getTitle() ? $this->getTitle() : $this->getName();
+    }
+
+    /**
+     *
+     */
+    public static function createFromArray($array)
+    {
+        $container = new static();
+
+        foreach ($array as $field => $value) {
+            $method = 'set' . ucfirst($field);
+            $container->$method($value);
+        }
+
+        return $container;
     }
 
     /**
@@ -114,7 +225,7 @@ abstract class AbstractContainer implements ContainerInterface, HydratableInterf
      */
     public function isDried()
     {
-        return !$this->hydrated;
+        return $this->isHydrated() ? false : true;
     }
 
     /**
@@ -125,5 +236,47 @@ abstract class AbstractContainer implements ContainerInterface, HydratableInterf
         $this->hydrated = false;
 
         return $this;
+    }
+
+    /**
+     * \ArrayAccess method
+     */
+    public function offsetSet($offset, $value)
+    {
+        throw new \Exception('Setting not allowd via array access');
+    }
+
+    /**
+     * \ArrayAccess method
+     */
+    public function offsetUnset($offset)
+    {
+        throw new \Exception('Unsetting not allowd via array access');
+    }
+
+    /**
+     * \ArrayAccess method
+     */
+    public function offsetExists($offset)
+    {
+        return property_exists($this, $offset) ? true : false;
+    }
+
+    /**
+     * \ArrayAccess method
+     */
+    public function offsetGet($offset)
+    {
+        if ($this->offsetExists($offset)) {
+            $method = 'get' . ucfirst($offset);
+
+            if (!method_exists($this, $method)) {
+                throw new \Exception(sprintf('Method "%s" not exists for "%s"', $method, __CLASS__));
+            }
+
+            return $this->$method();
+        }
+
+        return null;
     }
 }

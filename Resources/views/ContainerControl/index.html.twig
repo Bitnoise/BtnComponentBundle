@@ -17,14 +17,16 @@
         {% for key, container in containers %}
             {% if container.editable %}
                 <tr>
-                    <td>{{ container.name }}</td>
+                    <td>{{ container.title ?: container.name|trans }}</td>
                     <td>
-                        <a href="{{ path('btn_webplatform_componentmanager_list', { 'container': key }) }}" class="btn btn-primary">{% trans %}crud.edit{% endtrans %}</a>
+                        <a href="{{ path('btn_webplatform_componentcontrol_list', { 'container': key }) }}" class="btn btn-primary">{% trans %}crud.edit{% endtrans %}</a>
                     </td>
                 </tr>
             {% endif %}
         {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{ path('btn_webplatform_containercontrol_new') }}" class="btn btn-primary">{% trans %}crud.create_new{% endtrans %}</a>
 
 {% endblock %}

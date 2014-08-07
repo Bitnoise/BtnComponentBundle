@@ -40,6 +40,9 @@ class BtnWebplatformExtension extends Extension
         $container->setParameter('btn_webplatform.renderer_class', $config['renderer_class']);
         $container->setParameter('btn_webplatform.renderer_id', $config['renderer_id']);
 
+        $container->setParameter('btn_webplatform.container_manager_class', $config['container_manager_class']);
+        $container->setParameter('btn_webplatform.container_manager_id', $config['container_manager_id']);
+
         $container->setParameter('btn_webplatform.manager_class', $config['manager_class']);
         $container->setParameter('btn_webplatform.manager_id', $config['manager_id']);
 
@@ -48,9 +51,11 @@ class BtnWebplatformExtension extends Extension
         $container->setAlias('btn_webplatform.provider', $config['provider_id']);
         $container->setAlias('btn_webplatform.hydrator', $config['hydrator_id']);
         $container->setAlias('btn_webplatform.renderer', $config['renderer_id']);
+        $container->setAlias('btn_webplatform.container_manager', $config['container_manager_id']);
         $container->setAlias('btn_webplatform.manager', $config['manager_id']);
 
-        $container->setParameter('btn_webplatform.static_containers', $config['static_containers']);
+        $container->setParameter('btn_webplatform.containers', $config['containers']);
+        $container->setParameter('btn_webplatform.components', $config['components']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
