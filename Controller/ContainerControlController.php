@@ -6,7 +6,6 @@ use Btn\BaseBundle\Controller\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use Btn\WebplatformBundle\Form\ContainerFormType;
 
 /**
  * @Route("/webplatform/container")
@@ -24,6 +23,7 @@ class ContainerControlController extends BaseController
         $containers = $provider->getContainers();
 
         return array(
+            'manageable' => $this->container->getParameter('btn_webplatform.container_class') ? true : false,
             'containers' => $containers,
         );
     }
@@ -76,7 +76,8 @@ class ContainerControlController extends BaseController
         }
 
         return array(
-            'form' => $form->createView(),
+            'form'      => $form->createView(),
+            'container' => $container,
         );
     }
 

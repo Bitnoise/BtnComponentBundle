@@ -98,6 +98,8 @@ services:
 
     btn_webplatform.form.container:
         class: Btn\WebplatformBundle\Form\ContainerForm
+        arguments:
+            manager: @btn_webplatform.manager
         tags:
             - { name: form.type, alias: btn_webplatform_form_container }
 

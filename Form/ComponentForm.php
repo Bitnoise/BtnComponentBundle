@@ -2,30 +2,16 @@
 
 namespace Btn\WebplatformBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Btn\WebplatformBundle\Manager\ManagerInterface;
 
-class ComponentForm extends AbstractType
+class ComponentForm extends AbstractForm
 {
-    /** @var \Btn\WebplatformBundle\Manager\ManagerInterface $manager */
-    protected $manager;
-
-    /**
-     *
-     */
-    public function __construct(ManagerInterface $manager)
-    {
-        $this->manager = $manager;
-    }
-
     /**
      *
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
         $container  = $this->manager->getProvider()->getContainer($options['data']->getContainer());
         $manageable = $container->isManageable();
         $editable   = $container->isEditable();
@@ -54,7 +40,8 @@ class ComponentForm extends AbstractType
             } else {
                 $builder
                     ->add('type', 'btn_webplatform_type_component_type', array(
-                        'label'     => 'btn_webplatform.component.type',
+                        'empty_value' => 'btn_webplatform.component.type.empty_value',
+                        'label'       => 'btn_webplatform.component.type',
                         'container' => $container,
                     ))
                 ;
@@ -71,6 +58,11 @@ class ComponentForm extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        parent::setDefaultOptions($resolver);
+
+        $resolver->setDefaults(array(
+            'data_class' => $this->manager->getProvider()->getComponentClass(),
+        ));
     }
 
     /**

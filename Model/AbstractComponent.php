@@ -3,6 +3,7 @@
 namespace Btn\WebplatformBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\MappedSuperclass()
@@ -15,6 +16,7 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
     protected $title;
 
     /**
+     * @Assert\NotBlank(groups={"Create"})
      * @ORM\Column(name="type", type="string", length=100)
      */
     protected $type;

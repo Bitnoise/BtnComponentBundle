@@ -14,12 +14,15 @@
             </tr>
         </thead>
         <tbody>
-        {% for key, container in containers %}
+        {% for container in containers %}
             {% if container.editable %}
                 <tr>
                     <td>{{ container.title ?: container.name|trans }}</td>
                     <td>
-                        <a href="{{ path('btn_webplatform_componentcontrol_list', { 'container': key }) }}" class="btn btn-primary">{% trans %}crud.edit{% endtrans %}</a>
+                        <a href="{{ path('btn_webplatform_componentcontrol_list', { 'container': container.name }) }}" class="btn btn-primary">{% trans %}btn_webplatform.container.show_components{% endtrans %}</a>
+                        {% if container.id|default(null) %}
+                            <a href="{{ path('btn_webplatform_containercontrol_edit', { 'id': container.id }) }}" class="btn btn-primary">{% trans %}crud.edit{% endtrans %}</a>
+                        {% endif %}
                     </td>
                 </tr>
             {% endif %}
@@ -27,6 +30,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('btn_webplatform_containercontrol_new') }}" class="btn btn-primary">{% trans %}crud.create_new{% endtrans %}</a>
+    {% if manageable %}
+        <a href="{{ path('btn_webplatform_containercontrol_new') }}" class="btn btn-primary">{% trans %}crud.create_new{% endtrans %}</a>
+    {% endif %}
 
 {% endblock %}

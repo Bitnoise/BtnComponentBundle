@@ -2,10 +2,10 @@
 
 namespace Btn\WebplatformBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ContainerForm extends AbstractType
+class ContainerForm extends AbstractForm
 {
     /**
      *
@@ -18,6 +18,18 @@ class ContainerForm extends AbstractType
             ))
             ->add('save', $options['data']->getId() ? 'btn_save' : 'btn_create');
         ;
+    }
+
+    /**
+     *
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        parent::setDefaultOptions($resolver);
+
+        $resolver->setDefaults(array(
+            'data_class' => $this->manager->getProvider()->getContainerClass(),
+        ));
     }
 
     public function getName()

@@ -3,6 +3,7 @@
 namespace Btn\WebplatformBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\MappedSuperclass()
@@ -10,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class AbstractContainer implements \ArrayAccess, ContainerInterface, HydratableInterface
 {
     /**
+     * @Assert\NotBlank(groups={"Create", "Update"})
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     protected $title;

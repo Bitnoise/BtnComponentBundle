@@ -14,6 +14,8 @@ class ContainerProvider implements ContainerProviderInterface
     protected $containerRepository;
     /** @var \Btn\WebplatformBundle\Model\ContainerInterface[] $containers */
     protected $containers;
+    /** @var bolean $loaded has containers been loaded from database */
+    private $loaded;
 
     /**
      *
@@ -59,6 +61,10 @@ class ContainerProvider implements ContainerProviderInterface
      */
     public function getContainers()
     {
+        if (!$this->loaded) {
+            $this->loadContainers();
+        }
+
         return $this->containers;
     }
 
@@ -75,7 +81,9 @@ class ContainerProvider implements ContainerProviderInterface
      */
     public function isContainerExists($name)
     {
-        return isset($this->containers[$name]) ? true : false;
+        $containers = $this->getContainers();
+
+        return isset($containers[$name]) ? true : false;
     }
 
     /**
@@ -96,7 +104,9 @@ class ContainerProvider implements ContainerProviderInterface
         }
 
         if ($this->isContainerExists($name)) {
-            return $this->containers[$name];
+            $containers = $this->getContainers();
+
+            return $containers[$name];
         }
 
         return false;
@@ -119,5 +129,22 @@ class ContainerProvider implements ContainerProviderInterface
         $container = new $containerClass();
 
         return $container;
+    }
+
+    /**
+     *
+     */
+    private function loadContainers()
+    {
+        if ($this->getContainerClass()) {
+            $containers = $this->getContainerRepository()->findAll();
+            if ($containers) {
+                foreach ($containers as $container) {
+                    $this->registerContainer($container);
+                }
+            }
+        }
+
+        $this->loaded = true;
     }
 }

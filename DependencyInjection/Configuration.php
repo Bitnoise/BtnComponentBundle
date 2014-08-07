@@ -23,7 +23,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('component_class')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('container_class')->end()
+                ->scalarNode('container_class')->defaultValue(null)->end()
 
                 ->scalarNode('container_provider_class')->defaultValue('Btn\WebplatformBundle\Provider\ContainerProvider')->end()
                 ->scalarNode('container_provider_id')->defaultValue('btn_webplatform.container_provider.default')->end()
