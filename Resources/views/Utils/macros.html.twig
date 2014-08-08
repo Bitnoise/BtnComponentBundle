@@ -1,0 +1,10 @@
+{% macro styles(styles) %}
+{% spaceless %}
+    {% if styles.txtColor|default('') %}
+        color: #{{ styles.txtColor|trim('#') }};
+    {% endif %}
+    {% if styles.bgColor|default('') %}
+        background-color: #{{ styles.bgColor|trim('#') }};
+    {% endif %}
+{% endspaceless %}
+{% endmacro %}

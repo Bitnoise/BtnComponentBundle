@@ -1,0 +1,3 @@
+btn_webplatform:
+    resource: "@BtnWebplatformBundle/Controller/"
+    type:     annotation
