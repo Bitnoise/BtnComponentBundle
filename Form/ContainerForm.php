@@ -16,7 +16,7 @@ class ContainerForm extends AbstractForm
             ->add('title', null, array(
                 'label' => 'btn_webplatform.container.title',
             ))
-            ->add('save', $options['data']->getId() ? 'btn_save' : 'btn_create');
+            ->add('save', $options['data']->getId() ? 'btn_update_button' : 'btn_create_button');
         ;
     }
 

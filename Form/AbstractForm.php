@@ -2,7 +2,7 @@
 
 namespace Btn\WebplatformBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
+use Btn\AdminBundle\Form\AbstractForm as AbstractType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Btn\WebplatformBundle\Manager\ManagerInterface;
