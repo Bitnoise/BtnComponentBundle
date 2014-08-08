@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('container_show_route_name')->end()
                 ->scalarNode('component_class')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('container_class')->defaultValue(null)->end()
 

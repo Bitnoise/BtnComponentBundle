@@ -114,3 +114,11 @@ services:
             manager: @btn_webplatform.manager
         tags:
             - { name: form.type, alias: btn_webplatform_type_component_type }
+
+    btn_webplatform.content_provider:
+        class: Btn\WebplatformBundle\Provider\WebplatformContentProvider
+        arguments:
+            containersProvider: @btn_webplatform.container_provider.default
+            renderRouteName:    %btn_webplatform.container_show_route_name%
+        tags:
+            - { name: btn_nodes.content_provider }
