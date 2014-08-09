@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "bitnoise/admin-bundle": "~2.0.0"
+        "bitnoise/admin-bundle": "2.0.*"
     },
     "suggest": {},
     "autoload": {
