@@ -5,10 +5,10 @@
     {% set legend = 'btn_webplatform.component.edit'|trans({'%component_title%': component.title ?: component.type|trans, '%container_title%' : container.title}) %}
     {% include 'BtnWebplatformBundle:ComponentControl:_form.html.twig' with {form: form, legend: legend} only %}
 
-    <a href="{{ path('btn_webplatform_componentcontrol_list', {container: component.container}) }}" class="btn btn-default">&laquo; {% trans %}crud.back{% endtrans %}</a>
+    <a href="{{ path('btn_webplatform_componentcontrol_list', {container: component.container}) }}" class="btn btn-default">&laquo; {% trans %}btn_admin.back{% endtrans %}</a>
 
     {% if container.manageable %}
-        <a data-confirmation href="{{ csrf_path('btn_webplatform_componentcontrol_delete', {id: component.id}) }}" class="btn btn-danger delete">{% trans %}crud.delete{% endtrans %}</a>
+        <a data-confirmation href="{{ csrf_path('btn_webplatform_componentcontrol_delete', {id: component.id}) }}" class="btn btn-danger delete">{% trans %}btn_admin.delete{% endtrans %}</a>
     {% endif %}
 
 {% endblock %}

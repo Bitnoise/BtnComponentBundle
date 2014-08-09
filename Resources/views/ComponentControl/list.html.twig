@@ -14,7 +14,7 @@
                 {% if container.manageable %}
                     <th>{{ 'btn_webplatform.component.visible'|trans }}</th>
                 {% endif %}
-                <th>{% trans %}crud.actions{% endtrans %}</th>
+                <th>{% trans %}btn_admin.actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                 {% endif %}
                 <td>
                     {% if container.manageable or container.editable %}
-                        <a href="{{ path('btn_webplatform_componentcontrol_edit', { 'id': entity.id }) }}" class="btn btn-primary">{% trans %}crud.edit{% endtrans %}</a>
+                        <a href="{{ path('btn_webplatform_componentcontrol_edit', { 'id': entity.id }) }}" class="btn btn-primary">{% trans %}btn_admin.edit{% endtrans %}</a>
                     {% endif %}
                 </td>
             </tr>
@@ -35,10 +35,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('btn_webplatform_containercontrol_index') }}" class="btn btn-default">&laquo; {% trans %}crud.back{% endtrans %}</a>
+    <a href="{{ path('btn_webplatform_containercontrol_index') }}" class="btn btn-default">&laquo; {% trans %}btn_admin.back{% endtrans %}</a>
 
     {% if container.manageable %}
-        <a href="{{ path('btn_webplatform_componentcontrol_new', {container: container.name}) }}" class="btn btn-primary">{% trans %}crud.create_new{% endtrans %}</a>
+        <a href="{{ path('btn_webplatform_componentcontrol_new', {container: container.name}) }}" class="btn btn-primary">{% trans %}btn_admin.create_new{% endtrans %}</a>
     {% endif %}
 
 {% endblock %}

@@ -10,7 +10,7 @@
         <thead>
             <tr>
                 <th>{{ 'btn_webplatform.container.name'|trans }}</th>
-                <th>{% trans %}crud.actions{% endtrans %}</th>
+                <th>{% trans %}btn_admin.actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -21,7 +21,7 @@
                     <td>
                         <a href="{{ path('btn_webplatform_componentcontrol_list', { 'container': container.name }) }}" class="btn btn-primary">{% trans %}btn_webplatform.container.show_components{% endtrans %}</a>
                         {% if container.id|default(null) %}
-                            <a href="{{ path('btn_webplatform_containercontrol_edit', { 'id': container.id }) }}" class="btn btn-primary">{% trans %}crud.edit{% endtrans %}</a>
+                            <a href="{{ path('btn_webplatform_containercontrol_edit', { 'id': container.id }) }}" class="btn btn-primary">{% trans %}btn_admin.edit{% endtrans %}</a>
                         {% endif %}
                     </td>
                 </tr>
@@ -31,7 +31,7 @@
     </table>
 
     {% if manageable %}
-        <a href="{{ path('btn_webplatform_containercontrol_new') }}" class="btn btn-primary">{% trans %}crud.create_new{% endtrans %}</a>
+        <a href="{{ path('btn_webplatform_containercontrol_new') }}" class="btn btn-primary">{% trans %}btn_admin.create_new{% endtrans %}</a>
     {% endif %}
 
 {% endblock %}

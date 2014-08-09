@@ -4,8 +4,8 @@
 
     {% include 'BtnWebplatformBundle:ComponentControl:_form.html.twig' with {form: form, legend: 'btn_webplatform.container.edit'|trans } only %}
 
-    <a href="{{ path('btn_webplatform_containercontrol_index') }}" class="btn btn-default">&laquo; {% trans %}crud.back{% endtrans %}</a>
+    <a href="{{ path('btn_webplatform_containercontrol_index') }}" class="btn btn-default">&laquo; {% trans %}btn_admin.back{% endtrans %}</a>
 
-    <a data-confirmation href="{{ csrf_path('btn_webplatform_containercontrol_delete', {id: container.id}) }}" class="btn btn-danger delete">{% trans %}crud.delete{% endtrans %}</a>
+    <a data-confirmation href="{{ csrf_path('btn_webplatform_containercontrol_delete', {id: container.id}) }}" class="btn btn-danger delete">{% trans %}btn_admin.delete{% endtrans %}</a>
 
 {% endblock %}
