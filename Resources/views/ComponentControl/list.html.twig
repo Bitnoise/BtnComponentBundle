@@ -1,6 +1,7 @@
-{% extends 'BtnWebplatformBundle::layout.html.twig' %}
+{% extends 'BtnAdminBundle::base.html.twig' %}
 
-{% block btn_webplatform_content %}
+{% block content %}
+
     <div class="page-header">
         <h1>{{ 'btn_webplatform.component.list'|trans({'%container_title%': container.title ?: container.name|trans }) }}</h1>
     </div>

@@ -1,6 +1,6 @@
-{% extends 'BtnWebplatformBundle::layout.html.twig' %}
+{% extends 'BtnAdminBundle::base.html.twig' %}
 
-{% block btn_webplatform_content %}
+{% block content %}
 
     {% set legend = 'btn_webplatform.component.edit'|trans({'%component_title%': component.title ?: component.type|trans, '%container_title%' : container.title}) %}
     {% include 'BtnWebplatformBundle:ComponentControl:_form.html.twig' with {form: form, legend: legend} only %}
