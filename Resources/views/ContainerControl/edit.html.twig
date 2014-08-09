@@ -1,11 +1,12 @@
+{% from 'BtnAdminBundle:_macros:link.html.twig' import link_back, link_delete %}
 {% extends 'BtnAdminBundle::base.html.twig' %}
 
 {% block content %}
 
     {% include 'BtnWebplatformBundle:ComponentControl:_form.html.twig' with {form: form, legend: 'btn_webplatform.container.edit'|trans } only %}
 
-    <a href="{{ path('btn_webplatform_containercontrol_index') }}" class="btn btn-default">&laquo; {% trans %}btn_admin.back{% endtrans %}</a>
+    {{ link_back('btn_webplatform_containercontrol_index') }}
 
-    <a data-confirmation href="{{ csrf_path('btn_webplatform_containercontrol_delete', {id: container.id}) }}" class="btn btn-danger delete">{% trans %}btn_admin.delete{% endtrans %}</a>
+    {{ link_delete('btn_webplatform_containercontrol_delete', {id: container.id}) }}
 
 {% endblock %}

@@ -1,3 +1,5 @@
+{% from 'BtnAdminBundle:_macros:icon.html.twig' import glyphicon as gi %}
+{% from 'BtnAdminBundle:_macros:link.html.twig' import link_back, link_add, link_edit %}
 {% extends 'BtnAdminBundle::base.html.twig' %}
 
 {% block content %}
@@ -23,11 +25,11 @@
                 <td class="btn-control-column-id">{{ entity.id }}</td>
                 <td>{{ entity.title ?: entity.type|trans }}</td>
                 {% if container.manageable %}
-                    <td>{{ entity.visible ? '<span class="glyphicon glyphicon-ok"></span>' : '<span class="glyphicon glyphicon-remove"></span>' }}</td>
+                    <td>{{ entity.visible ? gi('ok') : gi('remove') }} }}</td>
                 {% endif %}
                 <td>
                     {% if container.manageable or container.editable %}
-                        <a href="{{ path('btn_webplatform_componentcontrol_edit', { 'id': entity.id }) }}" class="btn btn-primary">{% trans %}btn_admin.edit{% endtrans %}</a>
+                        {{ link_edit('btn_webplatform_componentcontrol_edit', { id: entity.id }) }}
                     {% endif %}
                 </td>
             </tr>
@@ -35,10 +37,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('btn_webplatform_containercontrol_index') }}" class="btn btn-default">&laquo; {% trans %}btn_admin.back{% endtrans %}</a>
+    {{ link_back('btn_webplatform_containercontrol_index') }}
 
     {% if container.manageable %}
-        <a href="{{ path('btn_webplatform_componentcontrol_new', {container: container.name}) }}" class="btn btn-primary">{% trans %}btn_admin.create_new{% endtrans %}</a>
+        {{ link_add('btn_webplatform_componentcontrol_new', {container: container.name}) }}
     {% endif %}
 
 {% endblock %}
