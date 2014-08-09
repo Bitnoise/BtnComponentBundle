@@ -1,6 +1,6 @@
-{% extends 'BtnWebplatformBundle::layout.html.twig' %}
+{% extends 'BtnAdminBundle::base.html.twig' %}
 
-{% block btn_webplatform_content %}
+{% block content %}
 
     {% include 'BtnWebplatformBundle:ComponentControl:_form.html.twig' with {form: form, legend: 'btn_webplatform.container.edit'|trans } only %}
 
