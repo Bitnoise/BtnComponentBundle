@@ -6,7 +6,6 @@
     "homepage": "https://github.com/Bitnoise/BtnWebplatformBundle",
     "license": "MIT",
     "minimum-stability": "dev",
-    "prefer-stable": true,
     "authors": [
         {
             "name": "Bitnoise Team",
@@ -24,8 +23,7 @@
     "target-dir": "Btn/WebplatformBundle",
     "extra": {
         "branch-alias": {
-            "dev-master": "2.0-dev",
-            "dev-master": "2.0.x-dev"
+            "dev-master": "2.0-dev"
         }
     }
 }
