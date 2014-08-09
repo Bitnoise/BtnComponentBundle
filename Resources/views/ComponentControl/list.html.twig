@@ -25,7 +25,7 @@
                 <td class="btn-control-column-id">{{ entity.id }}</td>
                 <td>{{ entity.title ?: entity.type|trans }}</td>
                 {% if container.manageable %}
-                    <td>{{ entity.visible ? gi('ok') : gi('remove') }} }}</td>
+                    <td>{{ entity.visible ? gi('ok') : gi('remove') }}</td>
                 {% endif %}
                 <td>
                     {% if container.manageable or container.editable %}
