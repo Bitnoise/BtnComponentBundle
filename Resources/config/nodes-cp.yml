@@ -1,6 +1,6 @@
 services:
 
-    btn_webplatform.content_provider:
+    btn_webplatform.nodes_content_provider:
         class: Btn\WebplatformBundle\Provider\WebplatformContentProvider
         arguments:
             containersProvider: @btn_webplatform.container_provider

@@ -6,9 +6,8 @@ use Btn\WebplatformBundle\Form\Type\NodeContentType;
 use Btn\NodesBundle\Service\NodeContentProviderInterface;
 
 /**
-*
-*
-*/
+ *
+ */
 class WebplatformContentProvider implements NodeContentProviderInterface
 {
     private $containersProvider;
