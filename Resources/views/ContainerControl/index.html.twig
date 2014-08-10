@@ -20,7 +20,7 @@
                 <tr>
                     <td>{{ container.title ?: container.name|trans }}</td>
                     <td>
-                        {{ link_primary('btn_webplatform.container.show_components', 'btn_webplatform_componentcontrol_list', { container: container.name }) }}
+                        {{ link_primary('btn_webplatform.container.components', 'btn_webplatform_componentcontrol_list', { container: container.name }) }}
                         {% if container.id|default(null) %}
                             {{ link_edit('btn_webplatform_containercontrol_edit', { id: container.id }) }}
                         {% endif %}

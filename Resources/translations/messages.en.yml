@@ -11,7 +11,7 @@ btn_webplatform.component.type.empty_value: 'Select component type'
 btn_webplatform.container.list: 'Container list'
 btn_webplatform.container.name: 'Container name'
 
-btn_webplatform.container.show_components: 'Show components'
+btn_webplatform.container.components: 'Components'
 
 btn_webplatform.container.create: 'Container create'
 btn_webplatform.container.edit: 'Container edit'
