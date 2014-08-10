@@ -8,7 +8,7 @@ use Btn\NodesBundle\Service\NodeContentProviderInterface;
 /**
  *
  */
-class WebplatformContentProvider implements NodeContentProviderInterface
+class NodeContentProvider implements NodeContentProviderInterface
 {
     private $containersProvider;
     private $renderRouteName;

@@ -1,7 +1,7 @@
 services:
 
-    btn_webplatform.nodes_content_provider:
-        class: Btn\WebplatformBundle\Provider\WebplatformContentProvider
+    btn_webplatform.provider.node_content:
+        class: Btn\WebplatformBundle\Provider\NodeContentProvider
         arguments:
             containersProvider: @btn_webplatform.container_provider
             renderRouteName:    %btn_webplatform.container_show_route_name%

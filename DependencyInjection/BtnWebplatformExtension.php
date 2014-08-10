@@ -63,7 +63,7 @@ class BtnWebplatformExtension extends Extension
         $loader->load('services.yml');
 
         if ($container->hasDefinition('btn_nodes.content_providers')) {
-            $loader->load('nodes-cp.yml');
+            $loader->load('node-cp.yml');
         }
 
         $this->addClassesToCompile(array(
