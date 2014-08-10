@@ -1,12 +1,12 @@
-{% from 'BtnAdminBundle:_macros:link.html.twig' import link_back, link_delete %}
+{% import 'BtnAdminBundle:_macros:link.html.twig' as lnk %}
 {% extends 'BtnAdminBundle::base.html.twig' %}
 
 {% block content %}
 
     {% include 'BtnWebplatformBundle:ComponentControl:_form.html.twig' with {form: form, legend: 'btn_webplatform.container.edit'|trans } only %}
 
-    {{ link_back('btn_webplatform_containercontrol_index') }}
+    {{ lnk.back('btn_webplatform_containercontrol_index') }}
 
-    {{ link_delete('btn_webplatform_containercontrol_delete', {id: container.id}) }}
+    {{ lnk.delete('btn_webplatform_containercontrol_delete', {id: container.id}) }}
 
 {% endblock %}
