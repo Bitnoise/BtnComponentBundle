@@ -49,7 +49,7 @@ class ComponentForm extends AbstractForm
         }
 
         if ($manageable || $editable) {
-            $builder->add('save', $options['data']->getId() ? 'btn_admin_update_button' : 'btn_admin_create_button');
+            $builder->add('save', $options['data']->getId() ? 'btn_update' : 'btn_create');
         }
     }
 
