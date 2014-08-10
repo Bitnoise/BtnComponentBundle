@@ -22,7 +22,7 @@ class BtnWebplatformExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('btn_webplatform.container_show_route_name', $config['container_show_route_name']);
+        $container->setParameter('btn_webplatform.container.show_route_name', $config['container']['show_route_name']);
 
         $container->setParameter('btn_webplatform.component.class', $config['component']['class']);
         $container->setParameter('btn_webplatform.container.class', $config['container']['class']);

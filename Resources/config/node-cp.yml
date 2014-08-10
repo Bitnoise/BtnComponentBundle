@@ -4,6 +4,6 @@ services:
         class: Btn\WebplatformBundle\Provider\NodeContentProvider
         arguments:
             containersProvider: @btn_webplatform.container_provider
-            renderRouteName:    %btn_webplatform.container_show_route_name%
+            renderRouteName:    %btn_webplatform.container.show_route_name%
         tags:
             - { name: btn_nodes.content_provider }
