@@ -10,7 +10,7 @@ use Btn\WebplatformBundle\Model\ComponentInterface;
 class ContainerController extends Controller
 {
     /**
-     * @Route("/", name="btn_webplatform_container_show")
+     * @Route("/_container/{id}", name="btn_webplatform_container_show")
      */
     public function renderAction($id)
     {

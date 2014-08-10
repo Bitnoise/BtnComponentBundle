@@ -1,0 +1,7 @@
+_btn_webplatform_routing_control_controller_container:
+    resource: "@BtnWebplatformBundle/Controller/ContainerControlController.php"
+    type:     annotation
+
+_btn_webplatform_routing_control_controller_component:
+    resource: "@BtnWebplatformBundle/Controller/ComponentControlController.php"
+    type:     annotation
