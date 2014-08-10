@@ -1,27 +1,27 @@
 services:
 
     btn_webplatform.container_provider.default:
-        class: %btn_webplatform.container_provider_class%
+        class: %btn_webplatform.container_provider.default.class%
         arguments:
-            containerClass: %btn_webplatform.container_class%
+            containerClass: %btn_webplatform.container.class%
             em: @doctrine.orm.entity_manager
         calls:
             - [setContainers, ['%btn_webplatform.containers%']]
 
     btn_webplatform.component_provider.default:
-        class: %btn_webplatform.component_provider_class%
+        class: %btn_webplatform.component_provider.default.class%
         arguments:
-            componentClass: %btn_webplatform.component_class%
+            componentClass: %btn_webplatform.component.class%
             em: @doctrine.orm.entity_manager
 
     btn_webplatform.provider.default:
-        class: %btn_webplatform.provider_class%
+        class: %btn_webplatform.provider.default.class%
         arguments:
             containerProvider: @btn_webplatform.container_provider
             componentProvider: @btn_webplatform.component_provider
 
     btn_webplatform.hydrator.default:
-        class: %btn_webplatform.hydrator_class%
+        class: %btn_webplatform.hydrator.default.class%
 
     btn_webplatform.abstract_component_hydrator:
         class: Btn\WebplatformBundle\Hydrator\AbstractComponentHydrator
@@ -34,7 +34,7 @@ services:
             twig: @twig
 
     btn_webplatform.renderer.default:
-        class: %btn_webplatform.renderer_class%
+        class: %btn_webplatform.renderer.default.class%
         arguments:
             provider: @btn_webplatform.provider
 
@@ -59,12 +59,12 @@ services:
             em: @doctrine.orm.entity_manager
 
     btn_webplatform.container_manager.default:
-        class: %btn_webplatform.container_manager_class%
+        class: %btn_webplatform.container_manager.default.class%
         arguments:
             em: @doctrine.orm.entity_manager
 
     btn_webplatform.manager.default:
-        class: %btn_webplatform.manager_class%
+        class: %btn_webplatform.manager.default.class%
         arguments:
             provider: @btn_webplatform.provider
             containerManager: @btn_webplatform.container_manager
@@ -78,9 +78,9 @@ services:
             hydrator: @btn_webplatform.hydrator
 
     btn_webplatform.event_listener.component_subscriber:
-        class: Btn\WebplatformBundle\EventListener\ComponentSubscriber
+        class: %btn_webplatform.event_listener.component_subscriber.class%
         arguments:
-            componentClass: %btn_webplatform.component_class%
+            componentClass: %btn_webplatform.component.class%
         tags:
             - { name: doctrine.event_subscriber, connection: default }
 

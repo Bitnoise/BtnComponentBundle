@@ -24,42 +24,31 @@ class BtnWebplatformExtension extends Extension
 
         $container->setParameter('btn_webplatform.container_show_route_name', $config['container_show_route_name']);
 
-        $container->setParameter('btn_webplatform.component_class', $config['component_class']);
-        $container->setParameter('btn_webplatform.container_class', $config['container_class']);
+        $container->setParameter('btn_webplatform.component.class', $config['component']['class']);
+        $container->setParameter('btn_webplatform.container.class', $config['container']['class']);
 
-        $container->setParameter('btn_webplatform.container_provider_class', $config['container_provider_class']);
-        $container->setParameter('btn_webplatform.container_provider_id', $config['container_provider_id']);
+        $container->setParameter('btn_webplatform.container.manager_id', $config['container']['manager_id']);
+        $container->setParameter('btn_webplatform.container.provider_id', $config['container']['provider_id']);
+        $container->setParameter('btn_webplatform.component.provider_id', $config['component']['provider_id']);
 
-        $container->setParameter('btn_webplatform.component_provider_class', $config['component_provider_class']);
-        $container->setParameter('btn_webplatform.component_provider_id', $config['component_provider_id']);
-
-        $container->setParameter('btn_webplatform.provider_class', $config['provider_class']);
         $container->setParameter('btn_webplatform.provider_id', $config['provider_id']);
-
-        $container->setParameter('btn_webplatform.hydrator_class', $config['hydrator_class']);
         $container->setParameter('btn_webplatform.hydrator_id', $config['hydrator_id']);
-
-        $container->setParameter('btn_webplatform.renderer_class', $config['renderer_class']);
         $container->setParameter('btn_webplatform.renderer_id', $config['renderer_id']);
-
-        $container->setParameter('btn_webplatform.container_manager_class', $config['container_manager_class']);
-        $container->setParameter('btn_webplatform.container_manager_id', $config['container_manager_id']);
-
-        $container->setParameter('btn_webplatform.manager_class', $config['manager_class']);
         $container->setParameter('btn_webplatform.manager_id', $config['manager_id']);
 
-        $container->setAlias('btn_webplatform.container_provider', $config['container_provider_id']);
-        $container->setAlias('btn_webplatform.component_provider', $config['component_provider_id']);
+        $container->setAlias('btn_webplatform.container_provider', $config['container']['provider_id']);
+        $container->setAlias('btn_webplatform.component_provider', $config['component']['provider_id']);
+        $container->setAlias('btn_webplatform.container_manager', $config['container']['manager_id']);
         $container->setAlias('btn_webplatform.provider', $config['provider_id']);
         $container->setAlias('btn_webplatform.hydrator', $config['hydrator_id']);
         $container->setAlias('btn_webplatform.renderer', $config['renderer_id']);
-        $container->setAlias('btn_webplatform.container_manager', $config['container_manager_id']);
         $container->setAlias('btn_webplatform.manager', $config['manager_id']);
 
         $container->setParameter('btn_webplatform.containers', $config['containers']);
         $container->setParameter('btn_webplatform.components', $config['components']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('parameters.yml');
         $loader->load('services.yml');
 
         if ($container->hasDefinition('btn_nodes.content_providers')) {

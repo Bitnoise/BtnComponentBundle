@@ -2,7 +2,7 @@
 
 namespace Btn\WebplatformBundle\Controller;
 
-use Btn\BaseBundle\Controller\BaseController;
+use Btn\AdminBundle\Controller\AbstractControlController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
  * @Route("/webplatform/container")
  * @Template()
  */
-class ContainerControlController extends BaseController
+class ContainerControlController extends AbstractControlController
 {
     /**
      * @Route("/", name="btn_webplatform_containercontrol_index")
@@ -23,7 +23,7 @@ class ContainerControlController extends BaseController
         $containers = $provider->getContainers();
 
         return array(
-            'manageable' => $this->container->getParameter('btn_webplatform.container_class') ? true : false,
+            'manageable' => $this->container->getParameter('btn_webplatform.container.class') ? true : false,
             'containers' => $containers,
         );
     }

@@ -2,7 +2,7 @@
 
 namespace Btn\WebplatformBundle\Controller;
 
-use Btn\BaseBundle\Controller\BaseController;
+use Btn\AdminBundle\Controller\AbstractControlController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Route("/webplatform/component")
  */
-class ComponentControlController extends BaseController
+class ComponentControlController extends AbstractControlController
 {
     /**
      * @Route("/", name="btn_webplatform_componentcontrol_index")
