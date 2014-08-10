@@ -18,8 +18,9 @@
     },
     "suggest": {},
     "autoload": {
-        "psr-4": { "Btn\\WebplatformBundle\\": "" }
+        "psr-0": { "Btn\\WebplatformBundle": "" }
     },
+    "target-dir": "Btn/WebplatformBundle",
     "extra": {
         "branch-alias": {
             "dev-master": "2.0-dev"
