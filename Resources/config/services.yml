@@ -114,3 +114,12 @@ services:
             manager: @btn_webplatform.manager
         tags:
             - { name: form.type, alias: btn_webplatform_type_component_type }
+
+    btn_webplatform.btn_admin_menu_top_item:
+        class: Knp\Menu\MenuItem
+        factory_service: btn_admin.menu_builder
+        factory_method: createMenu
+        arguments: ["@request", "btn_webplatform.container.components", "btn_webplatform_containercontrol_index", [], []]
+        scope: request
+        tags:
+            - { name: btn_admin.menu_item , parent: btn_admin.menu_navbar }
