@@ -5,6 +5,7 @@ namespace Btn\WebplatformBundle\DependencyInjection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
@@ -12,8 +13,10 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class BtnWebplatformExtension extends Extension
+class BtnWebplatformExtension extends Extension implements PrependExtensionInterface
 {
+    private $resourceDir = '/../Resources/config';
+
     /**
      * {@inheritDoc}
      */
@@ -47,13 +50,9 @@ class BtnWebplatformExtension extends Extension
         $container->setParameter('btn_webplatform.containers', $config['containers']);
         $container->setParameter('btn_webplatform.components', $config['components']);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.$this->resourceDir));
         $loader->load('parameters.yml');
         $loader->load('services.yml');
-
-        // if ($container->hasDefinition('btn_nodes.content_providers')) {
-            $loader->load('node-cp.yml');
-        // }
 
         $this->addClassesToCompile(array(
             'Btn\\WebplatformBundle\\EventListener\\HydratorSubscriber',
@@ -76,5 +75,15 @@ class BtnWebplatformExtension extends Extension
             'Btn\\WebplatformBundle\\View\\ComponentView',
             'Btn\\WebplatformBundle\\View\\ContainerView',
         ));
+    }
+    /**
+     * {@inheritDoc}
+     */
+    public function prepend(ContainerBuilder $container)
+    {
+        if ($container->hasDefinition('btn_nodes.content_providers')) {
+            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.$this->resourceDir));
+            $loader->load('node-cp.yml');
+        }
     }
 }
