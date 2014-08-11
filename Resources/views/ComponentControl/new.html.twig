@@ -1,4 +1,4 @@
-{% from 'BtnAdminBundle:Macros:link.html.twig' import link_back %}
+{% import 'BtnAdminBundle:Macros:link.html.twig' as lnk %}
 {% extends 'BtnAdminBundle::base.html.twig' %}
 
 {% block content %}
@@ -6,7 +6,7 @@
     {% set legend = 'btn_webplatform.component.create'|trans({'%container_title%' : container.title ?: container.name|trans}) %}
     {% include 'BtnWebplatformBundle:ComponentControl:_form.html.twig' with {form: form, legend: legend} only %}
 
-    {{ link_back('btn_webplatform_componentcontrol_list', {container: component.container}) }}
+    {{ lnk.back('btn_webplatform_componentcontrol_list', {container: component.container}) }}
 
 {% endblock %}
 

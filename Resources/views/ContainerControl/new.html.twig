@@ -1,10 +1,10 @@
-{% from 'BtnAdminBundle:Macros:link.html.twig' import link_back %}
+{% import 'BtnAdminBundle:Macros:link.html.twig' as lnk %}
 {% extends 'BtnAdminBundle::base.html.twig' %}
 
 {% block content %}
 
     {% include 'BtnWebplatformBundle:ContainerControl:_form.html.twig' with {form: form, legend: 'btn_webplatform.container.create'|trans} only %}
 
-    {{ link_back('btn_webplatform_containercontrol_index') }}
+    {{ lnk.back('btn_webplatform_containercontrol_index') }}
 
 {% endblock %}

@@ -51,9 +51,9 @@ class BtnWebplatformExtension extends Extension
         $loader->load('parameters.yml');
         $loader->load('services.yml');
 
-        if ($container->hasDefinition('btn_nodes.content_providers')) {
+        // if ($container->hasDefinition('btn_nodes.content_providers')) {
             $loader->load('node-cp.yml');
-        }
+        // }
 
         $this->addClassesToCompile(array(
             'Btn\\WebplatformBundle\\EventListener\\HydratorSubscriber',

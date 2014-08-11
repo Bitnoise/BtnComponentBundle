@@ -1,4 +1,4 @@
-{% from 'BtnAdminBundle:Macros:link.html.twig' import link_primary, link_back, link_add, link_edit, link_show %}
+{% import 'BtnAdminBundle:Macros:link.html.twig' as lnk %}
 {% extends 'BtnAdminBundle::base.html.twig' %}
 
 {% block content %}
@@ -20,9 +20,9 @@
                 <tr>
                     <td>{{ container.title ?: container.name|trans }}</td>
                     <td>
-                        {{ link_primary('btn_webplatform.container.components', 'btn_webplatform_componentcontrol_list', { container: container.name }) }}
+                        {{ lnk.primary('btn_webplatform.container.components', 'btn_webplatform_componentcontrol_list', { container: container.name }) }}
                         {% if container.id|default(null) %}
-                            {{ link_edit('btn_webplatform_containercontrol_edit', { id: container.id }) }}
+                            {{ lnk.edit('btn_webplatform_containercontrol_edit', { id: container.id }) }}
                         {% endif %}
                     </td>
                 </tr>
@@ -32,7 +32,7 @@
     </table>
 
     {% if manageable %}
-        {{ link_add('btn_webplatform_containercontrol_new') }}
+        {{ lnk.add('btn_webplatform_containercontrol_new') }}
     {% endif %}
 
 {% endblock %}

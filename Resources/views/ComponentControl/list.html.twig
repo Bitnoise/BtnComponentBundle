@@ -1,5 +1,5 @@
 {% from 'BtnAdminBundle:Macros:icon.html.twig' import glyphicon as gi %}
-{% from 'BtnAdminBundle:Macros:link.html.twig' import link_back, link_add, link_edit %}
+{% import 'BtnAdminBundle:Macros:link.html.twig' as lnk %}
 {% extends 'BtnAdminBundle::base.html.twig' %}
 
 {% block content %}
@@ -29,7 +29,7 @@
                 {% endif %}
                 <td>
                     {% if container.manageable or container.editable %}
-                        {{ link_edit('btn_webplatform_componentcontrol_edit', { id: entity.id }) }}
+                        {{ lnk.edit('btn_webplatform_componentcontrol_edit', { id: entity.id }) }}
                     {% endif %}
                 </td>
             </tr>
@@ -37,10 +37,10 @@
         </tbody>
     </table>
 
-    {{ link_back('btn_webplatform_containercontrol_index') }}
+    {{ lnk.back('btn_webplatform_containercontrol_index') }}
 
     {% if container.manageable %}
-        {{ link_add('btn_webplatform_componentcontrol_new', {container: container.name}) }}
+        {{ lnk.add('btn_webplatform_componentcontrol_new', {container: container.name}) }}
     {% endif %}
 
 {% endblock %}
