@@ -81,7 +81,7 @@ class BtnWebplatformExtension extends Extension implements PrependExtensionInter
      */
     public function prepend(ContainerBuilder $container)
     {
-        if ($container->hasDefinition('btn_nodes.content_providers')) {
+        if ($container->hasExtension('btn_nodes')) {
             $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.$this->resourceDir));
             $loader->load('node-cp.yml');
         }
