@@ -3,6 +3,7 @@
 namespace Btn\WebplatformBundle\Manager;
 
 use Btn\WebplatformBundle\Model\ComponentInterface;
+use Btn\WebplatformBundle\Model\ContainerInterface;
 use Doctrine\ORM\EntityManager;
 
 class AbstractComponentManager implements ComponentManagerInterface
@@ -40,7 +41,7 @@ class AbstractComponentManager implements ComponentManagerInterface
     /**
      *
      */
-    public function getComponentParametersForm()
+    public function getComponentParametersForm(ComponentInterface $component, ContainerInterface $container = null)
     {
     }
 

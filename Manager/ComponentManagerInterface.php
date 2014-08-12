@@ -3,10 +3,11 @@
 namespace Btn\WebplatformBundle\Manager;
 
 use Btn\WebplatformBundle\Model\ComponentInterface;
+use Btn\WebplatformBundle\Model\ContainerInterface;
 
 interface ComponentManagerInterface
 {
-    public function getComponentParametersForm();
+    public function getComponentParametersForm(ComponentInterface $component, ContainerInterface $container = null);
     public function setType($type);
     public function getType();
     public function saveComponent(ComponentInterface $component, $andFlush = true);

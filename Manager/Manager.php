@@ -69,15 +69,11 @@ class Manager implements ManagerInterface
     /**
      *
      */
-    public function getComponentParametersForm($type)
+    public function getComponentParametersForm(ComponentInterface $component, ContainerInterface $container = null)
     {
-        if ($type instanceof ComponentInterface) {
-            $componentManager = $this->getComponentManager($type->getName());
-        } else {
-            $componentManager = $this->getComponentManager($type);
-        }
+        $componentManager = $this->getComponentManager($component->getType());
 
-        return $componentManager->getComponentParametersForm();
+        return $componentManager->getComponentParametersForm($component, $container);
     }
 
     /**

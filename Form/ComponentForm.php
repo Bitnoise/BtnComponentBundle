@@ -29,7 +29,7 @@ class ComponentForm extends AbstractForm
 
         if ($editable) {
             if ($options['data']->getType()) {
-                $parametersType = $this->manager->getComponentParametersForm($options['data']->getType());
+                $parametersType = $this->manager->getComponentParametersForm($options['data'], $container);
                 if ($parametersType) {
                     $builder
                         ->add('parameters', $parametersType, array(
