@@ -68,7 +68,7 @@ class Renderer implements RendererInterface
     {
         $component = $this->provider->getComponent($type, $container, $position, true);
 
-        return $this->componentRender($component, $containerParameters);
+        return $component ? $this->componentRender($component, $containerParameters) : null;
     }
 
     /**
