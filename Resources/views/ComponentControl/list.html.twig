@@ -11,7 +11,7 @@
     <table class="table table-striped table-bordered table-condensed">
         <thead>
             <tr>
-                <th class="btn-control-column-id">{{ 'btn_webplatform.component.id'|trans }}</th>
+                <th class="btn-admin-column-id">{{ 'btn_webplatform.component.id'|trans }}</th>
                 <th>{{ 'btn_webplatform.component.title'|trans }}</th>
                 {% if container.manageable %}
                     <th>{{ 'btn_webplatform.component.visible'|trans }}</th>
@@ -22,7 +22,7 @@
         <tbody>
         {% for entity in components %}
             <tr>
-                <td class="btn-control-column-id">{{ entity.id }}</td>
+                <td class="btn-admin-column-id">{{ entity.id }}</td>
                 <td>{{ entity.title ?: entity.type|trans }}</td>
                 {% if container.manageable %}
                     <td>{{ entity.visible ? gi('ok') : gi('remove') }}</td>
