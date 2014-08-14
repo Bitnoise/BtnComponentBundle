@@ -44,6 +44,8 @@ class ContainerControlController extends AbstractControlController
         ));
 
         if ($this->get('btn_webplatform.form_handler.container')->handleForm($form, $request)) {
+            $this->setFlash('btn_admin.flash.created');
+
             return $this->redirect($this->generateUrl('btn_webplatform_containercontrol_edit', array('id' => $form->getData()->getId())));
         }
 
@@ -72,6 +74,8 @@ class ContainerControlController extends AbstractControlController
         ));
 
         if ($this->get('btn_webplatform.form_handler.container')->handleForm($form, $request)) {
+            $this->setFlash('btn_admin.flash.updated');
+
             return $this->redirect($this->generateUrl('btn_webplatform_containercontrol_edit', array('id' => $id)));
         }
 
@@ -97,6 +101,8 @@ class ContainerControlController extends AbstractControlController
 
         $manager = $this->get('btn_webplatform.manager');
         $manager->deleteContainer($container);
+
+        $this->setFlash('btn_admin.flash.deleted');
 
         return $this->redirect($this->generateUrl('btn_webplatform_containercontrol_list'));
     }

@@ -66,6 +66,8 @@ class ComponentControlController extends AbstractControlController
         ));
 
         if ($this->get('btn_webplatform.form_handler.component')->handleForm($form, $request)) {
+            $this->setFlash('btn_admin.flash.created');
+
             return $this->redirect($this->generateUrl('btn_webplatform_componentcontrol_edit', array('id' => $form->getData()->getId())));
         }
 
@@ -96,6 +98,8 @@ class ComponentControlController extends AbstractControlController
         ));
 
         if ($this->get('btn_webplatform.form_handler.component')->handleForm($form, $request)) {
+            $this->setFlash('btn_admin.flash.updated');
+
             return $this->redirect($this->generateUrl('btn_webplatform_componentcontrol_edit', array('id' => $id)));
         }
 
@@ -124,6 +128,8 @@ class ComponentControlController extends AbstractControlController
 
         $manager = $this->get('btn_webplatform.manager');
         $manager->deleteComponent($component);
+
+        $this->setFlash('btn_admin.flash.deleted');
 
         return $this->redirect($this->generateUrl('btn_webplatform_componentcontrol_list', array('container' => $container)));
     }
