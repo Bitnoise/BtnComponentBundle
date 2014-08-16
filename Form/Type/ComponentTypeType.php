@@ -69,7 +69,7 @@ class ComponentTypeType extends AbstractType
         ));
 
         $resolver->setAllowedTypes(array(
-            'container' => array('null', 'Btn\\WebplatformBundle\\Model\\ContainerInterface'),
+            'container' => array('null', 'Btn\\ComponentBundle\\Model\\ContainerInterface'),
         ));
     }
 

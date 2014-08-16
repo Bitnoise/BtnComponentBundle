@@ -49,7 +49,7 @@ class HydratorSubscriber implements EventSubscriber
         $identityMap = $uow->getIdentityMap();
         foreach ($identityMap as $class => $entities) {
             $metadata = $em->getClassMetadata($class);
-            if ($metadata->reflClass->implementsInterface('Btn\\WebplatformBundle\\Model\\HydratableInterface')) {
+            if ($metadata->reflClass->implementsInterface('Btn\\ComponentBundle\\Model\\HydratableInterface')) {
                 foreach ($entities as $entity) {
                     $this->dryEntity($entity, $em);
                 }
