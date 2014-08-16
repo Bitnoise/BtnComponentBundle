@@ -1,18 +1,18 @@
 <?php
 
-namespace Btn\WebplatformBundle\Renderer;
+namespace Btn\ComponentBundle\Renderer;
 
-use Btn\WebplatformBundle\Provider\ProviderInterface;
-use Btn\WebplatformBundle\Model\ComponentInterface;
-use Btn\WebplatformBundle\View\ComponentView;
-use Btn\WebplatformBundle\View\ContainerView;
+use Btn\ComponentBundle\Provider\ProviderInterface;
+use Btn\ComponentBundle\Model\ComponentInterface;
+use Btn\ComponentBundle\View\ComponentView;
+use Btn\ComponentBundle\View\ContainerView;
 
 class Renderer implements RendererInterface
 {
-    /** @var \Btn\WebplatformBundle\Provider\ProviderInterface */
+    /** @var \Btn\ComponentBundle\Provider\ProviderInterface */
     protected $provider;
 
-    /** @var \Btn\WebplatformBundle\Renderer\ComponentRendererInterface[] */
+    /** @var \Btn\ComponentBundle\Renderer\ComponentRendererInterface[] */
     protected $componentRenderers = array();
 
     /**

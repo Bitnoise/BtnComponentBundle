@@ -1,8 +1,8 @@
 <?php
 
-namespace Btn\WebplatformBundle\Provider;
+namespace Btn\ComponentBundle\Provider;
 
-use Btn\WebplatformBundle\Form\Type\NodeContentType;
+use Btn\ComponentBundle\Form\Type\NodeContentType;
 use Btn\NodesBundle\Provider\NodeContentProviderInterface;
 
 /**
@@ -38,18 +38,18 @@ class NodeContentProvider implements NodeContentProviderInterface
     public function resolveRouteParameters($formData = array())
     {
 
-        return array('id' => $formData['webplatform_container']);
+        return array('id' => $formData['container']);
     }
 
     public function resolveControlRoute($formData = array())
     {
 
-        return 'btn_webplatform_containercontrol_edit';
+        return 'btn_component_containercontrol_edit';
     }
 
     public function resolveControlRouteParameters($formData = array())
     {
-        return array('id' => $formData['webplatform_container']);
+        return array('id' => $formData['container']);
     }
 
     public function getName()

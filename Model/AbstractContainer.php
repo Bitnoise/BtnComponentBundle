@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\Model;
+namespace Btn\ComponentBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\Provider;
+namespace Btn\ComponentBundle\Provider;
 
 interface ProviderInterface
 {

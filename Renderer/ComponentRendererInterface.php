@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\Renderer;
+namespace Btn\ComponentBundle\Renderer;
 
 interface ComponentRendererInterface
 {

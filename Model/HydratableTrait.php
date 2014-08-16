@@ -1,6 +1,6 @@
 <?php
 
-namespace Users\Projects\Btn\WebplatformBundle\Model;
+namespace Users\Projects\Btn\ComponentBundle\Model;
 
 /**
  * For better times :P

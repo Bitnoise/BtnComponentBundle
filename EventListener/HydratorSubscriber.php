@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\EventListener;
+namespace Btn\ComponentBundle\EventListener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Events;
@@ -9,12 +9,12 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
-use Btn\WebplatformBundle\Model\HydratableInterface;
-use Btn\WebplatformBundle\Hydrator\HydratorInterface;
+use Btn\ComponentBundle\Model\HydratableInterface;
+use Btn\ComponentBundle\Hydrator\HydratorInterface;
 
 class HydratorSubscriber implements EventSubscriber
 {
-    /** @var \Btn\WebplatformBundle\Hydrator\HydratorInterface $hydrator */
+    /** @var \Btn\ComponentBundle\Hydrator\HydratorInterface $hydrator */
     protected $hydrator;
 
     public function __construct(HydratorInterface $hydrator)

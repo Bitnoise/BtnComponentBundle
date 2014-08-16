@@ -3,10 +3,10 @@
 
 {% block content %}
 
-    {% set legend = 'btn_webplatform.component.create'|trans({'%container_title%' : container.title ?: container.name|trans}) %}
-    {% include 'BtnWebplatformBundle:ComponentControl:_form.html.twig' with {form: form, legend: legend} only %}
+    {% set legend = 'btn_component.component.create'|trans({'%container_title%' : container.title ?: container.name|trans}) %}
+    {% include 'BtnComponentBundle:ComponentControl:_form.html.twig' with {form: form, legend: legend} only %}
 
-    {{ lnk.back('btn_webplatform_componentcontrol_list', {container: component.container}) }}
+    {{ lnk.back('btn_component_componentcontrol_list', {container: component.container}) }}
 
 {% endblock %}
 

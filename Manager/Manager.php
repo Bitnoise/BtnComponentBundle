@@ -1,20 +1,20 @@
 <?php
 
-namespace Btn\WebplatformBundle\Manager;
+namespace Btn\ComponentBundle\Manager;
 
-use Btn\WebplatformBundle\Model\ComponentInterface;
-use Btn\WebplatformBundle\Model\ContainerInterface;
-use Btn\WebplatformBundle\Provider\ProviderInterface;
+use Btn\ComponentBundle\Model\ComponentInterface;
+use Btn\ComponentBundle\Model\ContainerInterface;
+use Btn\ComponentBundle\Provider\ProviderInterface;
 
 class Manager implements ManagerInterface
 {
-    /** @var \Btn\WebplatformBundle\Provider\ComponentProviderInterface */
+    /** @var \Btn\ComponentBundle\Provider\ComponentProviderInterface */
     protected $provider;
 
-    /** @var \Btn\WebplatformBundle\Manager\ComponentManagerInterface[] */
+    /** @var \Btn\ComponentBundle\Manager\ComponentManagerInterface[] */
     protected $componentManagers = array();
 
-    /** @var \Btn\WebplatformBundle\Renderer\ContainerManagerInterface */
+    /** @var \Btn\ComponentBundle\Renderer\ContainerManagerInterface */
     protected $containerManager;
 
     /** @var array $components */

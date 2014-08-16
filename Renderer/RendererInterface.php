@@ -1,8 +1,8 @@
 <?php
 
-namespace Btn\WebplatformBundle\Renderer;
+namespace Btn\ComponentBundle\Renderer;
 
-use Btn\WebplatformBundle\Model\ComponentInterface;
+use Btn\ComponentBundle\Model\ComponentInterface;
 
 interface RendererInterface
 {

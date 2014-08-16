@@ -1,3 +1,3 @@
-_btn_webplatform_routing_front_controller_container:
-    resource: "@BtnWebplatformBundle/Controller/ContainerController.php"
+_btn_component_routing_front_controller_container:
+    resource: "@BtnComponentBundle/Controller/ContainerController.php"
     type:     annotation

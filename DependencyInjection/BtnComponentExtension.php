@@ -1,0 +1,69 @@
+<?php
+
+namespace Btn\ComponentBundle\DependencyInjection;
+
+use Btn\BaseBundle\DependencyInjection\AbstractExtension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+/**
+ *
+ */
+class BtnComponentExtension extends AbstractExtension
+{
+    /**
+     * {@inheritDoc}
+     */
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        parent::load($configs, $container);
+
+        $config = $this->getProcessedConfig($container, $configs);
+
+        $container->setParameter('btn_component.container.show_route_name', $config['container']['show_route_name']);
+
+        $container->setParameter('btn_component.component.class', $config['component']['class']);
+        $container->setParameter('btn_component.container.class', $config['container']['class']);
+
+        $container->setParameter('btn_component.container.manager_id', $config['container']['manager_id']);
+        $container->setParameter('btn_component.container.provider_id', $config['container']['provider_id']);
+        $container->setParameter('btn_component.component.provider_id', $config['component']['provider_id']);
+
+        $container->setParameter('btn_component.provider_id', $config['provider_id']);
+        $container->setParameter('btn_component.hydrator_id', $config['hydrator_id']);
+        $container->setParameter('btn_component.renderer_id', $config['renderer_id']);
+        $container->setParameter('btn_component.manager_id', $config['manager_id']);
+
+        $container->setAlias('btn_component.container_provider', $config['container']['provider_id']);
+        $container->setAlias('btn_component.component_provider', $config['component']['provider_id']);
+        $container->setAlias('btn_component.container_manager', $config['container']['manager_id']);
+        $container->setAlias('btn_component.provider', $config['provider_id']);
+        $container->setAlias('btn_component.hydrator', $config['hydrator_id']);
+        $container->setAlias('btn_component.renderer', $config['renderer_id']);
+        $container->setAlias('btn_component.manager', $config['manager_id']);
+
+        $container->setParameter('btn_component.containers', $config['containers']);
+        $container->setParameter('btn_component.components', $config['components']);
+
+        $this->addClassesToCompile(array(
+            'Btn\\WebplatformBundle\\EventListener\\HydratorSubscriber',
+            'Btn\\WebplatformBundle\\Hydrator\\AbstractComponentHydrator',
+            'Btn\\WebplatformBundle\\Hydrator\\ComponentHydratorInterface',
+            'Btn\\WebplatformBundle\\Hydrator\\Hydrator',
+            'Btn\\WebplatformBundle\\Hydrator\\HydratorInterface',
+            'Btn\\WebplatformBundle\\Manager\\Manager',
+            'Btn\\WebplatformBundle\\Manager\\ManagerInterface',
+            'Btn\\WebplatformBundle\\Model\\ComponentInterface',
+            'Btn\\WebplatformBundle\\Model\\HydratableInterface',
+            'Btn\\WebplatformBundle\\Provider\\ContainerProvider',
+            'Btn\\WebplatformBundle\\Provider\\ContainerProviderInterface',
+            'Btn\\WebplatformBundle\\Provider\\ComponentProvider',
+            'Btn\\WebplatformBundle\\Provider\\ComponentProviderInterface',
+            'Btn\\WebplatformBundle\\Renderer\\AbstractComponentRenderer',
+            'Btn\\WebplatformBundle\\Renderer\\ComponentRendererInterface',
+            'Btn\\WebplatformBundle\\Renderer\\Renderer',
+            'Btn\\WebplatformBundle\\Renderer\\RendererInterface',
+            'Btn\\WebplatformBundle\\View\\ComponentView',
+            'Btn\\WebplatformBundle\\View\\ContainerView',
+        ));
+    }
+}

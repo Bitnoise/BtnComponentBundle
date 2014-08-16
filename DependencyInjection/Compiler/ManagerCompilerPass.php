@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\DependencyInjection\Compiler;
+namespace Btn\ComponentBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -10,13 +10,13 @@ class ManagerCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        $managerId = $container->getParameter('btn_webplatform.manager_id');
+        $managerId = $container->getParameter('btn_component.manager_id');
 
         if (!$container->hasDefinition($managerId)) {
             return;
         }
 
-        $taggedServices = $container->findTaggedServiceIds('btn_webplatform.component_manager');
+        $taggedServices = $container->findTaggedServiceIds('btn_component.component_manager');
 
         $managers = array();
         $manager = $container->getDefinition($managerId);
@@ -31,6 +31,6 @@ class ManagerCompilerPass implements CompilerPassInterface
                 }
             }
         }
-        $container->setParameter('btn_webplatform.component_managers', $managers);
+        $container->setParameter('btn_component.component_managers', $managers);
     }
 }

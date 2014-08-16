@@ -1,8 +1,8 @@
 <?php
 
-namespace Btn\WebplatformBundle\Hydrator;
+namespace Btn\ComponentBundle\Hydrator;
 
-use Btn\WebplatformBundle\Model\HydratableInterface;
+use Btn\ComponentBundle\Model\HydratableInterface;
 use Doctrine\ORM\EntityManager;
 
 interface HydratorInterface

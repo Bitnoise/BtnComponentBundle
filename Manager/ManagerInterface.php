@@ -1,9 +1,9 @@
 <?php
 
-namespace Btn\WebplatformBundle\Manager;
+namespace Btn\ComponentBundle\Manager;
 
-use Btn\WebplatformBundle\Model\ContainerInterface;
-use Btn\WebplatformBundle\Model\ComponentInterface;
+use Btn\ComponentBundle\Model\ContainerInterface;
+use Btn\ComponentBundle\Model\ComponentInterface;
 
 interface ManagerInterface
 {

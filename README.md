@@ -1,2 +1,2 @@
-BtnWebplatformBundle
-====================
+BtnComponentBundle
+==================

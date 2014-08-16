@@ -1,15 +1,15 @@
 <?php
 
-namespace Btn\WebplatformBundle\Form;
+namespace Btn\ComponentBundle\Form;
 
 use Btn\AdminBundle\Form\AbstractForm as AbstractType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Btn\WebplatformBundle\Manager\ManagerInterface;
+use Btn\ComponentBundle\Manager\ManagerInterface;
 
 abstract class AbstractForm extends AbstractType
 {
-    /** @var \Btn\WebplatformBundle\Manager\ManagerInterface $manager */
+    /** @var \Btn\ComponentBundle\Manager\ManagerInterface $manager */
     protected $manager;
 
     /**

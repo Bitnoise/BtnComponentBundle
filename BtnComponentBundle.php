@@ -1,12 +1,12 @@
 <?php
 
-namespace Btn\WebplatformBundle;
+namespace Btn\ComponentBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Btn\WebplatformBundle\DependencyInjection\Compiler;
+use Btn\ComponentBundle\DependencyInjection\Compiler;
 
-class BtnWebplatformBundle extends Bundle
+class BtnComponentBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {

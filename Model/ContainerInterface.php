@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\Model;
+namespace Btn\ComponentBundle\Model;
 
 interface ContainerInterface
 {

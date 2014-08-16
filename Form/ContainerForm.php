@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\Form;
+namespace Btn\ComponentBundle\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -14,7 +14,7 @@ class ContainerForm extends AbstractForm
     {
         $builder
             ->add('title', null, array(
-                'label' => 'btn_webplatform.container.title',
+                'label' => 'btn_component.container.title',
             ))
             ->add('save', $options['data']->getId() ? 'btn_update' : 'btn_create');
         ;
@@ -34,6 +34,6 @@ class ContainerForm extends AbstractForm
 
     public function getName()
     {
-        return 'btn_webplatform_form_container';
+        return 'btn_component_form_container';
     }
 }

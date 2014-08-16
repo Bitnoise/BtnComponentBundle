@@ -1,14 +1,14 @@
 <?php
 
-namespace Btn\WebplatformBundle\Form\Handler;
+namespace Btn\ComponentBundle\Form\Handler;
 
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Btn\WebplatformBundle\Manager\ManagerInterface;
+use Btn\ComponentBundle\Manager\ManagerInterface;
 
 class ComponentFormHandler
 {
-    /** @var \Btn\WebplatformBundle\Manager\ManagerInterface $manager */
+    /** @var \Btn\ComponentBundle\Manager\ManagerInterface $manager */
     private $manager;
 
     /**

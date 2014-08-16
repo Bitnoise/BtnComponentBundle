@@ -3,10 +3,10 @@
 
 {% block content %}
 
-    {% include 'BtnWebplatformBundle:ComponentControl:_form.html.twig' with {form: form, legend: 'btn_webplatform.container.edit'|trans } only %}
+    {% include 'BtnComponentBundle:ComponentControl:_form.html.twig' with {form: form, legend: 'btn_component.container.edit'|trans } only %}
 
-    {{ lnk.back('btn_webplatform_containercontrol_index') }}
+    {{ lnk.back('btn_component_containercontrol_index') }}
 
-    {{ lnk.delete('btn_webplatform_containercontrol_delete', {id: container.id}) }}
+    {{ lnk.delete('btn_component_containercontrol_delete', {id: container.id}) }}
 
 {% endblock %}

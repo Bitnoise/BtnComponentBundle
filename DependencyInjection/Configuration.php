@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\DependencyInjection;
+namespace Btn\ComponentBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('btn_webplatform');
+        $rootNode = $treeBuilder->root('btn_component');
 
         $rootNode
             ->children()
@@ -27,7 +27,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('class')->isRequired()->cannotBeEmpty()->end()
-                        ->scalarNode('provider_id')->defaultValue('btn_webplatform.component_provider.default')->end()
+                        ->scalarNode('provider_id')->defaultValue('btn_component.component_provider.default')->end()
                     ->end()
                 ->end()
                 ->arrayNode('container')
@@ -35,15 +35,15 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('show_route_name')->defaultValue(null)->end()
                         ->scalarNode('class')->defaultValue(null)->end()
-                        ->scalarNode('provider_id')->defaultValue('btn_webplatform.container_provider.default')->end()
-                        ->scalarNode('manager_id')->defaultValue('btn_webplatform.container_manager.default')->end()
+                        ->scalarNode('provider_id')->defaultValue('btn_component.container_provider.default')->end()
+                        ->scalarNode('manager_id')->defaultValue('btn_component.container_manager.default')->end()
                     ->end()
                 ->end()
 
-                ->scalarNode('provider_id')->defaultValue('btn_webplatform.provider.default')->end()
-                ->scalarNode('hydrator_id')->defaultValue('btn_webplatform.hydrator.default')->end()
-                ->scalarNode('renderer_id')->defaultValue('btn_webplatform.renderer.default')->end()
-                ->scalarNode('manager_id')->defaultValue('btn_webplatform.manager.default')->end()
+                ->scalarNode('provider_id')->defaultValue('btn_component.provider.default')->end()
+                ->scalarNode('hydrator_id')->defaultValue('btn_component.hydrator.default')->end()
+                ->scalarNode('renderer_id')->defaultValue('btn_component.renderer.default')->end()
+                ->scalarNode('manager_id')->defaultValue('btn_component.manager.default')->end()
 
                 ->arrayNode('components')
                     ->beforeNormalization()

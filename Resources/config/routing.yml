@@ -1,7 +1,7 @@
-_btn_webplatform_routing_control:
-    resource: "@BtnWebplatformBundle/Resources/config/routing/control.yml"
+_btn_component_routing_control:
+    resource: "@BtnComponentBundle/Resources/config/routing/control.yml"
     prefix: /control
 
-_btn_webplatform_routing_front:
-    resource: "@BtnWebplatformBundle/Resources/config/routing/front.yml"
+_btn_component_routing_front:
+    resource: "@BtnComponentBundle/Resources/config/routing/front.yml"
     prefix: /

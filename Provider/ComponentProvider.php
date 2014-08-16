@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\Provider;
+namespace Btn\ComponentBundle\Provider;
 
 use Doctrine\ORM\EntityManager;
 
@@ -10,7 +10,7 @@ class ComponentProvider implements ComponentProviderInterface
     protected $componentClass;
     /** @var \Doctrine\ORM\EntityManager */
     protected $em;
-    /** @var \Btn\WebplatformBundle\Model\AbstractComponentRepository $componentRepository */
+    /** @var \Btn\ComponentBundle\Model\AbstractComponentRepository $componentRepository */
     protected $componentRepository;
 
     /**

@@ -1,18 +1,18 @@
 <?php
 
-namespace Btn\WebplatformBundle\Twig;
+namespace Btn\ComponentBundle\Twig;
 
-use Btn\WebplatformBundle\Renderer\ContainerRendererInterface;
-use Btn\WebplatformBundle\Renderer\RendererInterface;
-use Btn\WebplatformBundle\Model\ComponentInterface;
-use Btn\WebplatformBundle\Provider\ComponentProviderInterface;
+use Btn\ComponentBundle\Renderer\ContainerRendererInterface;
+use Btn\ComponentBundle\Renderer\RendererInterface;
+use Btn\ComponentBundle\Model\ComponentInterface;
+use Btn\ComponentBundle\Provider\ComponentProviderInterface;
 
 class RendererExtension extends \Twig_Extension
 {
-    /** @var \Btn\WebplatformBundle\Renderer\ContainerRendererInterface */
+    /** @var \Btn\ComponentBundle\Renderer\ContainerRendererInterface */
     private $renderer;
 
-    /** @var \Btn\WebplatformBundle\Provider\ComponentProviderInterface */
+    /** @var \Btn\ComponentBundle\Provider\ComponentProviderInterface */
     private $provider;
 
     /**
@@ -31,10 +31,10 @@ class RendererExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'btn_webplatform_container_render'         => new \Twig_Function_Method($this, 'containerRender', array('is_safe' => array('html'))),
-            'btn_webplatform_component_render'         => new \Twig_Function_Method($this, 'componentRender', array('is_safe' => array('html'))),
-            'btn_webplatform_component_get_and_render' => new \Twig_Function_Method($this, 'componentGetAndRender', array('is_safe' => array('html'))),
-            'btn_webplatform_render'                   => new \Twig_Function_Method($this, 'render', array('is_safe' => array('html'))),
+            'btn_component_container_render'         => new \Twig_Function_Method($this, 'containerRender', array('is_safe' => array('html'))),
+            'btn_component_component_render'         => new \Twig_Function_Method($this, 'componentRender', array('is_safe' => array('html'))),
+            'btn_component_component_get_and_render' => new \Twig_Function_Method($this, 'componentGetAndRender', array('is_safe' => array('html'))),
+            'btn_component_render'                   => new \Twig_Function_Method($this, 'render', array('is_safe' => array('html'))),
             // aliases
             'btn_wp_container_render'         => new \Twig_Function_Method($this, 'containerRender', array('is_safe' => array('html'))),
             'btn_wp_component_render'         => new \Twig_Function_Method($this, 'componentRender', array('is_safe' => array('html'))),
@@ -82,6 +82,6 @@ class RendererExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'btn_webplatform.renderer_extension';
+        return 'btn_component.renderer_extension';
     }
 }

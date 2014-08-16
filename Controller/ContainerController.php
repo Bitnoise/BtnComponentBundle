@@ -1,16 +1,16 @@
 <?php
 
-namespace Btn\WebplatformBundle\Controller;
+namespace Btn\ComponentBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Btn\WebplatformBundle\Model\ComponentInterface;
+use Btn\ComponentBundle\Model\ComponentInterface;
 
 class ContainerController extends Controller
 {
     /**
-     * @Route("/_container/{id}", name="btn_webplatform_container_show")
+     * @Route("/_container/{id}", name="btn_component_container_show")
      */
     public function renderAction($id)
     {

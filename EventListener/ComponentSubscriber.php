@@ -1,11 +1,11 @@
 <?php
 
-namespace Btn\WebplatformBundle\EventListener;
+namespace Btn\ComponentBundle\EventListener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Btn\WebplatformBundle\Model\ComponentInterface;
+use Btn\ComponentBundle\Model\ComponentInterface;
 
 class ComponentSubscriber implements EventSubscriber
 {

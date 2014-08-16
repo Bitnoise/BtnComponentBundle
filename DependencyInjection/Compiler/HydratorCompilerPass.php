@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\DependencyInjection\Compiler;
+namespace Btn\ComponentBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -10,13 +10,13 @@ class HydratorCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        $hydratorId = $container->getParameter('btn_webplatform.hydrator_id');
+        $hydratorId = $container->getParameter('btn_component.hydrator_id');
 
         if (!$container->hasDefinition($hydratorId)) {
             return;
         }
 
-        $taggedServices = $container->findTaggedServiceIds('btn_webplatform.component_hydrator');
+        $taggedServices = $container->findTaggedServiceIds('btn_component.component_hydrator');
 
         $hydrators = array();
         $hydrator = $container->getDefinition($hydratorId);
@@ -31,6 +31,6 @@ class HydratorCompilerPass implements CompilerPassInterface
                 }
             }
         }
-        $container->setParameter('btn_webplatform.component_hydrators', $hydrators);
+        $container->setParameter('btn_component.component_hydrators', $hydrators);
     }
 }

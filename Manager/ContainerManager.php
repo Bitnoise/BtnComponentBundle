@@ -1,9 +1,9 @@
 <?php
 
-namespace Btn\WebplatformBundle\Manager;
+namespace Btn\ComponentBundle\Manager;
 
-use Btn\WebplatformBundle\Model\ContainerInterface;
-use Btn\WebplatformBundle\Model\StaticContainer;
+use Btn\ComponentBundle\Model\ContainerInterface;
+use Btn\ComponentBundle\Model\StaticContainer;
 use Doctrine\ORM\EntityManager;
 
 class ContainerManager implements ContainerManagerInterface

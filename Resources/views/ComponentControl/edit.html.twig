@@ -3,13 +3,13 @@
 
 {% block content %}
 
-    {% set legend = 'btn_webplatform.component.edit'|trans({'%component_title%': component.title ?: component.type|trans, '%container_title%' : container.title}) %}
-    {% include 'BtnWebplatformBundle:ComponentControl:_form.html.twig' with {form: form, legend: legend} only %}
+    {% set legend = 'btn_component.component.edit'|trans({'%component_title%': component.title ?: component.type|trans, '%container_title%' : container.title}) %}
+    {% include 'BtnComponentBundle:ComponentControl:_form.html.twig' with {form: form, legend: legend} only %}
 
-    {{ lnk.back('btn_webplatform_componentcontrol_list', {container: component.container}) }}
+    {{ lnk.back('btn_component_componentcontrol_list', {container: component.container}) }}
 
     {% if container.manageable %}
-        {{ lnk.delete('btn_webplatform_componentcontrol_delete', {id: component.id}) }}
+        {{ lnk.delete('btn_component_componentcontrol_delete', {id: component.id}) }}
     {% endif %}
 
 {% endblock %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\Form\Type;
+namespace Btn\ComponentBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,7 +18,7 @@ class NodeContentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('webplatform_container', 'choice', array('choices' => $this->data))
+            ->add('container', 'choice', array('choices' => $this->data))
         ;
     }
 

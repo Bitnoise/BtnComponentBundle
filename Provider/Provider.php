@@ -1,15 +1,15 @@
 <?php
 
-namespace Btn\WebplatformBundle\Provider;
+namespace Btn\ComponentBundle\Provider;
 
-use Btn\WebplatformBundle\Model\ContainerInterface;
+use Btn\ComponentBundle\Model\ContainerInterface;
 
 class Provider implements ProviderInterface, ContainerProviderInterface, ComponentProviderInterface
 {
-    /** @var \Btn\WebplatformBundle\Provider\ContainerProviderInterface */
+    /** @var \Btn\ComponentBundle\Provider\ContainerProviderInterface */
     private $containerProvider;
 
-    /** @var \Btn\WebplatformBundle\Provider\ComponentProviderInterface */
+    /** @var \Btn\ComponentBundle\Provider\ComponentProviderInterface */
     private $componentProvider;
 
     /**

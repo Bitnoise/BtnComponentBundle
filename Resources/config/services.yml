@@ -1,125 +1,124 @@
 services:
-
-    btn_webplatform.container_provider.default:
-        class: %btn_webplatform.container_provider.default.class%
+    btn_component.container_provider.default:
+        class: %btn_component.container_provider.default.class%
         arguments:
-            containerClass: %btn_webplatform.container.class%
+            containerClass: %btn_component.container.class%
             em: @doctrine.orm.entity_manager
         calls:
-            - [setContainers, ['%btn_webplatform.containers%']]
+            - [setContainers, ['%btn_component.containers%']]
 
-    btn_webplatform.component_provider.default:
-        class: %btn_webplatform.component_provider.default.class%
+    btn_component.component_provider.default:
+        class: %btn_component.component_provider.default.class%
         arguments:
-            componentClass: %btn_webplatform.component.class%
+            componentClass: %btn_component.component.class%
             em: @doctrine.orm.entity_manager
 
-    btn_webplatform.provider.default:
-        class: %btn_webplatform.provider.default.class%
+    btn_component.provider.default:
+        class: %btn_component.provider.default.class%
         arguments:
-            containerProvider: @btn_webplatform.container_provider
-            componentProvider: @btn_webplatform.component_provider
+            containerProvider: @btn_component.container_provider
+            componentProvider: @btn_component.component_provider
 
-    btn_webplatform.hydrator.default:
-        class: %btn_webplatform.hydrator.default.class%
+    btn_component.hydrator.default:
+        class: %btn_component.hydrator.default.class%
 
-    btn_webplatform.abstract_component_hydrator:
-        class: Btn\WebplatformBundle\Hydrator\AbstractComponentHydrator
+    btn_component.abstract_component_hydrator:
+        class: Btn\ComponentBundle\Hydrator\AbstractComponentHydrator
         abstract: true
 
-    btn_webplatform.abstract_component_renderer:
-        class: Btn\WebplatformBundle\Renderer\AbstractComponentRenderer
+    btn_component.abstract_component_renderer:
+        class: Btn\ComponentBundle\Renderer\AbstractComponentRenderer
         abstract: true
         arguments:
             twig: @twig
 
-    btn_webplatform.renderer.default:
-        class: %btn_webplatform.renderer.default.class%
+    btn_component.renderer.default:
+        class: %btn_component.renderer.default.class%
         arguments:
-            provider: @btn_webplatform.provider
+            provider: @btn_component.provider
 
-    btn_webplatform.twig.renderer_extension:
-        class: Btn\WebplatformBundle\Twig\RendererExtension
+    btn_component.twig.renderer_extension:
+        class: Btn\ComponentBundle\Twig\RendererExtension
         arguments:
-            renderer: @btn_webplatform.renderer
+            renderer: @btn_component.renderer
         tags:
             - { name: twig.extension }
 
-    btn_webplatform.twig.provider_extension:
-        class: Btn\WebplatformBundle\Twig\ProviderExtension
+    btn_component.twig.provider_extension:
+        class: Btn\ComponentBundle\Twig\ProviderExtension
         arguments:
-            provider: @btn_webplatform.provider
+            provider: @btn_component.provider
         tags:
             - { name: twig.extension }
 
-    btn_webplatform.abstract_component_manager:
-        class: Btn\WebplatformBundle\Manager\AbstractComponentManager
+    btn_component.abstract_component_manager:
+        class: Btn\ComponentBundle\Manager\AbstractComponentManager
         abstract: true
         arguments:
             em: @doctrine.orm.entity_manager
 
-    btn_webplatform.container_manager.default:
-        class: %btn_webplatform.container_manager.default.class%
+    btn_component.container_manager.default:
+        class: %btn_component.container_manager.default.class%
         arguments:
             em: @doctrine.orm.entity_manager
 
-    btn_webplatform.manager.default:
-        class: %btn_webplatform.manager.default.class%
+    btn_component.manager.default:
+        class: %btn_component.manager.default.class%
         arguments:
-            provider: @btn_webplatform.provider
-            containerManager: @btn_webplatform.container_manager
-            components: %btn_webplatform.components%
+            provider: @btn_component.provider
+            containerManager: @btn_component.container_manager
+            components: %btn_component.components%
 
-    btn_webplatform.event_listener.hydrator_subscriber:
-        class: Btn\WebplatformBundle\EventListener\HydratorSubscriber
+    btn_component.event_listener.hydrator_subscriber:
+        class: Btn\ComponentBundle\EventListener\HydratorSubscriber
         tags:
             - { name: doctrine.event_subscriber, connection: default }
         arguments:
-            hydrator: @btn_webplatform.hydrator
+            hydrator: @btn_component.hydrator
 
-    btn_webplatform.event_listener.component_subscriber:
-        class: %btn_webplatform.event_listener.component_subscriber.class%
+    btn_component.event_listener.component_subscriber:
+        class: %btn_component.event_listener.component_subscriber.class%
         arguments:
-            componentClass: %btn_webplatform.component.class%
+            componentClass: %btn_component.component.class%
         tags:
             - { name: doctrine.event_subscriber, connection: default }
 
-    btn_webplatform.form.component:
-        class: Btn\WebplatformBundle\Form\ComponentForm
+    btn_component.form.component:
+        class: Btn\ComponentBundle\Form\ComponentForm
         arguments:
-            manager: @btn_webplatform.manager
+            manager: @btn_component.manager
         tags:
-            - { name: form.type, alias: btn_webplatform_form_component }
+            - { name: form.type, alias: btn_component_form_component }
 
-    btn_webplatform.form_handler.component:
-        class: Btn\WebplatformBundle\Form\Handler\ComponentFormHandler
+    btn_component.form_handler.component:
+        class: Btn\ComponentBundle\Form\Handler\ComponentFormHandler
         arguments:
-            manager: @btn_webplatform.manager
+            manager: @btn_component.manager
 
-    btn_webplatform.form.container:
-        class: Btn\WebplatformBundle\Form\ContainerForm
+    btn_component.form.container:
+        class: Btn\ComponentBundle\Form\ContainerForm
         arguments:
-            manager: @btn_webplatform.manager
+            manager: @btn_component.manager
         tags:
-            - { name: form.type, alias: btn_webplatform_form_container }
+            - { name: form.type, alias: btn_component_form_container }
 
-    btn_webplatform.form_handler.container:
-        class: Btn\WebplatformBundle\Form\Handler\ContainerFormHandler
+    btn_component.form_handler.container:
+        class: Btn\ComponentBundle\Form\Handler\ContainerFormHandler
         arguments:
-            manager: @btn_webplatform.manager
+            manager: @btn_component.manager
 
-    btn_webplatform.form.type.component_type:
-        class: Btn\WebplatformBundle\Form\Type\ComponentTypeType
+    btn_component.form.type.component_type:
+        class: Btn\ComponentBundle\Form\Type\ComponentTypeType
         arguments:
-            manager: @btn_webplatform.manager
+            manager: @btn_component.manager
         tags:
-            - { name: form.type, alias: btn_webplatform_type_component_type }
+            - { name: form.type, alias: btn_component_type_component_type }
 
-    btn_webplatform.btn_admin_menu_top_item:
+    btn_component.btn_admin_menu_top_item:
         class: Knp\Menu\MenuItem
         factory_service: btn_admin.menu_builder
         factory_method: createMenu
-        arguments: ["@request", "btn_webplatform.container.components", "btn_webplatform_containercontrol_index", [], []]
+        arguments: ["@request", "btn_component.container.components", "btn_component_containercontrol_index", [], []]
         scope: request
         tags:
             - { name: btn_admin.menu_item , parent: btn_admin.menu_navbar }

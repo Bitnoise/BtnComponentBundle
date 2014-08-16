@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\View;
+namespace Btn\ComponentBundle\View;
 
 class ComponentView
 {

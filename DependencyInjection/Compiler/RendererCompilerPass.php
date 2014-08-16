@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\DependencyInjection\Compiler;
+namespace Btn\ComponentBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -10,13 +10,13 @@ class RendererCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        $rendererId = $container->getParameter('btn_webplatform.renderer_id');
+        $rendererId = $container->getParameter('btn_component.renderer_id');
 
         if (!$container->hasDefinition($rendererId)) {
             return;
         }
 
-        $taggedServices = $container->findTaggedServiceIds('btn_webplatform.component_renderer');
+        $taggedServices = $container->findTaggedServiceIds('btn_component.component_renderer');
 
         $renderers = array();
         $renderer = $container->getDefinition($rendererId);
@@ -32,6 +32,6 @@ class RendererCompilerPass implements CompilerPassInterface
             }
         }
 
-        $container->setParameter('btn_webplatform.component_renderers', $renderers);
+        $container->setParameter('btn_component.component_renderers', $renderers);
     }
 }

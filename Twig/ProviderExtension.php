@@ -1,12 +1,12 @@
 <?php
 
-namespace Btn\WebplatformBundle\Twig;
+namespace Btn\ComponentBundle\Twig;
 
-use Btn\WebplatformBundle\Provider\ProviderInterface;
+use Btn\ComponentBundle\Provider\ProviderInterface;
 
 class ProviderExtension extends \Twig_Extension
 {
-    /** @var \Btn\WebplatformBundle\Provider\ContainerProviderInterface */
+    /** @var \Btn\ComponentBundle\Provider\ContainerProviderInterface */
     private $provider;
 
     /**
@@ -25,10 +25,10 @@ class ProviderExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'btn_webplatform_get_component'            => new \Twig_Function_Method($this, 'getComponent'),
-            'btn_webplatform_get_component_parameters' => new \Twig_Function_Method($this, 'getComponentParameters'),
-            'btn_webplatform_get_container'            => new \Twig_Function_Method($this, 'getContainer'),
-            'btn_webplatform_get_container_name'       => new \Twig_Function_Method($this, 'getContainerName'),
+            'btn_component_get_component'            => new \Twig_Function_Method($this, 'getComponent'),
+            'btn_component_get_component_parameters' => new \Twig_Function_Method($this, 'getComponentParameters'),
+            'btn_component_get_container'            => new \Twig_Function_Method($this, 'getContainer'),
+            'btn_component_get_container_name'       => new \Twig_Function_Method($this, 'getContainerName'),
             // aliases
             'btn_wp_get_component'                     => new \Twig_Function_Method($this, 'getComponent'),
             'btn_wp_get_component_parameters'          => new \Twig_Function_Method($this, 'getComponentParameters'),
@@ -43,7 +43,7 @@ class ProviderExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('btn_webplatform_get_container_name', array($this, 'getContainerName')),
+            new \Twig_SimpleFilter('btn_component_get_container_name', array($this, 'getContainerName')),
             // aliases
             new \Twig_SimpleFilter('btn_wp_get_container_name', array($this, 'getContainerName')),
         );
@@ -93,6 +93,6 @@ class ProviderExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'btn_webplatform.provider_extension';
+        return 'btn_component.provider_extension';
     }
 }

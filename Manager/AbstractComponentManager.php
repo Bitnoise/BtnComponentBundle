@@ -1,9 +1,9 @@
 <?php
 
-namespace Btn\WebplatformBundle\Manager;
+namespace Btn\ComponentBundle\Manager;
 
-use Btn\WebplatformBundle\Model\ComponentInterface;
-use Btn\WebplatformBundle\Model\ContainerInterface;
+use Btn\ComponentBundle\Model\ComponentInterface;
+use Btn\ComponentBundle\Model\ContainerInterface;
 use Doctrine\ORM\EntityManager;
 
 class AbstractComponentManager implements ComponentManagerInterface

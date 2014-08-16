@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\WebplatformBundle\Form;
+namespace Btn\ComponentBundle\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -19,10 +19,10 @@ class ComponentForm extends AbstractForm
         if ($manageable) {
             $builder
                 ->add('title', null, array(
-                    'label' => 'btn_webplatform.component.title',
+                    'label' => 'btn_component.component.title',
                 ))
                 ->add('visible', 'checkbox', array(
-                    'label' => 'btn_webplatform.component.visible',
+                    'label' => 'btn_component.component.visible',
                 ))
             ;
         }
@@ -39,9 +39,9 @@ class ComponentForm extends AbstractForm
                 }
             } else {
                 $builder
-                    ->add('type', 'btn_webplatform_type_component_type', array(
-                        'empty_value' => 'btn_webplatform.component.type.empty_value',
-                        'label'       => 'btn_webplatform.component.type',
+                    ->add('type', 'btn_component_type_component_type', array(
+                        'empty_value' => 'btn_component.component.type.empty_value',
+                        'label'       => 'btn_component.component.type',
                         'container' => $container,
                     ))
                 ;
@@ -70,6 +70,6 @@ class ComponentForm extends AbstractForm
      */
     public function getName()
     {
-        return 'btn_webplatform_form_component';
+        return 'btn_component_form_component';
     }
 }

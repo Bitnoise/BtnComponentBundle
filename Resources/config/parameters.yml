@@ -1,10 +1,9 @@
 parameters:
-    btn_webplatform.container_provider.default.class: Btn\WebplatformBundle\Provider\ContainerProvider
-    btn_webplatform.component_provider.default.class: Btn\WebplatformBundle\Provider\ComponentProvider
-    btn_webplatform.provider.default.class: Btn\WebplatformBundle\Provider\Provider
-    btn_webplatform.hydrator.default.class: Btn\WebplatformBundle\Hydrator\Hydrator
-    btn_webplatform.renderer.default.class: Btn\WebplatformBundle\Renderer\Renderer
-    btn_webplatform.container_manager.default.class: Btn\WebplatformBundle\Manager\ContainerManager
-    btn_webplatform.manager.default.class: Btn\WebplatformBundle\Manager\Manager
-
-    btn_webplatform.event_listener.component_subscriber.class: Btn\WebplatformBundle\EventListener\ComponentSubscriber
+    btn_component.container_provider.default.class: Btn\ComponentBundle\Provider\ContainerProvider
+    btn_component.component_provider.default.class: Btn\ComponentBundle\Provider\ComponentProvider
+    btn_component.provider.default.class: Btn\ComponentBundle\Provider\Provider
+    btn_component.hydrator.default.class: Btn\ComponentBundle\Hydrator\Hydrator
+    btn_component.renderer.default.class: Btn\ComponentBundle\Renderer\Renderer
+    btn_component.container_manager.default.class: Btn\ComponentBundle\Manager\ContainerManager
+    btn_component.manager.default.class: Btn\ComponentBundle\Manager\Manager
+    btn_component.event_listener.component_subscriber.class: Btn\ComponentBundle\EventListener\ComponentSubscriber

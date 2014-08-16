@@ -1,18 +1,18 @@
 <?php
 
-namespace Btn\WebplatformBundle\Provider;
+namespace Btn\ComponentBundle\Provider;
 
-use Btn\WebplatformBundle\Model\ContainerInterface;
-use Btn\WebplatformBundle\Model\StaticContainer;
+use Btn\ComponentBundle\Model\ContainerInterface;
+use Btn\ComponentBundle\Model\StaticContainer;
 use Doctrine\ORM\EntityManager;
 
 class ContainerProvider implements ContainerProviderInterface
 {
     /** @var string */
     protected $containerClass;
-    /** @var \Btn\WebplatformBundle\Model\AbstractContainerRepository $containerRepository */
+    /** @var \Btn\ComponentBundle\Model\AbstractContainerRepository $containerRepository */
     protected $containerRepository;
-    /** @var \Btn\WebplatformBundle\Model\ContainerInterface[] $containers */
+    /** @var \Btn\ComponentBundle\Model\ContainerInterface[] $containers */
     protected $containers;
     /** @var bolean $loaded has containers been loaded from database */
     private $loaded;

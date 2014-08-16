@@ -1,17 +1,17 @@
 <?php
 
-namespace Btn\WebplatformBundle\Form\Type;
+namespace Btn\ComponentBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Btn\WebplatformBundle\Manager\ManagerInterface;
+use Btn\ComponentBundle\Manager\ManagerInterface;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
 
 class ComponentTypeType extends AbstractType
 {
-    /** @var \Btn\WebplatformBundle\Manager\ManagerInterface $manager */
+    /** @var \Btn\ComponentBundle\Manager\ManagerInterface $manager */
     protected $manager;
 
     /**
@@ -86,6 +86,6 @@ class ComponentTypeType extends AbstractType
      */
     public function getName()
     {
-        return 'btn_webplatform_type_component_type';
+        return 'btn_component_type_component_type';
     }
 }

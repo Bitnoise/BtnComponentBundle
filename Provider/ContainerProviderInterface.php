@@ -1,8 +1,8 @@
 <?php
 
-namespace Btn\WebplatformBundle\Provider;
+namespace Btn\ComponentBundle\Provider;
 
-use Btn\WebplatformBundle\Model\ContainerInterface;
+use Btn\ComponentBundle\Model\ContainerInterface;
 
 interface ContainerProviderInterface
 {

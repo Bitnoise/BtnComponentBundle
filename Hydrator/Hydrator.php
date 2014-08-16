@@ -1,9 +1,9 @@
 <?php
 
-namespace Btn\WebplatformBundle\Hydrator;
+namespace Btn\ComponentBundle\Hydrator;
 
-use Btn\WebplatformBundle\Model\ComponentInterface;
-use Btn\WebplatformBundle\Model\HydratableInterface;
+use Btn\ComponentBundle\Model\ComponentInterface;
+use Btn\ComponentBundle\Model\HydratableInterface;
 use Doctrine\ORM\EntityManager;
 
 class Hydrator implements HydratorInterface
@@ -11,7 +11,7 @@ class Hydrator implements HydratorInterface
     /** @var \Doctrine\ORM\EntityManager */
     protected $em;
 
-    /** @var \Btn\WebplatformBundle\Hydrator\ComponentHydratorInterface[] */
+    /** @var \Btn\ComponentBundle\Hydrator\ComponentHydratorInterface[] */
     protected $componentHydrators = array();
 
     /**

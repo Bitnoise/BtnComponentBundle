@@ -1,10 +1,10 @@
 <?php
 
-namespace Btn\WebplatformBundle\View;
+namespace Btn\ComponentBundle\View;
 
 class ContainerView implements \Iterator
 {
-    /** @var \Btn\WebplatformBundle\View\ComponentView[] */
+    /** @var \Btn\ComponentBundle\View\ComponentView[] */
     protected $componentViews;
 
     /**

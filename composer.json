@@ -1,9 +1,9 @@
 {
-    "name": "bitnoise/webplatform-bundle",
+    "name": "bitnoise/component-bundle",
     "type": "symfony-bundle",
-    "description": "The BtnBaseBundle makes us (bitnoi.se team) happy",
+    "description": "The BtnComponentBundle makes us (bitnoi.se team) happy",
     "keywords": [ "bitnoise"],
-    "homepage": "https://github.com/Bitnoise/BtnWebplatformBundle",
+    "homepage": "https://github.com/Bitnoise/BtnComponentBundle",
     "license": "MIT",
     "minimum-stability": "dev",
     "authors": [
@@ -18,9 +18,9 @@
     },
     "suggest": {},
     "autoload": {
-        "psr-0": { "Btn\\WebplatformBundle": "" }
+        "psr-0": { "Btn\\ComponentBundle": "" }
     },
-    "target-dir": "Btn/WebplatformBundle",
+    "target-dir": "Btn/ComponentBundle",
     "extra": {
         "branch-alias": {
             "dev-master": "2.0-dev"
