@@ -1,12 +1,11 @@
 {% import 'BtnAdminBundle:Macros:link.html.twig' as lnk %}
-{% extends 'BtnAdminBundle::base.html.twig' %}
+{% extends 'BtnAdminBundle::form.html.twig' %}
 
-{% block content %}
-
+{% block form_content %}
     {% include 'BtnComponentBundle:ComponentControl:_form.html.twig' with {form: form, legend: 'btn_component.container.edit'|trans } only %}
+{% endblock %}
 
+{% block form_buttons %}
     {{ lnk.back('btn_component_containercontrol_index') }}
-
     {{ lnk.delete('btn_component_containercontrol_delete', {id: container.id}) }}
-
 {% endblock %}

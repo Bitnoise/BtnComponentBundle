@@ -1,46 +1,49 @@
-{% from 'BtnAdminBundle:Macros:icon.html.twig' import glyphicon as gi %}
+{% from 'BtnAdminBundle:Macros:icon.html.twig' import gi %}
 {% import 'BtnAdminBundle:Macros:link.html.twig' as lnk %}
-{% extends 'BtnAdminBundle::base.html.twig' %}
+{% import 'BtnAdminBundle:Macros:list.html.twig' as lst %}
+{% extends 'BtnAdminBundle::list.html.twig' %}
 
-{% block content %}
+{% block list_header %}
+    {{ lst.header(
+        'btn_component.component.list'|trans({'%container_title%': container.title}),
+        'btn_component.component.list_copy'|trans({'%container_title%': container.title})
+    ) }}
+{% endblock %}
 
-    <div class="page-header">
-        <h1>{{ 'btn_component.component.list'|trans({'%container_title%': container.title ?: container.name|trans }) }}</h1>
-    </div>
-
-    <table class="table table-striped table-bordered table-condensed">
+{% block list_table %}
+    <table class="{{ lst.table_class() }}">
         <thead>
             <tr>
-                <th class="btn-admin-column-id">{{ 'btn_component.component.id'|trans }}</th>
+                <th class="{{ lst.col_id_class() }}">{{ 'btn_component.component.id'|trans }}</th>
                 <th>{{ 'btn_component.component.title'|trans }}</th>
                 {% if container.manageable %}
                     <th>{{ 'btn_component.component.visible'|trans }}</th>
                 {% endif %}
-                <th>{% trans %}btn_admin.actions{% endtrans %}</th>
+                <th class="{{ lst.col_act_class() }}">{% trans %}btn_admin.actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in components %}
             <tr>
-                <td class="btn-admin-column-id">{{ entity.id }}</td>
+                <td class="{{ lst.col_id_class() }}">{{ entity.id }}</td>
                 <td>{{ entity.title ?: entity.type|trans }}</td>
                 {% if container.manageable %}
                     <td>{{ entity.visible ? gi('ok') : gi('remove') }}</td>
                 {% endif %}
-                <td>
+                <td class="{{ lst.col_act_class() }}">
                     {% if container.manageable or container.editable %}
-                        {{ lnk.edit('btn_component_componentcontrol_edit', { id: entity.id }) }}
+                        {{ lnk.edit('btn_component_componentcontrol_update', { id: entity.id }) }}
                     {% endif %}
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+{% endblock %}
 
+{% block list_buttons %}
     {{ lnk.back('btn_component_containercontrol_index') }}
-
     {% if container.manageable %}
         {{ lnk.add('btn_component_componentcontrol_new', {container: container.name}) }}
     {% endif %}
-
 {% endblock %}

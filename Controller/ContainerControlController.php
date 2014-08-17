@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/container")
- * @Template()
  */
 class ContainerControlController extends AbstractControlController
 {
     /**
      * @Route("/", name="btn_component_containercontrol_index")
+     * @Template()
      */
     public function indexAction()
     {
@@ -29,11 +29,10 @@ class ContainerControlController extends AbstractControlController
     }
 
     /**
-     * @Route("/new", name="btn_component_containercontrol_new")
-     * @Route("/create", name="btn_component_containercontrol_create", methods={"POST"})
+     * @Route("/create", name="btn_component_containercontrol_create", methods={"POST", "GET"})
      * @Template()
      */
-    public function newAction(Request $request)
+    public function createAction(Request $request)
     {
         $provider = $this->get('btn_component.provider');
 
@@ -55,11 +54,10 @@ class ContainerControlController extends AbstractControlController
     }
 
     /**
-     * @Route("/{id}/edit", name="btn_component_containercontrol_edit")
-     * @Route("/{id}/update", name="btn_component_containercontrol_update", methods={"POST"})
+     * @Route("/{id}/update", name="btn_component_containercontrol_update", methods={"POST", "GET"})
      * @Template()
      */
-    public function editAction(Request $request, $id)
+    public function updateAction(Request $request, $id)
     {
         $manager  = $this->get('btn_component.manager');
         $provider = $this->get('btn_component.provider');

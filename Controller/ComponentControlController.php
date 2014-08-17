@@ -39,11 +39,10 @@ class ComponentControlController extends AbstractControlController
     }
 
     /**
-     * @Route("/{container}/new", name="btn_component_componentcontrol_new")
-     * @Route("/{container}/create", name="btn_component_componentcontrol_create", methods={"POST"})
+     * @Route("/{container}/create", name="btn_component_componentcontrol_create", methods={"POST", "GET"})
      * @Template()
      */
-    public function newAction(Request $request, $container)
+    public function createAction(Request $request, $container)
     {
         $provider = $this->get('btn_component.provider');
 
@@ -68,7 +67,7 @@ class ComponentControlController extends AbstractControlController
         if ($this->get('btn_component.form_handler.component')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.created');
 
-            return $this->redirect($this->generateUrl('btn_component_componentcontrol_edit', array('id' => $form->getData()->getId())));
+            return $this->redirect($this->generateUrl('btn_component_componentcontrol_update', array('id' => $form->getData()->getId())));
         }
 
         return array(
@@ -79,11 +78,10 @@ class ComponentControlController extends AbstractControlController
     }
 
     /**
-     * @Route("/{id}/edit", name="btn_component_componentcontrol_edit")
-     * @Route("/{id}/update", name="btn_component_componentcontrol_update", methods={"POST"})
+     * @Route("/{id}/update", name="btn_component_componentcontrol_update", methods={"GET", "POST"})
      * @Template()
      */
-    public function editAction(Request $request, $id)
+    public function updateAction(Request $request, $id)
     {
         $manager  = $this->get('btn_component.manager');
         $provider = $this->get('btn_component.provider');
@@ -100,7 +98,7 @@ class ComponentControlController extends AbstractControlController
         if ($this->get('btn_component.form_handler.component')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.updated');
 
-            return $this->redirect($this->generateUrl('btn_component_componentcontrol_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('btn_component_componentcontrol_update', array('id' => $id)));
         }
 
         return array(
@@ -115,9 +113,9 @@ class ComponentControlController extends AbstractControlController
      */
     public function deleteAction(Request $request, $id, $csrf_token)
     {
-        $provider = $this->get('btn_component.provider');
-
         $this->validateCsrfTokenOrThrowException('btn_component_componentcontrol_delete', $csrf_token);
+
+        $provider = $this->get('btn_component.provider');
 
         $component = $provider->getComponentById($id, false);
         if (!$component) {

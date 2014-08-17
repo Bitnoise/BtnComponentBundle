@@ -1,38 +1,43 @@
+{% from 'BtnAdminBundle:Macros:icon.html.twig' import gi %}
 {% import 'BtnAdminBundle:Macros:link.html.twig' as lnk %}
-{% extends 'BtnAdminBundle::base.html.twig' %}
+{% import 'BtnAdminBundle:Macros:list.html.twig' as lst %}
+{% extends 'BtnAdminBundle::list.html.twig' %}
 
-{% block content %}
+{% block list_header %}
+    {{ lst.header('btn_component.container.list') }}
+{% endblock %}
 
-    <div class="page-header">
-        <h1>{{ 'btn_component.container.list'|trans }}</h1>
-    </div>
-
-    <table class="table table-striped table-bordered table-condensed">
+{% block list_table %}
+    <table class="{{ lst.table_class() }}">
         <thead>
             <tr>
+                <th class="{{ lst.col_id_class() }}">{% trans %}btn_admin.id{% endtrans %}</th>
                 <th>{{ 'btn_component.container.name'|trans }}</th>
-                <th>{% trans %}btn_admin.actions{% endtrans %}</th>
+                <th class="{{ lst.col_act_class('lg') }}">{% trans %}btn_admin.actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
         {% for container in containers %}
             {% if container.editable %}
                 <tr>
+                    <td>{{ container.id|default() }}</td>
                     <td>{{ container.title ?: container.name|trans }}</td>
-                    <td>
+                    <td class="{{ lst.col_act_class() }}">
                         {{ lnk.primary('btn_component.container.components', 'btn_component_componentcontrol_list', { container: container.name }) }}
                         {% if container.id|default(null) %}
                             {{ lnk.edit('btn_component_containercontrol_edit', { id: container.id }) }}
                         {% endif %}
+                        {% include 'BtnComponentBundle:ContainerControl:_action_post.html.twig' ignore missing with {container: container} only %}
                     </td>
                 </tr>
             {% endif %}
         {% endfor %}
         </tbody>
     </table>
+{% endblock %}
 
+{% block list_buttons %}
     {% if manageable %}
         {{ lnk.add('btn_component_containercontrol_new') }}
     {% endif %}
-
 {% endblock %}
