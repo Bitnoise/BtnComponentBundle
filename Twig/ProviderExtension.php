@@ -25,15 +25,10 @@ class ProviderExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'btn_component_get_component'            => new \Twig_Function_Method($this, 'getComponent'),
-            'btn_component_get_component_parameters' => new \Twig_Function_Method($this, 'getComponentParameters'),
-            'btn_component_get_container'            => new \Twig_Function_Method($this, 'getContainer'),
-            'btn_component_get_container_name'       => new \Twig_Function_Method($this, 'getContainerName'),
-            // aliases
-            'btn_wp_get_component'                     => new \Twig_Function_Method($this, 'getComponent'),
-            'btn_wp_get_component_parameters'          => new \Twig_Function_Method($this, 'getComponentParameters'),
-            'btn_wp_get_container'                     => new \Twig_Function_Method($this, 'getContainer'),
-            'btn_wp_get_container_name'                => new \Twig_Function_Method($this, 'getContainerName'),
+            'btn_get_component'            => new \Twig_Function_Method($this, 'getComponent'),
+            'btn_get_component_parameters' => new \Twig_Function_Method($this, 'getComponentParameters'),
+            'btn_get_container'            => new \Twig_Function_Method($this, 'getContainer'),
+            'btn_get_container_name'       => new \Twig_Function_Method($this, 'getContainerName'),
         );
     }
 
@@ -43,9 +38,7 @@ class ProviderExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('btn_component_get_container_name', array($this, 'getContainerName')),
-            // aliases
-            new \Twig_SimpleFilter('btn_wp_get_container_name', array($this, 'getContainerName')),
+            new \Twig_SimpleFilter('btn_get_container_name', array($this, 'getContainerName')),
         );
     }
 

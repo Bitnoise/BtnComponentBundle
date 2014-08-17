@@ -31,15 +31,9 @@ class RendererExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'btn_component_container_render'         => new \Twig_Function_Method($this, 'containerRender', array('is_safe' => array('html'))),
-            'btn_component_component_render'         => new \Twig_Function_Method($this, 'componentRender', array('is_safe' => array('html'))),
-            'btn_component_component_get_and_render' => new \Twig_Function_Method($this, 'componentGetAndRender', array('is_safe' => array('html'))),
-            'btn_component_render'                   => new \Twig_Function_Method($this, 'render', array('is_safe' => array('html'))),
-            // aliases
-            'btn_wp_container_render'         => new \Twig_Function_Method($this, 'containerRender', array('is_safe' => array('html'))),
-            'btn_wp_component_render'         => new \Twig_Function_Method($this, 'componentRender', array('is_safe' => array('html'))),
-            'btn_wp_component_get_and_render' => new \Twig_Function_Method($this, 'componentGetAndRender', array('is_safe' => array('html'))),
-            'btn_wp_render'                   => new \Twig_Function_Method($this, 'render', array('is_safe' => array('html'))),
+            'btn_container_render'         => new \Twig_Function_Method($this, 'containerRender', array('is_safe' => array('html'))),
+            'btn_component_render'         => new \Twig_Function_Method($this, 'componentRender', array('is_safe' => array('html'))),
+            'btn_component_get_and_render' => new \Twig_Function_Method($this, 'componentGetAndRender', array('is_safe' => array('html'))),
         );
     }
 
@@ -65,14 +59,6 @@ class RendererExtension extends \Twig_Extension
     public function componentGetAndRender($type, $container, $position, array $containerParameters = null)
     {
         return $this->renderer->componentGetAndRender($type, $container, $position, $containerParameters);
-    }
-
-    /**
-     *
-     */
-    public function render($type, $parameters = null)
-    {
-        return $this->renderer->render($type, $parameters);
     }
 
     /**
