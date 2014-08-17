@@ -3,7 +3,7 @@
 namespace Btn\ComponentBundle\Provider;
 
 use Btn\ComponentBundle\Form\Type\NodeContentType;
-use Btn\NodesBundle\Provider\NodeContentProviderInterface;
+use Btn\NodeBundle\Provider\NodeContentProviderInterface;
 
 /**
  *
