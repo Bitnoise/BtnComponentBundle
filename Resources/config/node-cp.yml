@@ -6,4 +6,4 @@ services:
             containersProvider: @btn_component.container_provider
             renderRouteName:    %btn_component.container.show_route_name%
         tags:
-            - { name: btn_nodes.content_provider }
+            - { name: btn_node.content_provider }
