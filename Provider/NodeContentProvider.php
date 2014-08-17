@@ -31,19 +31,16 @@ class NodeContentProvider implements NodeContentProviderInterface
 
     public function resolveRoute($formData = array())
     {
-
         return $this->renderRouteName;
     }
 
     public function resolveRouteParameters($formData = array())
     {
-
         return array('id' => $formData['container']);
     }
 
     public function resolveControlRoute($formData = array())
     {
-
         return 'btn_component_containercontrol_edit';
     }
 
