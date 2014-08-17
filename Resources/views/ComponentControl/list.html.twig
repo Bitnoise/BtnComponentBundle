@@ -44,6 +44,6 @@
 {% block list_buttons %}
     {{ lnk.back('btn_component_containercontrol_index') }}
     {% if container.manageable %}
-        {{ lnk.add('btn_component_componentcontrol_new', {container: container.name}) }}
+        {{ lnk.add('btn_component_componentcontrol_create', {container: container.name}) }}
     {% endif %}
 {% endblock %}
