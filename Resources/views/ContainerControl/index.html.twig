@@ -25,7 +25,7 @@
                     <td class="{{ lst.col_act_class() }}">
                         {{ lnk.primary('btn_component.container.components', 'btn_component_componentcontrol_list', { container: container.name }) }}
                         {% if container.id|default(null) %}
-                            {{ lnk.edit('btn_component_containercontrol_edit', { id: container.id }) }}
+                            {{ lnk.edit('btn_component_containercontrol_update', { id: container.id }) }}
                         {% endif %}
                         {% include 'BtnComponentBundle:ContainerControl:_action_post.html.twig' ignore missing with {container: container} only %}
                     </td>
@@ -38,6 +38,6 @@
 
 {% block list_buttons %}
     {% if manageable %}
-        {{ lnk.add('btn_component_containercontrol_new') }}
+        {{ lnk.add('btn_component_containercontrol_create') }}
     {% endif %}
 {% endblock %}

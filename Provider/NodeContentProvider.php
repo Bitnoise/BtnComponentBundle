@@ -56,7 +56,7 @@ class NodeContentProvider implements NodeContentProviderInterface
      */
     public function resolveControlRoute($formData = array())
     {
-        return 'btn_component_containercontrol_edit';
+        return 'btn_component_containercontrol_update';
     }
 
     /**
