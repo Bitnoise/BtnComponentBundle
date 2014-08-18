@@ -20,7 +20,7 @@
         {% for container in containers %}
             {% if container.editable %}
                 <tr>
-                    <td>{{ container.id|default() }}</td>
+                    <td class="{{ lst.col_id_class() }}">{{ container.id|default() }}</td>
                     <td>{{ container.title ?: container.name|trans }}</td>
                     <td class="{{ lst.col_act_class() }}">
                         {{ lnk.primary('btn_component.container.components', 'btn_component_componentcontrol_list', { container: container.name }) }}
