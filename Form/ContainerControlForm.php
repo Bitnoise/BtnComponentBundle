@@ -5,13 +5,15 @@ namespace Btn\ComponentBundle\Form;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ContainerForm extends AbstractForm
+class ContainerControlForm extends AbstractForm
 {
     /**
      *
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        parent::buildForm($builder, $options);
+
         $builder
             ->add('title', null, array(
                 'label' => 'btn_component.container.title',

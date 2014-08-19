@@ -1,0 +1,14 @@
+services:
+    btn_component.twig.renderer_extension:
+        class: Btn\ComponentBundle\Twig\RendererExtension
+        arguments:
+            renderer: @btn_component.renderer
+        tags:
+            - { name: twig.extension }
+
+    btn_component.twig.provider_extension:
+        class: Btn\ComponentBundle\Twig\ProviderExtension
+        arguments:
+            provider: @btn_component.provider
+        tags:
+            - { name: twig.extension }

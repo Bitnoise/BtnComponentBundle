@@ -42,7 +42,7 @@ class ContainerControlController extends AbstractControlController
             'action' => $this->generateUrl('btn_component_containercontrol_create'),
         ));
 
-        if ($this->get('btn_component.form_handler.container')->handleForm($form, $request)) {
+        if ($this->get('btn_component.form.handler.container')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.created');
 
             return $this->redirect($this->generateUrl('btn_component_containercontrol_update', array('id' => $form->getData()->getId())));
@@ -71,7 +71,7 @@ class ContainerControlController extends AbstractControlController
             'action' => $this->generateUrl('btn_component_containercontrol_update', array('id' => $id)),
         ));
 
-        if ($this->get('btn_component.form_handler.container')->handleForm($form, $request)) {
+        if ($this->get('btn_component.form.handler.container')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.updated');
 
             return $this->redirect($this->generateUrl('btn_component_containercontrol_update', array('id' => $id)));

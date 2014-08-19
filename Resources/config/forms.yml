@@ -1,0 +1,33 @@
+services:
+    btn_component.form.component_control:
+        class: Btn\ComponentBundle\Form\ComponentControlForm
+        parent: btn_admin.form.abstract
+        calls:
+            - [setManager, [@btn_component.manager]]
+        tags:
+            - { name: form.type, alias: btn_component_form_component }
+
+    btn_component.form.handler.component:
+        class: Btn\ComponentBundle\Form\Handler\ComponentFormHandler
+        arguments:
+            manager: @btn_component.manager
+
+    btn_component.form.container_control:
+        class: Btn\ComponentBundle\Form\ContainerControlForm
+        parent: btn_admin.form.abstract
+        calls:
+            - [setManager, [@btn_component.manager]]
+        tags:
+            - { name: form.type, alias: btn_component_form_container }
+
+    btn_component.form.handler.container:
+        class: Btn\ComponentBundle\Form\Handler\ContainerFormHandler
+        arguments:
+            manager: @btn_component.manager
+
+    btn_component.form.type.component_type:
+        class: Btn\ComponentBundle\Form\Type\ComponentTypeType
+        arguments:
+            manager: @btn_component.manager
+        tags:
+            - { name: form.type, alias: btn_component_type_component_type }

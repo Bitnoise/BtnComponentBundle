@@ -5,13 +5,15 @@ namespace Btn\ComponentBundle\Form;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ComponentForm extends AbstractForm
+class ComponentControlForm extends AbstractForm
 {
     /**
      *
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        parent::buildForm($builder, $options);
+
         $container  = $this->manager->getProvider()->getContainer($options['data']->getContainer());
         $manageable = $container->isManageable();
         $editable   = $container->isEditable();

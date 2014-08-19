@@ -1,9 +1,0 @@
-parameters:
-    btn_component.container_provider.default.class: Btn\ComponentBundle\Provider\ContainerProvider
-    btn_component.component_provider.default.class: Btn\ComponentBundle\Provider\ComponentProvider
-    btn_component.provider.default.class: Btn\ComponentBundle\Provider\Provider
-    btn_component.hydrator.default.class: Btn\ComponentBundle\Hydrator\Hydrator
-    btn_component.renderer.default.class: Btn\ComponentBundle\Renderer\Renderer
-    btn_component.container_manager.default.class: Btn\ComponentBundle\Manager\ContainerManager
-    btn_component.manager.default.class: Btn\ComponentBundle\Manager\Manager
-    btn_component.event_listener.component_subscriber.class: Btn\ComponentBundle\EventListener\ComponentSubscriber

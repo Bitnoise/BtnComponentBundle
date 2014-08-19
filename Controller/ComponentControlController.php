@@ -64,7 +64,7 @@ class ComponentControlController extends AbstractControlController
             'action' => $this->generateUrl('btn_component_componentcontrol_create', array('container' => $container->getName())),
         ));
 
-        if ($this->get('btn_component.form_handler.component')->handleForm($form, $request)) {
+        if ($this->get('btn_component.form.handler.component')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.created');
 
             return $this->redirect($this->generateUrl('btn_component_componentcontrol_update', array('id' => $form->getData()->getId())));
@@ -95,7 +95,7 @@ class ComponentControlController extends AbstractControlController
             'action' => $this->generateUrl('btn_component_componentcontrol_update', array('id' => $id)),
         ));
 
-        if ($this->get('btn_component.form_handler.component')->handleForm($form, $request)) {
+        if ($this->get('btn_component.form.handler.component')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.updated');
 
             return $this->redirect($this->generateUrl('btn_component_componentcontrol_update', array('id' => $id)));
