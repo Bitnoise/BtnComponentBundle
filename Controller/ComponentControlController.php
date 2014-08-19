@@ -39,7 +39,8 @@ class ComponentControlController extends AbstractControlController
     }
 
     /**
-     * @Route("/{container}/create", name="btn_component_componentcontrol_create", methods={"POST", "GET"})
+     * @Route("/{container}/new", name="btn_component_componentcontrol_new", methods={"GET"})
+     * @Route("/{container}/create", name="btn_component_componentcontrol_create", methods={"POST"})
      * @Template()
      */
     public function createAction(Request $request, $container)
@@ -67,7 +68,7 @@ class ComponentControlController extends AbstractControlController
         if ($this->get('btn_component.form.handler.component')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.created');
 
-            return $this->redirect($this->generateUrl('btn_component_componentcontrol_update', array('id' => $form->getData()->getId())));
+            return $this->redirect($this->generateUrl('btn_component_componentcontrol_edit', array('id' => $form->getData()->getId())));
         }
 
         return array(
@@ -78,7 +79,8 @@ class ComponentControlController extends AbstractControlController
     }
 
     /**
-     * @Route("/{id}/update", name="btn_component_componentcontrol_update", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="btn_component_componentcontrol_edit", methods={"GET"})
+     * @Route("/{id}/update", name="btn_component_componentcontrol_update", methods={"POST"})
      * @Template()
      */
     public function updateAction(Request $request, $id)
@@ -98,7 +100,7 @@ class ComponentControlController extends AbstractControlController
         if ($this->get('btn_component.form.handler.component')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.updated');
 
-            return $this->redirect($this->generateUrl('btn_component_componentcontrol_update', array('id' => $id)));
+            return $this->redirect($this->generateUrl('btn_component_componentcontrol_edit', array('id' => $id)));
         }
 
         return array(

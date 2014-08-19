@@ -32,7 +32,7 @@
                 {% endif %}
                 <td class="{{ lst.col_act_class() }}">
                     {% if container.manageable or container.editable %}
-                        {{ lnk.edit('btn_component_componentcontrol_update', { id: entity.id }) }}
+                        {{ lnk.edit('btn_component_componentcontrol_edit', { id: entity.id }) }}
                     {% endif %}
                 </td>
             </tr>
@@ -44,6 +44,6 @@
 {% block list_buttons %}
     {{ lnk.back('btn_component_containercontrol_index') }}
     {% if container.manageable %}
-        {{ lnk.add('btn_component_componentcontrol_create', {container: container.name}) }}
+        {{ lnk.add('btn_component_componentcontrol_new', {container: container.name}) }}
     {% endif %}
 {% endblock %}

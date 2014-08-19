@@ -29,7 +29,8 @@ class ContainerControlController extends AbstractControlController
     }
 
     /**
-     * @Route("/create", name="btn_component_containercontrol_create", methods={"POST", "GET"})
+     * @Route("/new", name="btn_component_containercontrol_new", methods={"GET"})
+     * @Route("/create", name="btn_component_containercontrol_create", methods={"POST"})
      * @Template()
      */
     public function createAction(Request $request)
@@ -45,7 +46,7 @@ class ContainerControlController extends AbstractControlController
         if ($this->get('btn_component.form.handler.container')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.created');
 
-            return $this->redirect($this->generateUrl('btn_component_containercontrol_update', array('id' => $form->getData()->getId())));
+            return $this->redirect($this->generateUrl('btn_component_containercontrol_edit', array('id' => $form->getData()->getId())));
         }
 
         return array(
@@ -54,7 +55,8 @@ class ContainerControlController extends AbstractControlController
     }
 
     /**
-     * @Route("/{id}/update", name="btn_component_containercontrol_update", methods={"POST", "GET"})
+     * @Route("/{id}/edit", name="btn_component_containercontrol_edit", methods={"GET"})
+     * @Route("/{id}/update", name="btn_component_containercontrol_update", methods={"POST"})
      * @Template()
      */
     public function updateAction(Request $request, $id)
@@ -74,7 +76,7 @@ class ContainerControlController extends AbstractControlController
         if ($this->get('btn_component.form.handler.container')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.updated');
 
-            return $this->redirect($this->generateUrl('btn_component_containercontrol_update', array('id' => $id)));
+            return $this->redirect($this->generateUrl('btn_component_containercontrol_edit', array('id' => $id)));
         }
 
         return array(
