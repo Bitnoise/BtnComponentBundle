@@ -8,10 +8,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 abstract class AbstractComponentHydrator implements ComponentHydratorInterface
 {
-    /** @var \Doctrine\ORM\EntityManager */
+    /** @var \Doctrine\ORM\EntityManager $em */
     private $em;
 
-    /** @var string */
+    /** @var string $type */
     private $type;
 
     /**
