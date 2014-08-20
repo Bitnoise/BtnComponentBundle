@@ -100,7 +100,7 @@ abstract class AbstractComponentHydrator implements ComponentHydratorInterface
                 return $input;
             }
 
-            throw new \Exception('Invalid input');
+            throw new \Exception('Invalid input, object is missing getId() method');
         }
 
         $repo = $this->getEntityManager()->getRepository($className);
