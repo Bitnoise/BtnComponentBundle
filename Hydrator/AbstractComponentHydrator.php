@@ -30,7 +30,7 @@ abstract class AbstractComponentHydrator implements ComponentHydratorInterface
     public function getEntityManager()
     {
         if (!$this->em) {
-            throw new \Exception('Entity manager not injected');
+            throw new \Exception(sprintf('Entity manager was not injected to "%s"', __CLASS__));
         }
 
         return $this->em;
