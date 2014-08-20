@@ -83,8 +83,8 @@ abstract class AbstractComponentHydrator implements ComponentHydratorInterface
     {
         $output = array();
 
-        foreach ($input as $key => $item) {
-            $output[$key] = is_array($item) ? $this->objectsToIds($item) : $this->objectToId($item);
+        foreach ($input as $item) {
+            $output[] = $this->objectToId($item);
         }
 
         return $output;
