@@ -7,14 +7,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ComponentControlForm extends AbstractForm
 {
-    /** @var boolean $saveButtonSubscriber */
-    protected $saveButtonSubscriber = false;
-
     /**
      *
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->disableAddSaveButtonSubscriber();
+
         parent::buildForm($builder, $options);
 
         $container  = $this->manager->getProvider()->getContainer($options['data']->getContainer());
