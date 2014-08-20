@@ -7,6 +7,9 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ComponentControlForm extends AbstractForm
 {
+    /** @var boolean $saveButtonSubscriber */
+    protected $saveButtonSubscriber = false;
+
     /**
      *
      */
