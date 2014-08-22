@@ -25,9 +25,16 @@ services:
         arguments:
             manager: @btn_component.manager
 
-    btn_component.form.type.component_type:
-        class: Btn\ComponentBundle\Form\Type\ComponentTypeType
+    btn_component.form.type.component:
+        class: Btn\ComponentBundle\Form\Type\ComponentType
         arguments:
             manager: @btn_component.manager
         tags:
-            - { name: form.type, alias: btn_component_type_component_type }
+            - { name: form.type, alias: btn_component }
+
+    btn_component.form.type.container:
+        class: Btn\ComponentBundle\Form\Type\ContainerType
+        arguments:
+            containerProvider: @btn_component.container_provider
+        tags:
+            - { name: form.type, alias: btn_container }

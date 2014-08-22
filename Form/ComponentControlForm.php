@@ -43,7 +43,7 @@ class ComponentControlForm extends AbstractForm
                 }
             } else {
                 $builder
-                    ->add('type', 'btn_component_type_component_type', array(
+                    ->add('type', 'btn_component', array(
                         'empty_value' => 'btn_component.component.type.empty_value',
                         'label'       => 'btn_component.component.type',
                         'container' => $container,

@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Btn\ComponentBundle\Manager\ManagerInterface;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
 
-class ComponentTypeType extends AbstractType
+class ComponentType extends AbstractType
 {
     /** @var \Btn\ComponentBundle\Manager\ManagerInterface $manager */
     protected $manager;
@@ -86,6 +86,6 @@ class ComponentTypeType extends AbstractType
      */
     public function getName()
     {
-        return 'btn_component_type_component_type';
+        return 'btn_component';
     }
 }
