@@ -10,7 +10,7 @@ class ContainerController extends Controller
     /**
      * @Route("/_container/{id}", name="btn_component_container_show")
      */
-    public function renderAction($id)
+    public function showAction($id)
     {
         return array('id' => $id);
     }
