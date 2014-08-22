@@ -17,3 +17,5 @@ btn_component.container.components: 'Components'
 btn_component.container.create: 'Container create'
 btn_component.container.edit: 'Container edit'
 btn_component.container.title: 'Container title'
+
+btn_component.container_node_content_provider.name: 'Container provider'

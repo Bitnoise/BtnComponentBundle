@@ -2,24 +2,19 @@
 
 namespace Btn\ComponentBundle\Provider;
 
-use Btn\ComponentBundle\Form\Type\NodeContentType;
+use Btn\ComponentBundle\Form\ContainerNodeContentProviderForm;
 use Btn\NodeBundle\Provider\NodeContentProviderInterface;
 
-/**
- *
- */
-class NodeContentProvider implements NodeContentProviderInterface
+class ContainerNodeContentProvider implements NodeContentProviderInterface
 {
-    private $containersProvider;
-    private $renderRouteName;
+    protected $renderRouteName;
 
     /**
      *
      */
-    public function __construct($containersProvider, $renderRouteName)
+    public function __construct($renderRouteName)
     {
-        $this->containersProvider = $containersProvider;
-        $this->renderRouteName    = $renderRouteName;
+        $this->renderRouteName = $renderRouteName;
     }
 
     /**
@@ -27,12 +22,7 @@ class NodeContentProvider implements NodeContentProviderInterface
      */
     public function getForm()
     {
-        $data = array();
-        foreach ($this->containersProvider->getContainers() as $container) {
-            $data[$container->getName()] = $container->getTitle();
-        }
-
-        return new NodeContentType($data);
+        return new ContainerNodeContentProviderForm();
     }
 
     /**
@@ -56,7 +46,7 @@ class NodeContentProvider implements NodeContentProviderInterface
      */
     public function resolveControlRoute($formData = array())
     {
-        return 'btn_component_containercontrol_update';
+        return 'btn_component_containercontrol_edit';
     }
 
     /**
@@ -72,6 +62,6 @@ class NodeContentProvider implements NodeContentProviderInterface
      */
     public function getName()
     {
-        return 'Page components';
+        return 'btn_component.container_node_content_provider.name';
     }
 }

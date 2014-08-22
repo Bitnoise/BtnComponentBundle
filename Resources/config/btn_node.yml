@@ -1,9 +1,10 @@
-services:
+parameters:
+    btn_component.provider.container_node_content.class: Btn\ComponentBundle\Provider\ContainerNodeContentProvider
 
-    btn_component.provider.node_content:
-        class: Btn\ComponentBundle\Provider\NodeContentProvider
+services:
+    btn_component.provider.container_node_content:
+        class: %btn_component.provider.container_node_content.class%
         arguments:
-            containersProvider: @btn_component.container_provider
-            renderRouteName:    %btn_component.container.show_route_name%
+            renderRouteName:   %btn_component.container.show_route_name%
         tags:
             - { name: btn_node.content_provider }
