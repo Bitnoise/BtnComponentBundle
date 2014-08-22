@@ -1,6 +1,15 @@
+parameters:
+    btn_component.form.component_control.class: Btn\ComponentBundle\Form\ComponentControlForm
+    btn_component.form.handler.component.class: Btn\ComponentBundle\Form\Handler\ComponentFormHandler
+    btn_component.form.container_control.class: Btn\ComponentBundle\Form\ContainerControlForm
+    btn_component.form.handler.container.class: Btn\ComponentBundle\Form\Handler\ContainerFormHandler
+    btn_component.form.type.component.class: Btn\ComponentBundle\Form\Type\ComponentType
+    btn_component.form.type.container.class: Btn\ComponentBundle\Form\Type\ContainerType
+    btn_component.form.type.template.class: Btn\ComponentBundle\Form\Type\TemplateType
+
 services:
     btn_component.form.component_control:
-        class: Btn\ComponentBundle\Form\ComponentControlForm
+        class: %btn_component.form.component_control.class%
         parent: btn_admin.form.abstract
         calls:
             - [setManager, [@btn_component.manager]]
@@ -8,12 +17,12 @@ services:
             - { name: form.type, alias: btn_component_form_component }
 
     btn_component.form.handler.component:
-        class: Btn\ComponentBundle\Form\Handler\ComponentFormHandler
+        class: %btn_component.form.handler.component.class%
         arguments:
             manager: @btn_component.manager
 
     btn_component.form.container_control:
-        class: Btn\ComponentBundle\Form\ContainerControlForm
+        class: %btn_component.form.container_control.class%
         parent: btn_admin.form.abstract
         calls:
             - [setManager, [@btn_component.manager]]
@@ -21,20 +30,27 @@ services:
             - { name: form.type, alias: btn_component_form_container }
 
     btn_component.form.handler.container:
-        class: Btn\ComponentBundle\Form\Handler\ContainerFormHandler
+        class: %btn_component.form.handler.container.class%
         arguments:
             manager: @btn_component.manager
 
     btn_component.form.type.component:
-        class: Btn\ComponentBundle\Form\Type\ComponentType
+        class: %btn_component.form.type.component.class%
         arguments:
             manager: @btn_component.manager
         tags:
             - { name: form.type, alias: btn_component }
 
     btn_component.form.type.container:
-        class: Btn\ComponentBundle\Form\Type\ContainerType
+        class: %btn_component.form.type.container.class%
         arguments:
             containerProvider: @btn_component.container_provider
         tags:
             - { name: form.type, alias: btn_container }
+
+    btn_component.form.type.template:
+        class: %btn_component.form.type.template.class%
+        arguments:
+            templates: %btn_component.templates%
+        tags:
+            - { name: form.type, alias: btn_template }

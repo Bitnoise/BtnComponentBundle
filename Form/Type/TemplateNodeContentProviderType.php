@@ -1,11 +1,11 @@
 <?php
 
-namespace Btn\ComponentBundle\Form;
+namespace Btn\ComponentBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
+use Btn\AdminBundle\Form\Type\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class ContainerNodeContentProviderForm extends AbstractType
+class TemplateNodeContentProviderType extends AbstractType
 {
     /**
      *
@@ -13,7 +13,7 @@ class ContainerNodeContentProviderForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('container', 'btn_container')
+            ->add('template', 'btn_template')
         ;
     }
 
@@ -22,6 +22,6 @@ class ContainerNodeContentProviderForm extends AbstractType
      */
     public function getName()
     {
-        return 'btn_component_form_node_content_provider';
+        return 'btn_component_form_type_template_content_provider';
     }
 }

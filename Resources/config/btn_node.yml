@@ -1,10 +1,18 @@
 parameters:
+    btn_component.provider.template_node_content.class: Btn\ComponentBundle\Provider\TemplateNodeContentProvider
     btn_component.provider.container_node_content.class: Btn\ComponentBundle\Provider\ContainerNodeContentProvider
 
 services:
+    btn_component.provider.template_node_content:
+        class: %btn_component.provider.template_node_content.class%
+        arguments:
+            configuration: %btn_component.node_content_provider.template%
+        tags:
+            - { name: btn_node.content_provider }
+
     btn_component.provider.container_node_content:
         class: %btn_component.provider.container_node_content.class%
         arguments:
-            renderRouteName:   %btn_component.container.show_route_name%
+            configuration: %btn_component.node_content_provider.container%
         tags:
             - { name: btn_node.content_provider }

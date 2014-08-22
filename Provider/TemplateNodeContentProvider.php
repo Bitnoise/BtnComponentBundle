@@ -2,10 +2,10 @@
 
 namespace Btn\ComponentBundle\Provider;
 
-use Btn\ComponentBundle\Form\Type\ContainerNodeContentProviderType;
+use Btn\ComponentBundle\Form\Type\TemplateNodeContentProviderType;
 use Btn\NodeBundle\Provider\NodeContentProviderInterface;
 
-class ContainerNodeContentProvider implements NodeContentProviderInterface
+class TemplateNodeContentProvider implements NodeContentProviderInterface
 {
     protected $configuration;
 
@@ -15,10 +15,6 @@ class ContainerNodeContentProvider implements NodeContentProviderInterface
     public function __construct(array $configuration)
     {
         $this->configuration = $configuration;
-
-        if (!$this->configuration['enabled']) {
-            return false;
-        }
     }
 
     /**
@@ -26,7 +22,7 @@ class ContainerNodeContentProvider implements NodeContentProviderInterface
      */
     public function getForm()
     {
-        return new ContainerNodeContentProviderType();
+        return new TemplateNodeContentProviderType();
     }
 
     /**
@@ -34,7 +30,7 @@ class ContainerNodeContentProvider implements NodeContentProviderInterface
      */
     public function resolveRoute($formData = array())
     {
-        return isset($formData['container']) ? $this->configuration['route_name'] : null;
+        return isset($formData['template']) ? $this->configuration['route_name'] : null;
     }
 
     /**
@@ -42,7 +38,7 @@ class ContainerNodeContentProvider implements NodeContentProviderInterface
      */
     public function resolveRouteParameters($formData = array())
     {
-        return isset($formData['container']) ? array('id' => $formData['container']) : array();
+        return isset($formData['template']) ? array('template' => $formData['template']) : array();
     }
 
     /**
@@ -50,7 +46,7 @@ class ContainerNodeContentProvider implements NodeContentProviderInterface
      */
     public function resolveControlRoute($formData = array())
     {
-        return isset($formData['container']) ? 'btn_component_containercontrol_edit' : null;
+        return isset($formData['template']) ? 'btn_component_containercontrol_edit' : null;
     }
 
     /**
@@ -58,7 +54,7 @@ class ContainerNodeContentProvider implements NodeContentProviderInterface
      */
     public function resolveControlRouteParameters($formData = array())
     {
-        return isset($formData['container']) ? array('id' => $formData['container']) : array();
+        return isset($formData['template']) ? array('template' => $formData['template']) : array();
     }
 
     /**
@@ -74,6 +70,6 @@ class ContainerNodeContentProvider implements NodeContentProviderInterface
      */
     public function getName()
     {
-        return 'btn_component.container_node_content_provider.name';
+        return 'btn_component.template_node_content_provider.name';
     }
 }
