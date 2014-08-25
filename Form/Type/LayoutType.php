@@ -5,17 +5,17 @@ namespace Btn\ComponentBundle\Form\Type;
 use Btn\AdminBundle\Form\Type\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class TemplateType extends AbstractType
+class LayoutType extends AbstractType
 {
-    /** @var array $templates */
-    protected $templates;
+    /** @var array $layouts */
+    protected $layouts;
 
     /**
      *
      */
-    public function __construct(array $templates = null)
+    public function __construct(array $layouts = null)
     {
-        $this->templates = $templates;
+        $this->layouts = $layouts;
     }
 
     /**
@@ -27,15 +27,15 @@ class TemplateType extends AbstractType
 
         $choices = array();
 
-        if ($this->templates) {
-            foreach ($this->templates as $key => $template) {
+        if ($this->layouts) {
+            foreach ($this->layouts as $key => $template) {
                 $choices[$key] = !empty($template['title']) ? $template['title'] : $template['template'];
             }
         }
 
         $resolver->setDefaults(array(
-            'label'       => 'btn_component.type.template.label',
-            'empty_value' => 'btn_component.type.template.empty_value',
+            'label'       => 'btn_component.type.layout.label',
+            'empty_value' => 'btn_component.type.layout.empty_value',
             'choices'     => $choices,
             'expanded'    => false,
         ));
@@ -54,6 +54,6 @@ class TemplateType extends AbstractType
      */
     public function getName()
     {
-        return 'btn_template';
+        return 'btn_component_layout';
     }
 }

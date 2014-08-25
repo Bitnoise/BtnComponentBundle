@@ -38,10 +38,10 @@ class BtnComponentExtension extends AbstractExtension
 
         $container->setParameter('btn_component.containers', $config['containers']);
         $container->setParameter('btn_component.components', $config['components']);
-        $container->setParameter('btn_component.templates', $config['templates']);
+        $container->setParameter('btn_component.layouts', $config['layouts']);
 
         $container->setParameter('btn_component.node_content_provider.container', $config['node_content_provider']['container']);
-        $container->setParameter('btn_component.node_content_provider.template', $config['node_content_provider']['template']);
+        $container->setParameter('btn_component.node_content_provider.layout', $config['node_content_provider']['layout']);
 
         $this->addClassesToCompile(array(
             'Btn\\ComponentBundle\\EventListener\\HydratorSubscriber',

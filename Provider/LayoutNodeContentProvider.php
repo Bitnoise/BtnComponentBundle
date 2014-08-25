@@ -2,10 +2,10 @@
 
 namespace Btn\ComponentBundle\Provider;
 
-use Btn\ComponentBundle\Form\Type\TemplateNodeContentProviderType;
+use Btn\ComponentBundle\Form\Type\LayoutNodeContentProviderType;
 use Btn\NodeBundle\Provider\NodeContentProviderInterface;
 
-class TemplateNodeContentProvider implements NodeContentProviderInterface
+class LayoutNodeContentProvider implements NodeContentProviderInterface
 {
     protected $configuration;
 
@@ -22,7 +22,7 @@ class TemplateNodeContentProvider implements NodeContentProviderInterface
      */
     public function getForm()
     {
-        return new TemplateNodeContentProviderType();
+        return new LayoutNodeContentProviderType();
     }
 
     /**
@@ -70,6 +70,6 @@ class TemplateNodeContentProvider implements NodeContentProviderInterface
      */
     public function getName()
     {
-        return 'btn_component.template_node_content_provider.name';
+        return 'btn_component.layout_node_content_provider.name';
     }
 }

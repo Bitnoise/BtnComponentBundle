@@ -5,7 +5,7 @@ parameters:
     btn_component.form.handler.container.class: Btn\ComponentBundle\Form\Handler\ContainerFormHandler
     btn_component.form.type.component.class: Btn\ComponentBundle\Form\Type\ComponentType
     btn_component.form.type.container.class: Btn\ComponentBundle\Form\Type\ContainerType
-    btn_component.form.type.template.class: Btn\ComponentBundle\Form\Type\TemplateType
+    btn_component.form.type.layout.class: Btn\ComponentBundle\Form\Type\LayoutType
 
 services:
     btn_component.form.component_control:
@@ -48,9 +48,9 @@ services:
         tags:
             - { name: form.type, alias: btn_container }
 
-    btn_component.form.type.template:
-        class: %btn_component.form.type.template.class%
+    btn_component.form.type.layout:
+        class: %btn_component.form.type.layout.class%
         arguments:
-            templates: %btn_component.templates%
+            layouts: %btn_component.layouts%
         tags:
-            - { name: form.type, alias: btn_template }
+            - { name: form.type, alias: btn_component_layout }

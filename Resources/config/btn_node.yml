@@ -1,12 +1,13 @@
 parameters:
-    btn_component.provider.template_node_content.class: Btn\ComponentBundle\Provider\TemplateNodeContentProvider
+    btn_component.provider.layout_node_content.class: Btn\ComponentBundle\Provider\LayoutNodeContentProvider
     btn_component.provider.container_node_content.class: Btn\ComponentBundle\Provider\ContainerNodeContentProvider
+    btn_component.event_listener.node_layout_subscriber.class: Btn\ComponentBundle\EventListener\NodeLayoutSubscriber
 
 services:
-    btn_component.provider.template_node_content:
-        class: %btn_component.provider.template_node_content.class%
+    btn_component.provider.layout_node_content:
+        class: %btn_component.provider.layout_node_content.class%
         arguments:
-            configuration: %btn_component.node_content_provider.template%
+            configuration: %btn_component.node_content_provider.layout%
         tags:
             - { name: btn_node.content_provider }
 
@@ -16,3 +17,12 @@ services:
             configuration: %btn_component.node_content_provider.container%
         tags:
             - { name: btn_node.content_provider }
+
+    btn_component.event_listener.node_layout_subscriber:
+        class: %btn_component.event_listener.node_layout_subscriber.class%
+        arguments:
+            layoutManager: @btn_component.manager.layout
+            containerProvider: @btn_component.provider.container
+            nodeProvider: @btn_node.provider.node
+        tags:
+            - { name: kernel.event_subscriber }
