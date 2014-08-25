@@ -6,6 +6,7 @@
     "homepage": "https://github.com/Bitnoise/BtnComponentBundle",
     "license": "MIT",
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "Bitnoise Team",
@@ -16,11 +17,15 @@
     "require": {
         "bitnoise/admin-bundle": "2.0.*"
     },
-    "suggest": {},
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://bitnoise.github.io/packages/"
+        }
+    ],
     "autoload": {
-        "psr-0": { "Btn\\ComponentBundle": "" }
+        "psr-0": { "Btn\\ComponentBundle\\": "src/" }
     },
-    "target-dir": "Btn/ComponentBundle",
     "extra": {
         "branch-alias": {
             "dev-master": "2.0-dev"
