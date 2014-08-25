@@ -89,9 +89,9 @@ class ContainerProvider implements ContainerProviderInterface
     /**
      *
      */
-    public function getContainerById($id)
+    public function getContainerByIdentifier($identifier)
     {
-        return is_numeric($id) ? $this->getContainerRepository()->findOneById($id) : $this->getContainerRepository()->findOneByName($id);
+        return is_numeric($identifier) ? $this->getContainerRepository()->findOneById($identifier) : $this->getContainerRepository()->findOneByName($identifier);
     }
 
     /**

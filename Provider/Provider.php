@@ -112,9 +112,9 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     /**
      *
      */
-    public function getContainerById($id)
+    public function getContainerByIdentifier($identifier)
     {
-        return $this->containerProvider->getContainerById($id);
+        return $this->containerProvider->getContainerByIdentifier($identifier);
     }
 
     /**
