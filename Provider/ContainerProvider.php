@@ -4,14 +4,12 @@ namespace Btn\ComponentBundle\Provider;
 
 use Btn\ComponentBundle\Model\ContainerInterface;
 use Btn\ComponentBundle\Model\StaticContainer;
-use Doctrine\ORM\EntityManager;
+use Btn\BaseBundle\Provider\EntityProviderInterface;
 
 class ContainerProvider implements ContainerProviderInterface
 {
-    /** @var string */
-    protected $containerClass;
-    /** @var \Btn\ComponentBundle\Model\AbstractContainerRepository $containerRepository */
-    protected $containerRepository;
+    /** @var \Btn\BaseBundle\Provider\EntityProviderInterface $entityProvider */
+    protected $entityProvider;
     /** @var \Btn\ComponentBundle\Model\ContainerInterface[] $containers */
     protected $containers;
     /** @var bolean $loaded has containers been loaded from database */
@@ -20,10 +18,9 @@ class ContainerProvider implements ContainerProviderInterface
     /**
      *
      */
-    public function __construct($containerClass, EntityManager $em)
+    public function __construct(EntityProviderInterface $entityProvider)
     {
-        $this->containerClass      = $containerClass;
-        $this->containerRepository = $this->containerClass ? $em->getRepository($this->containerClass) : null;
+        $this->entityProvider = $entityProvider;
     }
 
     /**
@@ -31,11 +28,7 @@ class ContainerProvider implements ContainerProviderInterface
      */
     public function getContainerRepository()
     {
-        if (!$this->containerRepository) {
-            throw new \Exception('Container class not defined');
-        }
-
-        return $this->containerRepository;
+        return $this->entityProvider->getRepository();
     }
 
     /**
@@ -117,7 +110,7 @@ class ContainerProvider implements ContainerProviderInterface
      */
     public function getContainerClass()
     {
-        return $this->containerClass;
+        return $this->entityProvider->getClass();
     }
 
     /**
@@ -125,10 +118,7 @@ class ContainerProvider implements ContainerProviderInterface
      */
     public function createContainer()
     {
-        $containerClass = $this->getContainerClass();
-        $container = new $containerClass();
-
-        return $container;
+        return $this->entityProvider->create();
     }
 
     /**

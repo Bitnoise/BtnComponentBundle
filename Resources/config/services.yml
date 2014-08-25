@@ -9,11 +9,20 @@ parameters:
     btn_component.event_listener.component_subscriber.class: Btn\ComponentBundle\EventListener\ComponentSubscriber
 
 services:
+    btn_component.provider.component:
+        class: %btn_base.provider.entity.class%
+        parent: btn_base.provider.abstract_entity
+        arguments: ['%btn_component.component.class%']
+
+    btn_component.provider.container:
+        class: %btn_base.provider.entity.class%
+        parent: btn_base.provider.abstract_entity
+        arguments: ['%btn_component.container.class%']
+
     btn_component.container_provider.default:
         class: %btn_component.container_provider.default.class%
         arguments:
-            containerClass: %btn_component.container.class%
-            em: @doctrine.orm.entity_manager
+            entityProvider: @btn_component.provider.container
         calls:
             - [setContainers, ['%btn_component.containers%']]
 
