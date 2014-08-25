@@ -4,6 +4,9 @@ namespace Btn\ComponentBundle\Model;
 
 class StaticContainer extends AbstractContainer
 {
+    /** @var string $id */
+    protected $id;
+
     /**
      *
      */
@@ -13,5 +16,21 @@ class StaticContainer extends AbstractContainer
         $this->setType(self::TYPE_STATIC);
         $this->setEditable(false);
         $this->setManageable(false);
+    }
+
+    /**
+     *
+     */
+    public function setId($id)
+    {
+        return $this->id = $id;
+    }
+
+    /**
+     *
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

@@ -28,7 +28,7 @@ class ContainerType extends AbstractType
         $choices = array();
 
         foreach ($this->containerProvider->getContainers() as $container) {
-            $choices[$container->getName()] = $container->getTitle();
+            $choices[$container->getId()] = $container->getTitle();
         }
 
         $resolver->setDefaults(array(

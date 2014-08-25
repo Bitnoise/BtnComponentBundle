@@ -7,10 +7,9 @@ interface ContainerInterface
     const TYPE_STATIC  = 1;
     const TYPE_DYNAMIC = 2;
 
+    public function getId();
     public function setTitle($title);
     public function getTitle();
-    public function setName($name);
-    public function getName();
     public function setType($type);
     public function getType();
     public function setManageable($manageable);
@@ -21,4 +20,6 @@ interface ContainerInterface
     public function isEditable();
     public function setParameters(array $parameters);
     public function getParameters();
+    public function isDynamic();
+    public function isStatic();
 }

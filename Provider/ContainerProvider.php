@@ -73,40 +73,40 @@ class ContainerProvider implements ContainerProviderInterface
      */
     public function registerContainer(ContainerInterface $container)
     {
-        $this->containers[$container->getName()] = $container;
+        $this->containers[$container->getId()] = $container;
     }
 
     /**
      *
      */
-    public function isContainerExists($name)
+    public function isContainerExists($id)
     {
         $containers = $this->getContainers();
 
-        return isset($containers[$name]) ? true : false;
+        return isset($containers[$id]) ? true : false;
     }
 
     /**
      *
      */
-    public function getContainerByIdentifier($identifier)
+    public function getContainerById($id)
     {
-        return is_numeric($identifier) ? $this->getContainerRepository()->findOneById($identifier) : $this->getContainerRepository()->findOneByName($identifier);
+        return $this->getContainerRepository()->findOneById($id);
     }
 
     /**
      *
      */
-    public function getContainer($name)
+    public function getContainer($id)
     {
-        if ($name instanceof ContainerInterface) {
-            return $name;
+        if ($id instanceof ContainerInterface) {
+            return $id;
         }
 
-        if ($this->isContainerExists($name)) {
+        if ($this->isContainerExists($id)) {
             $containers = $this->getContainers();
 
-            return $containers[$name];
+            return $containers[$id];
         }
 
         return false;

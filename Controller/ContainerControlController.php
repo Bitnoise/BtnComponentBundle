@@ -64,7 +64,7 @@ class ContainerControlController extends AbstractControlController
         $manager  = $this->get('btn_component.manager');
         $provider = $this->get('btn_component.provider');
 
-        $container = $provider->getContainerByIdentifier($id);
+        $container = $provider->getContainerById($id);
         if (!$container) {
             throw $this->createNotFoundException(sprintf('Container "%s" was not found', $id));
         }
@@ -94,7 +94,7 @@ class ContainerControlController extends AbstractControlController
 
         $this->validateCsrfTokenOrThrowException('btn_component_containercontrol_delete', $csrf_token);
 
-        $container = $provider->getContainerByIdentifier($id);
+        $container = $provider->getContainerById($id);
         if (!$container) {
             throw $this->createNotFoundException(sprintf('Container "%s" was not found', $id));
         }

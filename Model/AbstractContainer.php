@@ -17,11 +17,6 @@ abstract class AbstractContainer implements \ArrayAccess, ContainerInterface, Hy
     protected $title;
 
     /**
-     * @ORM\Column(name="name", type="string", length=100)
-     */
-    protected $name;
-
-    /**
      * @ORM\Column(name="type", type="smallint")
      */
     protected $type;
@@ -51,7 +46,6 @@ abstract class AbstractContainer implements \ArrayAccess, ContainerInterface, Hy
      */
     public function __construct()
     {
-        $this->setName(substr(md5(uniqid(rand(), true)), 0, 6));
         $this->setType(self::TYPE_DYNAMIC);
         $this->setEditable(true);
         $this->setmanageable(true);
@@ -73,24 +67,6 @@ abstract class AbstractContainer implements \ArrayAccess, ContainerInterface, Hy
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     *
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     *
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -184,9 +160,25 @@ abstract class AbstractContainer implements \ArrayAccess, ContainerInterface, Hy
     /**
      *
      */
+    public function isDynamic()
+    {
+        return (self::TYPE_DYNAMIC === $this->getType()) ? true : false;
+    }
+
+    /**
+     *
+     */
+    public function isStatic()
+    {
+        return (self::TYPE_STATIC === $this->getType()) ? true : false;
+    }
+
+    /**
+     *
+     */
     public function __toString()
     {
-        return $this->getTitle() ? $this->getTitle() : $this->getName();
+        return $this->getTitle() ? $this->getTitle() : $this->getId();
     }
 
     /**
@@ -198,7 +190,9 @@ abstract class AbstractContainer implements \ArrayAccess, ContainerInterface, Hy
 
         foreach ($array as $field => $value) {
             $method = 'set' . ucfirst($field);
-            $container->$method($value);
+            if (method_exists($container, $method)) {
+                $container->$method($value);
+            }
         }
 
         return $container;

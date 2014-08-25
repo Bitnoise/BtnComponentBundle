@@ -97,7 +97,7 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
     public function setContainer($container)
     {
         if ($container instanceof ContainerInterface) {
-            $this->container = $container->getName();
+            $this->container = $container->getId();
         } elseif (is_string($container)) {
             $this->container = $container;
         } else {

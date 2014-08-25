@@ -73,8 +73,8 @@ class Configuration implements ConfigurationInterface
                         ->ifArray()
                         ->then(function ($v) {
                             foreach ($v as $key => $value) {
-                                if (empty($value['name'])) {
-                                    $v[$key]['name'] = $key;
+                                if (empty($value['id'])) {
+                                    $v[$key]['id'] = $key;
                                 }
                             }
 
@@ -83,7 +83,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                     ->prototype('array')
                         ->children()
-                            ->scalarNode('name')->defaultValue(null)->end()
+                            ->scalarNode('id')->defaultValue(null)->end()
                             ->scalarNode('title')->isRequired()->end()
                             ->booleanNode('editable')->defaultValue(false)->end()
                             ->booleanNode('manageable')->defaultValue(false)->end()

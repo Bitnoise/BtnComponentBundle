@@ -55,14 +55,14 @@ class ComponentControlController extends AbstractControlController
         $container = $provider->getContainer($container);
 
         if (!$container->isManageable()) {
-            throw new \Exception(sprintf('Container "%s" is not manageable', $container->getName()));
+            throw new \Exception(sprintf('Container "%s" is not manageable', $container->getId()));
         }
 
         $component = $provider->createComponent();
         $component->setContainer($container);
 
         $form = $this->createForm('btn_component_form_component', $component, array(
-            'action' => $this->generateUrl('btn_component_componentcontrol_create', array('container' => $container->getName())),
+            'action' => $this->generateUrl('btn_component_componentcontrol_create', array('container' => $container->getId())),
         ));
 
         if ($this->get('btn_component.form.handler.component')->handleForm($form, $request)) {
