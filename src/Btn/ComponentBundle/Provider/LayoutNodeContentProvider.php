@@ -20,6 +20,14 @@ class LayoutNodeContentProvider implements NodeContentProviderInterface
     /**
      *
      */
+    public function isEnabled()
+    {
+        return $this->configuration['enabled'];
+    }
+
+    /**
+     *
+     */
     public function getForm()
     {
         return new LayoutNodeContentProviderType();
@@ -30,7 +38,7 @@ class LayoutNodeContentProvider implements NodeContentProviderInterface
      */
     public function resolveRoute($formData = array())
     {
-        return isset($formData['template']) ? $this->configuration['route_name'] : null;
+        return isset($formData['layout']) ? $this->configuration['route_name'] : null;
     }
 
     /**
@@ -38,7 +46,7 @@ class LayoutNodeContentProvider implements NodeContentProviderInterface
      */
     public function resolveRouteParameters($formData = array())
     {
-        return isset($formData['template']) ? array('template' => $formData['template']) : array();
+        return isset($formData['layout']) ? array('layout' => $formData['layout']) : array();
     }
 
     /**
@@ -46,7 +54,7 @@ class LayoutNodeContentProvider implements NodeContentProviderInterface
      */
     public function resolveControlRoute($formData = array())
     {
-        return isset($formData['template']) ? 'btn_component_containercontrol_edit' : null;
+        return isset($formData['layout']) ? 'btn_component_containercontrol_edit' : null;
     }
 
     /**
@@ -54,15 +62,7 @@ class LayoutNodeContentProvider implements NodeContentProviderInterface
      */
     public function resolveControlRouteParameters($formData = array())
     {
-        return isset($formData['template']) ? array('template' => $formData['template']) : array();
-    }
-
-    /**
-     *
-     */
-    public function isEnabled()
-    {
-        return $this->configuration['enabled'];
+        return isset($formData['layout']) ? array('layout' => $formData['layout']) : array();
     }
 
     /**

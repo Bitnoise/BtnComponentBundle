@@ -2,7 +2,7 @@
 {% extends 'BtnAdminBundle::form.html.twig' %}
 
 {% block form_content %}
-    {% set legend = 'btn_component.component.create'|trans({'%container_title%' : container.title ?: container.name|trans}) %}
+    {% set legend = 'btn_component.component.create'|trans({'%container_title%' : container.title}) %}
     {% include 'BtnComponentBundle:ComponentControl:_form.html.twig' with {form: form, legend: legend} only %}
 {% endblock %}
 
