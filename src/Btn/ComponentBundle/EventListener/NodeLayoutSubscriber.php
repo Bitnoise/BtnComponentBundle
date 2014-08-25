@@ -56,7 +56,7 @@ class NodeLayoutSubscriber implements EventSubscriberInterface
             // get current containers
             $currentContainers = isset($providerParameters['containers']) ? $providerParameters['containers'] : array();
 
-            // clear current contaienrs
+            // clear current containers
             $containers = array();
 
             if (!empty($providerParameters['layout'])) {
@@ -71,7 +71,7 @@ class NodeLayoutSubscriber implements EventSubscriberInterface
                 }
             }
 
-            $providerParameters['contaienrs'] = $containers;
+            $providerParameters['containers'] = $containers;
 
             $node->setProviderParameters($providerParameters);
             $this->nodeProvider->save($node);
