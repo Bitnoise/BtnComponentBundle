@@ -23,7 +23,7 @@ class HydratorSubscriber implements EventSubscriber
     }
 
     /**
-     *
+     * {@inheritdoc}
      */
     public function getSubscribedEvents()
     {

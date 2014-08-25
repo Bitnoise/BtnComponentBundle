@@ -20,7 +20,7 @@ class ComponentSubscriber implements EventSubscriber
     }
 
     /**
-     *
+     * {@inheritdoc}
      */
     public function getSubscribedEvents()
     {
