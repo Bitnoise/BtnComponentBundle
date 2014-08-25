@@ -40,9 +40,9 @@ class RendererExtension extends \Twig_Extension
     /**
      *
      */
-    public function containerRender($type, array $containerParameters = null)
+    public function containerRender($container, array $containerParameters = null)
     {
-        return $this->renderer->containerRender($type, $containerParameters);
+        return $this->renderer->containerRender($container, $containerParameters);
     }
 
     /**
