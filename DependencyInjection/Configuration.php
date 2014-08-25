@@ -33,7 +33,6 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('container')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('show_route_name')->defaultValue(null)->end()
                         ->scalarNode('class')->defaultValue(null)->end()
                         ->scalarNode('provider_id')->defaultValue('btn_component.container_provider.default')->end()
                         ->scalarNode('manager_id')->defaultValue('btn_component.container_manager.default')->end()

@@ -16,8 +16,6 @@ class BtnComponentExtension extends AbstractExtension
 
         $config = $this->getProcessedConfig($container, $configs);
 
-        $container->setParameter('btn_component.container.show_route_name', $config['container']['show_route_name']);
-
         $container->setParameter('btn_component.component.class', $config['component']['class']);
         $container->setParameter('btn_component.container.class', $config['container']['class']);
 
