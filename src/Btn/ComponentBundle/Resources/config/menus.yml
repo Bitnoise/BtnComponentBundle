@@ -1,6 +1,6 @@
 services:
     btn_component.btn_admin_menu_top_item:
-        class: Knp\Menu\MenuItem
+        class: Btn\AdminBundle\Menu\MenuItem
         factory_service: btn_admin.menu_builder
         factory_method: createMenu
         arguments: ["@request", "btn_component.container.components", "btn_component_containercontrol_index", [], []]
