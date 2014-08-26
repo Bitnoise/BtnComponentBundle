@@ -7,6 +7,6 @@
 
 {% block form_buttons %}
     {{ lnk.back('btn_component_containercontrol_index') }}
-    {{ lnk.primary('btn_component.container.components', 'btn_component_componentcontrol_list', { container: container.name }) }}
-    {{ lnk.delete('btn_component_containercontrol_delete', {id: container.id}) }}
+    {{ lnk.primary('btn_component.container.components', 'btn_component_componentcontrol_list', { containerId: entity.name }) }}
+    {{ lnk.delete('btn_component_containercontrol_delete', {id: entity.id}) }}
 {% endblock %}

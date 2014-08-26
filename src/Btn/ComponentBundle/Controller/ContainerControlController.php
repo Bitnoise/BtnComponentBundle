@@ -18,13 +18,9 @@ class ContainerControlController extends AbstractControlController
      */
     public function indexAction()
     {
-        $provider = $this->get('btn_component.provider');
-
-        $containers = $provider->getContainers();
-
         return array(
             'manageable' => $this->container->getParameter('btn_component.container.class') ? true : false,
-            'containers' => $containers,
+            'pagination' => $this->get('btn_component.provider')->getContainers(),
         );
     }
 
@@ -37,9 +33,9 @@ class ContainerControlController extends AbstractControlController
     {
         $provider = $this->get('btn_component.provider');
 
-        $container = $provider->createContainer();
+        $entity = $provider->createContainer();
 
-        $form = $this->createForm('btn_component_form_container', $container, array(
+        $form = $this->createForm('btn_component_form_container', $entity, array(
             'action' => $this->generateUrl('btn_component_containercontrol_create'),
         ));
 
@@ -50,7 +46,8 @@ class ContainerControlController extends AbstractControlController
         }
 
         return array(
-            'form' => $form->createView(),
+            'form'   => $form->createView(),
+            'entity' => $entity,
         );
     }
 
@@ -64,12 +61,12 @@ class ContainerControlController extends AbstractControlController
         $manager  = $this->get('btn_component.manager');
         $provider = $this->get('btn_component.provider');
 
-        $container = $provider->getContainerById($id);
-        if (!$container) {
+        $entity = $provider->getContainerById($id);
+        if (!$entity) {
             throw $this->createNotFoundException(sprintf('Container "%s" was not found', $id));
         }
 
-        $form = $this->createForm('btn_component_form_container', $container, array(
+        $form = $this->createForm('btn_component_form_container', $entity, array(
             'action' => $this->generateUrl('btn_component_containercontrol_update', array('id' => $id)),
         ));
 
@@ -80,8 +77,8 @@ class ContainerControlController extends AbstractControlController
         }
 
         return array(
-            'form'      => $form->createView(),
-            'container' => $container,
+            'form'   => $form->createView(),
+            'entity' => $entity,
         );
     }
 

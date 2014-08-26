@@ -17,17 +17,17 @@
             </tr>
         </thead>
         <tbody>
-        {% for container in containers %}
-            {% if container.editable %}
+        {% for entity in pagination %}
+            {% if entity.editable %}
                 <tr>
-                    <td class="{{ lst.col_id_class() }}">{{ container.dynamic ? container.id|default() }}</td>
-                    <td>{{ container.title ?: ( container.static ? container.id|trans ) }}</td>
+                    <td class="{{ lst.col_id_class() }}">{{ entity.dynamic ? entity.id|default() }}</td>
+                    <td>{{ entity.title ?: ( entity.static ? entity.id|trans ) }}</td>
                     <td class="{{ lst.col_act_class() }}">
-                        {{ lnk.primary('btn_component.container.components', 'btn_component_componentcontrol_list', { container: container.id }) }}
-                        {% if container.editable and container.dynamic %}
-                            {{ lnk.edit('btn_component_containercontrol_edit', { id: container.id }) }}
+                        {{ lnk.primary('btn_component.container.components', 'btn_component_componentcontrol_list', { containerId: entity.id }) }}
+                        {% if entity.editable and entity.dynamic %}
+                            {{ lnk.edit('btn_component_containercontrol_edit', { id: entity.id }) }}
                         {% endif %}
-                        {% include 'BtnComponentBundle:ContainerControl:_action_post.html.twig' ignore missing with {container: container} only %}
+                        {% include 'BtnComponentBundle:ContainerControl:_action_post.html.twig' ignore missing with {entity: entity} only %}
                     </td>
                 </tr>
             {% endif %}

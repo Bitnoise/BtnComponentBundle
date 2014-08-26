@@ -21,60 +21,54 @@ class ComponentControlController extends AbstractControlController
     }
 
     /**
-     * @Route("/{container}/list", name="btn_component_componentcontrol_list")
+     * @Route("/{containerId}/list", name="btn_component_componentcontrol_list")
      * @Template()
      */
-    public function listAction(Request $request, $container)
+    public function listAction(Request $request, $containerId)
     {
+        $this->checkIfContainerExistsOrThrowException($containerId);
+
         $provider = $this->get('btn_component.provider');
 
-        if (!$provider->isContainerExists($container)) {
-            return $this->createNotFoundException(sprintf('Container "%s" was not found', $container));
-        }
-
         return array(
-            'components' => $provider->getComponentsForContainer($container),
-            'container'  => $provider->getContainer($container),
+            'components' => $provider->getComponentsForContainer($containerId),
+            'container'  => $provider->getContainer($containerId),
         );
     }
 
     /**
-     * @Route("/{container}/new", name="btn_component_componentcontrol_new", methods={"GET"})
-     * @Route("/{container}/create", name="btn_component_componentcontrol_create", methods={"POST"})
+     * @Route("/{containerId}/new", name="btn_component_componentcontrol_new", methods={"GET"})
+     * @Route("/{containerId}/create", name="btn_component_componentcontrol_create", methods={"POST"})
      * @Template()
      */
-    public function createAction(Request $request, $container)
+    public function createAction(Request $request, $containerId)
     {
-        $provider = $this->get('btn_component.provider');
+        $this->checkIfContainerExistsOrThrowException($containerId);
 
-        if (!$provider->isContainerExists($container)) {
-            return $this->createNotFoundException(sprintf('Container "%s" was not found', $container));
-        }
-
-        // WARNING! override key with whole container for ease of use
-        $container = $provider->getContainer($container);
+        $provider  = $this->get('btn_component.provider');
+        $container = $provider->getContainer($containerId);
 
         if (!$container->isManageable()) {
-            throw new \Exception(sprintf('Container "%s" is not manageable', $container->getId()));
+            throw new \Exception(sprintf('Container with id "%s" is not manageable', $container->getId()));
         }
 
-        $component = $provider->createComponent();
-        $component->setContainer($container);
+        $entity = $provider->createComponent();
+        $entity->setContainer($container);
 
-        $form = $this->createForm('btn_component_form_component', $component, array(
-            'action' => $this->generateUrl('btn_component_componentcontrol_create', array('container' => $container->getId())),
+        $form = $this->createForm('btn_component_form_component', $entity, array(
+            'action' => $this->generateUrl('btn_component_componentcontrol_create', array('containerId' => $container->getId())),
         ));
 
         if ($this->get('btn_component.form.handler.component')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.created');
 
-            return $this->redirect($this->generateUrl('btn_component_componentcontrol_edit', array('id' => $form->getData()->getId())));
+            return $this->redirect($this->generateUrl('btn_component_componentcontrol_edit', array('id' => $entity->getId())));
         }
 
         return array(
-            'container' => $container,
             'form'      => $form->createView(),
-            'component' => $component,
+            'entity'    => $entity,
+            'container' => $container,
         );
     }
 
@@ -88,12 +82,12 @@ class ComponentControlController extends AbstractControlController
         $manager  = $this->get('btn_component.manager');
         $provider = $this->get('btn_component.provider');
 
-        $component = $provider->getComponentById($id, false);
-        if (!$component) {
+        $entity = $provider->getComponentById($id, false);
+        if (!$entity) {
             throw $this->createNotFoundException(sprintf('Component "%s" was not found', $id));
         }
 
-        $form = $this->createForm('btn_component_form_component', $component, array(
+        $form = $this->createForm('btn_component_form_component', $entity, array(
             'action' => $this->generateUrl('btn_component_componentcontrol_update', array('id' => $id)),
         ));
 
@@ -104,9 +98,9 @@ class ComponentControlController extends AbstractControlController
         }
 
         return array(
-            'container' => $provider->getContainer($component->getContainer()),
             'form'      => $form->createView(),
-            'component' => $component,
+            'entity'    => $entity,
+            'container' => $provider->getContainer($entity->getContainer()),
         );
     }
 
@@ -131,6 +125,16 @@ class ComponentControlController extends AbstractControlController
 
         $this->setFlash('btn_admin.flash.deleted');
 
-        return $this->redirect($this->generateUrl('btn_component_componentcontrol_list', array('container' => $container)));
+        return $this->redirect($this->generateUrl('btn_component_componentcontrol_list', array('containerId' => $container)));
+    }
+
+    /**
+     *
+     */
+    protected function checkIfContainerExistsOrThrowException($containerId)
+    {
+        if (!$this->get('btn_component.provider')->isContainerExists($containerId)) {
+            return $this->createNotFoundException(sprintf('Container with id "%s" was not found', $containerId));
+        }
     }
 }
