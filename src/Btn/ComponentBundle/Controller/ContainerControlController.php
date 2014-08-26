@@ -19,7 +19,7 @@ class ContainerControlController extends AbstractControlController
     public function indexAction()
     {
         return array(
-            'manageable' => $this->container->getParameter('btn_component.container.class') ? true : false,
+            'manageable' => $this->container->getParameter('btn_component.container.manageable') ? true : false,
             'pagination' => $this->get('btn_component.provider')->getContainers(),
         );
     }
@@ -31,6 +31,8 @@ class ContainerControlController extends AbstractControlController
      */
     public function createAction(Request $request)
     {
+        $this->checkIfContainersAreManageableOrThrowException();
+
         $provider = $this->get('btn_component.provider');
 
         $entity = $provider->createContainer();
@@ -87,6 +89,8 @@ class ContainerControlController extends AbstractControlController
      */
     public function deleteAction(Request $request, $id, $csrf_token)
     {
+        $this->checkIfContainersAreManageableOrThrowException();
+
         $provider = $this->get('btn_component.provider');
 
         $this->validateCsrfTokenOrThrowException('btn_component_containercontrol_delete', $csrf_token);
@@ -102,5 +106,15 @@ class ContainerControlController extends AbstractControlController
         $this->setFlash('btn_admin.flash.deleted');
 
         return $this->redirect($this->generateUrl('btn_component_containercontrol_list'));
+    }
+
+    /**
+     *
+     */
+    protected function checkIfContainersAreManageableOrThrowException()
+    {
+        if (!$this->container->getParameter('btn_component.container.manageable')) {
+            throw $this->createNotFoundException('Containers are not manageable');
+        }
     }
 }
