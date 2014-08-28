@@ -105,7 +105,7 @@ class ContainerControlController extends AbstractControlController
 
         $this->setFlash('btn_admin.flash.deleted');
 
-        return $this->redirect($this->generateUrl('btn_component_containercontrol_list'));
+        return $this->redirect($this->generateUrl('btn_component_containercontrol_index'));
     }
 
     /**
