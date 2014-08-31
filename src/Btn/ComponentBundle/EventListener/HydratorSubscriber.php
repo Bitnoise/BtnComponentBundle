@@ -7,8 +7,6 @@ use Doctrine\ORM\Events;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreFlushEventArgs;
-use Doctrine\ORM\Event\OnFlushEventArgs;
-use Doctrine\ORM\Event\PostFlushEventArgs;
 use Btn\ComponentBundle\Model\HydratableInterface;
 use Btn\ComponentBundle\Hydrator\HydratorInterface;
 
@@ -31,12 +29,12 @@ class HydratorSubscriber implements EventSubscriber
     public function getSubscribedEvents()
     {
         return array(
-            Events::preFlush    => array('preFlush', 0),
-            Events::prePersist  => array('dryEvent', 0),
-            Events::preUpdate   => array('dryEvent', 0),
-            Events::postPersist => array('hydrateEvent', 0),
-            Events::postUpdate  => array('hydrateEvent', 0),
-            Events::postLoad    => array('hydrateEvent', 0),
+            Events::preFlush,
+            Events::prePersist,
+            Events::preUpdate,
+            Events::postPersist,
+            Events::postUpdate,
+            Events::postLoad,
         );
     }
 
@@ -55,6 +53,20 @@ class HydratorSubscriber implements EventSubscriber
                     $this->dryEntity($entity, $em);
                 }
             }
+        }
+    }
+
+    /**
+     *
+     */
+    public function __call($method, $arguments)
+    {
+        if (preg_match('~^pre(Persist|Update)$~', $method)) {
+            $this->dryEvent($arguments[0]);
+        } elseif (preg_match('~^post(Persist|Update|Load)$~', $method)) {
+            $this->hydrateEvent($arguments[0]);
+        } else {
+            throw new \BadMethodCallException();
         }
     }
 
