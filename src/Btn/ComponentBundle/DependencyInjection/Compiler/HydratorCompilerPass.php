@@ -23,14 +23,15 @@ class HydratorCompilerPass implements CompilerPassInterface
 
         if ($taggedServices) {
             foreach ($taggedServices as $id => $tagAttributes) {
-                foreach ($tagAttributes as $attributes) {
+                foreach ($tagAttributes as $attr) {
                     $componentHydrator = $container->getDefinition($id);
-                    $componentHydrator->addMethodCall('setType', array($attributes['type']));
-                    $hydrator->addMethodCall('registerComponentHydrator', array(new Reference($id), $attributes['type']));
-                    $hydrators[$attributes['type']] = $id;
+                    $componentHydrator->addMethodCall('setType', array($attr['type']));
+                    $hydrator->addMethodCall('registerComponentHydrator', array(new Reference($id), $attr['type']));
+                    $hydrators[$attr['type']] = $id;
                 }
             }
         }
+
         $container->setParameter('btn_component.component_hydrators', $hydrators);
     }
 }

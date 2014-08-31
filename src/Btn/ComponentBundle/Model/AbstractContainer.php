@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\MappedSuperclass()
  */
-abstract class AbstractContainer implements \ArrayAccess, ContainerInterface, HydratableInterface
+abstract class AbstractContainer extends AbstractHydratable implements \ArrayAccess, ContainerInterface
 {
     /**
      * @Assert\NotBlank(groups={"Create", "Update"})
@@ -35,11 +35,6 @@ abstract class AbstractContainer implements \ArrayAccess, ContainerInterface, Hy
      * @ORM\Column(name="parameters", type="array")
      */
     protected $parameters = array();
-
-    /**
-     *
-     */
-    protected $hydrated = false;
 
     /**
      *
@@ -189,49 +184,13 @@ abstract class AbstractContainer implements \ArrayAccess, ContainerInterface, Hy
         $container = new static();
 
         foreach ($array as $field => $value) {
-            $method = 'set' . ucfirst($field);
+            $method = 'set'.ucfirst($field);
             if (method_exists($container, $method)) {
                 $container->$method($value);
             }
         }
 
         return $container;
-    }
-
-    /**
-     *
-     */
-    public function isHydrated()
-    {
-        return $this->hydrated;
-    }
-
-    /**
-     *
-     */
-    public function hydrated()
-    {
-        $this->hydrated = true;
-
-        return $this;
-    }
-
-    /**
-     *
-     */
-    public function isDried()
-    {
-        return $this->isHydrated() ? false : true;
-    }
-
-    /**
-     *
-     */
-    public function dried()
-    {
-        $this->hydrated = false;
-
-        return $this;
     }
 
     /**
@@ -264,7 +223,7 @@ abstract class AbstractContainer implements \ArrayAccess, ContainerInterface, Hy
     public function offsetGet($offset)
     {
         if ($this->offsetExists($offset)) {
-            $method = 'get' . ucfirst($offset);
+            $method = 'get'.ucfirst($offset);
 
             if (!method_exists($this, $method)) {
                 throw new \Exception(sprintf('Method "%s" not exists for "%s"', $method, __CLASS__));

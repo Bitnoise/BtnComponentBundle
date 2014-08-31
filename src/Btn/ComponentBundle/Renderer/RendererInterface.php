@@ -36,4 +36,3 @@ interface RendererInterface
      */
     public function render($type, array $componentParameters = null, array $containerParameters = null);
 }
-;

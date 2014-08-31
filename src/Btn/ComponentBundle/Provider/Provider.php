@@ -15,8 +15,10 @@ class Provider implements ProviderInterface, ContainerProviderInterface, Compone
     /**
      *
      */
-    public function __construct(ContainerProviderInterface $containerProvider, ComponentProviderInterface $componentProvider)
-    {
+    public function __construct(
+        ContainerProviderInterface $containerProvider,
+        ComponentProviderInterface $componentProvider
+    ) {
         $this->containerProvider = $containerProvider;
         $this->componentProvider = $componentProvider;
     }

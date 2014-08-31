@@ -74,7 +74,7 @@ class ProviderExtension extends \Twig_Extension
     public function getContainerName($container)
     {
         $container = $this->provider->getContainer($container);
-        if ($container && isset($container['name']) ) {
+        if ($container && isset($container['name'])) {
             return $container['name'];
         }
     }

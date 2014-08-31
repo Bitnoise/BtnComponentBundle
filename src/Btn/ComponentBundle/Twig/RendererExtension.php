@@ -5,15 +5,11 @@ namespace Btn\ComponentBundle\Twig;
 use Btn\ComponentBundle\Renderer\ContainerRendererInterface;
 use Btn\ComponentBundle\Renderer\RendererInterface;
 use Btn\ComponentBundle\Model\ComponentInterface;
-use Btn\ComponentBundle\Provider\ComponentProviderInterface;
 
 class RendererExtension extends \Twig_Extension
 {
     /** @var \Btn\ComponentBundle\Renderer\ContainerRendererInterface */
     private $renderer;
-
-    /** @var \Btn\ComponentBundle\Provider\ComponentProviderInterface */
-    private $provider;
 
     /**
      *
@@ -30,10 +26,12 @@ class RendererExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
+        $options = array('is_safe' => array('html'));
+
         return array(
-            'btn_container_render'         => new \Twig_Function_Method($this, 'containerRender', array('is_safe' => array('html'))),
-            'btn_component_render'         => new \Twig_Function_Method($this, 'componentRender', array('is_safe' => array('html'))),
-            'btn_component_get_and_render' => new \Twig_Function_Method($this, 'componentGetAndRender', array('is_safe' => array('html'))),
+            'btn_container_render'         => new \Twig_Function_Method($this, 'containerRender', $options),
+            'btn_component_render'         => new \Twig_Function_Method($this, 'componentRender', $options),
+            'btn_component_get_and_render' => new \Twig_Function_Method($this, 'componentGetAndRender', $options),
         );
     }
 

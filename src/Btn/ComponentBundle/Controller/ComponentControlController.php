@@ -56,13 +56,19 @@ class ComponentControlController extends AbstractControlController
         $entity->setContainer($container);
 
         $form = $this->createForm('btn_component_form_component', $entity, array(
-            'action' => $this->generateUrl('btn_component_componentcontrol_create', array('containerId' => $container->getId())),
+            'action' => $this->generateUrl(
+                'btn_component_componentcontrol_create',
+                array('containerId' => $container->getId())
+            ),
         ));
 
         if ($this->get('btn_component.form.handler.component')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.created');
 
-            return $this->redirect($this->generateUrl('btn_component_componentcontrol_edit', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl(
+                'btn_component_componentcontrol_edit',
+                array('id' => $entity->getId())
+            ));
         }
 
         return array(
@@ -79,7 +85,6 @@ class ComponentControlController extends AbstractControlController
      */
     public function updateAction(Request $request, $id)
     {
-        $manager  = $this->get('btn_component.manager');
         $provider = $this->get('btn_component.provider');
 
         $entity = $provider->getComponentById($id, false);
@@ -125,7 +130,10 @@ class ComponentControlController extends AbstractControlController
 
         $this->setFlash('btn_admin.flash.deleted');
 
-        return $this->redirect($this->generateUrl('btn_component_componentcontrol_list', array('containerId' => $container)));
+        return $this->redirect($this->generateUrl(
+            'btn_component_componentcontrol_list',
+            array('containerId' => $container->getId())
+        ));
     }
 
     /**

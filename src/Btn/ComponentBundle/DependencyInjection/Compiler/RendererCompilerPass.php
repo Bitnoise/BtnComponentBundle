@@ -23,11 +23,11 @@ class RendererCompilerPass implements CompilerPassInterface
 
         if ($taggedServices) {
             foreach ($taggedServices as $id => $tagAttributes) {
-                foreach ($tagAttributes as $attributes) {
+                foreach ($tagAttributes as $attr) {
                     $componentRenderer = $container->getDefinition($id);
-                    $componentRenderer->addMethodCall('setType', array($attributes['type']));
-                    $renderer->addMethodCall('registerComponentRenderer', array(new Reference($id), $attributes['type']));
-                    $renderers[$attributes['type']] = $id;
+                    $componentRenderer->addMethodCall('setType', array($attr['type']));
+                    $renderer->addMethodCall('registerComponentRenderer', array(new Reference($id), $attr['type']));
+                    $renderers[$attr['type']] = $id;
                 }
             }
         }

@@ -23,8 +23,11 @@ class Manager implements ManagerInterface
     /**
      *
      */
-    public function __construct(ProviderInterface $provider, ContainerManagerInterface $containerManager, array $components)
-    {
+    public function __construct(
+        ProviderInterface $provider,
+        ContainerManagerInterface $containerManager,
+        array $components
+    ) {
         $this->provider         = $provider;
         $this->containerManager = $containerManager;
         $this->components       = $components;

@@ -38,9 +38,9 @@ class ComponentSubscriber implements EventSubscriber
 
         if ($entity instanceof ComponentInterface) {
             if (null === $entity->getPosition()) {
-                $repo = $args->getEntityManager()->getRepository($this->componentClass);
-                $mp   = $repo->getMaxPositionForContainer($entity->getContainer());
-                $entity->setPosition($mp + 1);
+                $repo        = $args->getEntityManager()->getRepository($this->componentClass);
+                $maxPosition = $repo->getMaxPositionForContainer($entity->getContainer());
+                $entity->setPosition($maxPosition + 1);
             }
         }
     }

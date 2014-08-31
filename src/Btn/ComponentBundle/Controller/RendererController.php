@@ -13,7 +13,9 @@ class RendererController extends Controller
      */
     public function renderAction($name, array $componentParameters = null, array $containerParameters = null)
     {
-        return new Response($this->get('btn_component.renderer')->render($name, $componentParameters, $containerParameters));
+        return new Response(
+            $this->get('btn_component.renderer')->render($name, $componentParameters, $containerParameters)
+        );
     }
 
     /**
@@ -21,7 +23,9 @@ class RendererController extends Controller
      */
     public function componentRenderAction(ComponentInterface $component, array $containerParameters = null)
     {
-        return new Response($this->get('btn_component.renderer')->componentRender($component, $containerParameters));
+        return new Response(
+            $this->get('btn_component.renderer')->componentRender($component, $containerParameters)
+        );
     }
 
     /**
@@ -29,7 +33,10 @@ class RendererController extends Controller
      */
     public function componentGetAndRenderAction($name, $container, $position, array $containerParameters = null)
     {
-        return new Response($this->get('btn_component.renderer')->componentGetAndRender($name, $container, $position, $containerParameters));
+        return new Response(
+            $this->get('btn_component.renderer')
+            ->componentGetAndRender($name, $container, $position, $containerParameters)
+        );
     }
 
     /**
@@ -37,6 +44,8 @@ class RendererController extends Controller
      */
     public function containerRenderAction($container, array $containerParameters = null)
     {
-        return new Response($this->get('btn_component.renderer')->containerRender($container, $containerParameters));
+        return new Response(
+            $this->get('btn_component.renderer')->containerRender($container, $containerParameters)
+        );
     }
 }

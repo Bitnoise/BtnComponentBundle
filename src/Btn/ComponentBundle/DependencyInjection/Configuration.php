@@ -5,11 +5,6 @@ namespace Btn\ComponentBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-/**
- * This is the class that validates and merges configuration from your app/config files
- *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class}
- */
 class Configuration implements ConfigurationInterface
 {
     /**
@@ -26,7 +21,10 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('component')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('class')->cannotBeEmpty()->defaultValue('Btn\\ComponentBundle\\Entity\\Component')->end()
+                        ->scalarNode('class')
+                            ->cannotBeEmpty()
+                            ->defaultValue('Btn\\ComponentBundle\\Entity\\Component')
+                        ->end()
                         ->scalarNode('provider_id')->defaultValue('btn_component.component_provider.default')->end()
                     ->end()
                 ->end()
@@ -34,7 +32,10 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->booleanNode('manageable')->defaultValue(true)->end()
-                        ->scalarNode('class')->cannotBeEmpty()->defaultValue('Btn\\ComponentBundle\\Entity\\Container')->end()
+                        ->scalarNode('class')
+                            ->cannotBeEmpty()
+                            ->defaultValue('Btn\\ComponentBundle\\Entity\\Container')
+                        ->end()
                         ->scalarNode('provider_id')->defaultValue('btn_component.container_provider.default')->end()
                         ->scalarNode('manager_id')->defaultValue('btn_component.container_manager.default')->end()
                     ->end()
@@ -103,7 +104,11 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue(array())
                     ->prototype('array')
                         ->children()
-                            ->scalarNode('template')->isRequired()->cannotBeEmpty()->example('BtnComponentBundle:Layouts:example.html.twig')->end()
+                            ->scalarNode('template')
+                                ->isRequired()
+                                ->cannotBeEmpty()
+                                ->example('BtnComponentBundle:Layouts:example.html.twig')
+                            ->end()
                             ->scalarNode('title')->isRequired()->cannotBeEmpty()->example('Example template')->end()
                         ->end()
                     ->end()

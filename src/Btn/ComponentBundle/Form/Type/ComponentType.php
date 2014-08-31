@@ -25,16 +25,10 @@ class ComponentType extends AbstractType
     /**
      *
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        // ldd($builder, $options);
-    }
-
-    /**
-     *
-     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        parent::setDefaultOptions($resolver);
+
         $manager = $this->manager;
 
         $choiceList = function (Options $options) use ($manager) {
@@ -49,6 +43,7 @@ class ComponentType extends AbstractType
 
                 if (isset($parameters['avalible_components']) && is_array($parameters['avalible_components'])) {
                     foreach ($list as $name => $title) {
+                        unset($title);
                         if (!in_array($name, $parameters['avalible_components'])) {
                             unset($list[$name]);
                         }
@@ -74,7 +69,7 @@ class ComponentType extends AbstractType
     }
 
     /**
-     *
+     * {@inheritdoc}
      */
     public function getParent()
     {
@@ -82,7 +77,7 @@ class ComponentType extends AbstractType
     }
 
     /**
-     *
+     * {@inheritdoc}
      */
     public function getName()
     {

@@ -44,7 +44,10 @@ class ContainerControlController extends AbstractControlController
         if ($this->get('btn_component.form.handler.container')->handleForm($form, $request)) {
             $this->setFlash('btn_admin.flash.created');
 
-            return $this->redirect($this->generateUrl('btn_component_containercontrol_edit', array('id' => $form->getData()->getId())));
+            return $this->redirect($this->generateUrl(
+                'btn_component_containercontrol_edit',
+                array('id' => $form->getData()->getId())
+            ));
         }
 
         return array(
@@ -60,7 +63,6 @@ class ContainerControlController extends AbstractControlController
      */
     public function updateAction(Request $request, $id)
     {
-        $manager  = $this->get('btn_component.manager');
         $provider = $this->get('btn_component.provider');
 
         $entity = $provider->getContainerById($id);

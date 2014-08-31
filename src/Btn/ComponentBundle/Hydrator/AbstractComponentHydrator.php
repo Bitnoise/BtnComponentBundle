@@ -106,7 +106,7 @@ abstract class AbstractComponentHydrator implements ComponentHydratorInterface
         $repo = $this->getEntityManager()->getRepository($className);
 
         if (is_int($input)) {
-            return $entity = $repo->findOneById($input);
+            return $repo->findOneById($input);
         }
 
         return null;

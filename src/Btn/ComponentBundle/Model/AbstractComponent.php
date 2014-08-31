@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\MappedSuperclass()
  */
-abstract class AbstractComponent implements ComponentInterface, HydratableInterface
+abstract class AbstractComponent extends AbstractHydratable implements ComponentInterface
 {
     /**
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
@@ -40,11 +40,6 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
      * @ORM\Column(name="parameters", type="array")
      */
     protected $parameters;
-
-    /**
-     *
-     */
-    protected $hydrated = false;
 
     /**
      *
@@ -175,41 +170,5 @@ abstract class AbstractComponent implements ComponentInterface, HydratableInterf
     public function getParameters()
     {
         return $this->parameters;
-    }
-
-    /**
-     *
-     */
-    public function isHydrated()
-    {
-        return $this->hydrated;
-    }
-
-    /**
-     *
-     */
-    public function hydrated()
-    {
-        $this->hydrated = true;
-
-        return $this;
-    }
-
-    /**
-     *
-     */
-    public function isDried()
-    {
-        return $this->isHydrated() ? false : true;
-    }
-
-    /**
-     *
-     */
-    public function dried()
-    {
-        $this->hydrated = false;
-
-        return $this;
     }
 }
