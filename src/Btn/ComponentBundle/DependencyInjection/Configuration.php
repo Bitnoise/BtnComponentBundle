@@ -4,6 +4,7 @@ namespace Btn\ComponentBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 class Configuration implements ConfigurationInterface
 {
@@ -46,30 +47,24 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('renderer_id')->defaultValue('btn_component.renderer.default')->end()
                 ->scalarNode('manager_id')->defaultValue('btn_component.manager.default')->end()
 
-                ->arrayNode('components')
-                    ->beforeNormalization()
-                        ->ifArray()
-                        ->then(function ($v) {
-                            foreach ($v as $key => $value) {
-                                if (is_string($value) || is_null($value)) {
-                                    $v[$key] = array('title' => $value);
-                                }
-                                if (empty($value['name'])) {
-                                    $v[$key]['name'] = $key;
-                                }
-                            }
+            ->end()
+        ;
 
-                            return $v;
-                        })
-                    ->end()
-                    ->prototype('array')
-                        ->children()
-                            ->scalarNode('name')->defaultValue(null)->end()
-                            ->scalarNode('title')->end()
-                        ->end()
-                    ->end()
-                ->end()
+        $this->addComponents($rootNode);
+        $this->addContainers($rootNode);
+        $this->addLayouts($rootNode);
+        $this->addNodeContentProvider($rootNode);
 
+        return $treeBuilder;
+    }
+
+    /**
+     *
+     */
+    private function addContainers(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
                 ->arrayNode('containers')
                     ->beforeNormalization()
                         ->ifArray()
@@ -99,7 +94,51 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+            ->end()
+        ;
+    }
 
+    /**
+     *
+     */
+    private function addComponents(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->arrayNode('components')
+                    ->beforeNormalization()
+                        ->ifArray()
+                        ->then(function ($v) {
+                            foreach ($v as $key => $value) {
+                                if (is_string($value) || is_null($value)) {
+                                    $v[$key] = array('title' => $value);
+                                }
+                                if (empty($value['name'])) {
+                                    $v[$key]['name'] = $key;
+                                }
+                            }
+
+                            return $v;
+                        })
+                    ->end()
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('name')->defaultValue(null)->end()
+                            ->scalarNode('title')->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    /**
+     *
+     */
+    private function addLayouts(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
                 ->arrayNode('layouts')
                     ->defaultValue(array())
                     ->prototype('array')
@@ -113,7 +152,17 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+            ->end()
+        ;
+    }
 
+    /**
+     *
+     */
+    private function addNodeContentProvider(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
                 ->arrayNode('node_content_provider')
                     ->addDefaultsIfNotSet()
                     ->children()
@@ -133,10 +182,7 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-
             ->end()
         ;
-
-        return $treeBuilder;
     }
 }
