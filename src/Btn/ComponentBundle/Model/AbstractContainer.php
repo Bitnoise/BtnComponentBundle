@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\MappedSuperclass()
  */
-abstract class AbstractContainer extends AbstractHydratable implements \ArrayAccess, ContainerInterface
+abstract class AbstractContainer extends AbstractHydratable implements ContainerInterface
 {
     /**
      * @Assert\NotBlank(groups={"Create", "Update"})
@@ -95,17 +95,9 @@ abstract class AbstractContainer extends AbstractHydratable implements \ArrayAcc
     /**
      *
      */
-    public function getManageable()
-    {
-        return $this->manageable;
-    }
-
-    /**
-     *
-     */
     public function isManageable()
     {
-        return $this->getManageable();
+        return $this->manageable;
     }
 
     /**
@@ -121,17 +113,9 @@ abstract class AbstractContainer extends AbstractHydratable implements \ArrayAcc
     /**
      *
      */
-    public function getEditable()
-    {
-        return $this->editable;
-    }
-
-    /**
-     *
-     */
     public function isEditable()
     {
-        return $this->getEditable();
+        return $this->editable;
     }
 
     /**
@@ -191,47 +175,5 @@ abstract class AbstractContainer extends AbstractHydratable implements \ArrayAcc
         }
 
         return $container;
-    }
-
-    /**
-     * \ArrayAccess method
-     */
-    public function offsetSet($offset, $value)
-    {
-        throw new \Exception('Setting not allowd via array access');
-    }
-
-    /**
-     * \ArrayAccess method
-     */
-    public function offsetUnset($offset)
-    {
-        throw new \Exception('Unsetting not allowd via array access');
-    }
-
-    /**
-     * \ArrayAccess method
-     */
-    public function offsetExists($offset)
-    {
-        return property_exists($this, $offset) ? true : false;
-    }
-
-    /**
-     * \ArrayAccess method
-     */
-    public function offsetGet($offset)
-    {
-        if ($this->offsetExists($offset)) {
-            $method = 'get'.ucfirst($offset);
-
-            if (!method_exists($this, $method)) {
-                throw new \Exception(sprintf('Method "%s" not exists for "%s"', $method, __CLASS__));
-            }
-
-            return $this->$method();
-        }
-
-        return null;
     }
 }

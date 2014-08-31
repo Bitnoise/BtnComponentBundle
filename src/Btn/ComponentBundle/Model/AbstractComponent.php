@@ -123,17 +123,9 @@ abstract class AbstractComponent extends AbstractHydratable implements Component
     /**
      *
      */
-    public function getVisible()
-    {
-        return $this->visible;
-    }
-
-    /**
-     *
-     */
     public function isVisible()
     {
-        return $this->getVisible();
+        return $this->visible;
     }
 
     /**

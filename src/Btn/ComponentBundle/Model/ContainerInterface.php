@@ -13,10 +13,8 @@ interface ContainerInterface
     public function setType($type);
     public function getType();
     public function setManageable($manageable);
-    public function getManageable();
     public function isManageable();
     public function setEditable($editable);
-    public function getEditable();
     public function isEditable();
     public function setParameters(array $parameters);
     public function getParameters();
