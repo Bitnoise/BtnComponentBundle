@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block list_table %}
-    <table class="{{ lst.table_class() }}">
+    <table class="{{ lst.table_class() }}" btn-sortable>
         <thead>
             <tr>
                 <th class="{{ lst.col_id_class() }}">{{ 'btn_component.component.id'|trans }}</th>
@@ -24,7 +24,7 @@
         </thead>
         <tbody>
         {% for entity in components %}
-            <tr>
+            <tr data-id="{{ entity.id }}">
                 <td class="{{ lst.col_id_class() }}">{{ entity.id }}</td>
                 <td>{{ entity.title ?: entity.type|trans }}</td>
                 {% if container.manageable %}

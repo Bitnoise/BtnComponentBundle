@@ -30,6 +30,8 @@ class ComponentControlController extends AbstractControlController
 
         $provider = $this->get('btn_component.provider');
 
+        $this->get('btn_base.asset_loader')->load('btn_admin_sortable');
+
         return array(
             'components' => $provider->getComponentsForContainer($containerId),
             'container'  => $provider->getContainer($containerId),
