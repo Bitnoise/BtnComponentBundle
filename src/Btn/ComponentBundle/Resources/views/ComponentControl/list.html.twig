@@ -1,7 +1,16 @@
 {% from 'BtnAdminBundle:Macros:icon.html.twig' import gi %}
+{% from 'BtnAdminBundle:Macros:breadcrumb.html.twig' import bcr %}
 {% import 'BtnAdminBundle:Macros:link.html.twig' as lnk %}
 {% import 'BtnAdminBundle:Macros:list.html.twig' as lst %}
 {% extends 'BtnAdminBundle::list.html.twig' %}
+
+{% block breadcrumb %}
+    {{ bcr({
+        'btn_component_containercontrol_index': 'btn_component.container.list',
+        (app.request.attributes.get('_route')): 'btn_component.component.list'
+        })
+    }}
+{% endblock %}
 
 {% block list_header %}
     {{ lst.header(
