@@ -20,16 +20,14 @@ class ComponentControlForm extends AbstractForm
         $manageable = $container->isManageable();
         $editable   = $container->isEditable();
 
-        if ($manageable) {
-            $builder
-                ->add('title', null, array(
-                    'label' => 'btn_component.component.title',
-                ))
-                ->add('visible', 'checkbox', array(
-                    'label' => 'btn_component.component.visible',
-                ))
-            ;
-        }
+        $builder
+            ->add('title', null, array(
+                'label' => 'btn_component.component.title',
+            ))
+            ->add('visible', 'checkbox', array(
+                'label' => 'btn_component.component.visible',
+            ))
+        ;
 
         if ($editable) {
             if ($options['data']->getType()) {
