@@ -134,7 +134,7 @@ class ComponentControlController extends AbstractControlController
 
         return $this->redirect($this->generateUrl(
             'btn_component_componentcontrol_list',
-            array('containerId' => $container->getId())
+            array('containerId' => $container)
         ));
     }
 
