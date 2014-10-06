@@ -6,7 +6,6 @@ parameters:
     btn_component.renderer.default.class: Btn\ComponentBundle\Renderer\Renderer
     btn_component.container_manager.default.class: Btn\ComponentBundle\Manager\ContainerManager
     btn_component.manager.default.class: Btn\ComponentBundle\Manager\Manager
-    btn_component.event_listener.component_subscriber.class: Btn\ComponentBundle\EventListener\ComponentSubscriber
     btn_component.manager.layout.class: Btn\ComponentBundle\Manager\LayoutManager
 
 services:
@@ -81,13 +80,6 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
         arguments:
             hydrator: @btn_component.hydrator
-
-    btn_component.event_listener.component_subscriber:
-        class: %btn_component.event_listener.component_subscriber.class%
-        arguments:
-            componentClass: %btn_component.component.class%
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
 
     btn_component.manager.layout:
         class: %btn_component.manager.layout.class%
