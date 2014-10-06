@@ -27,6 +27,11 @@ abstract class AbstractComponent extends AbstractHydratable implements Component
     protected $container;
 
     /**
+     * @ORM\Column(name="container_hash", type="bigint")
+     */
+    protected $containerHash;
+
+    /**
      * @ORM\Column(name="position", type="smallint")
      */
     protected $position;
@@ -99,6 +104,8 @@ abstract class AbstractComponent extends AbstractHydratable implements Component
             throw new \Exception('Invalid parameter for setContainer() method');
         }
 
+        $this->generateContainerHash();
+
         return $this;
     }
 
@@ -108,6 +115,30 @@ abstract class AbstractComponent extends AbstractHydratable implements Component
     public function getContainer()
     {
         return $this->container;
+    }
+
+    /**
+     *
+     */
+    public function generateContainerHash()
+    {
+        $this->setContainerHash(self::generateHash($this->getContainer()));
+    }
+
+    /**
+     *
+     */
+    private function setContainerHash($containerHash)
+    {
+        $this->containerHash = $containerHash;
+    }
+
+    /**
+     *
+     */
+    public function getContainerHash()
+    {
+        return $this->containerHash;
     }
 
     /**
@@ -162,5 +193,13 @@ abstract class AbstractComponent extends AbstractHydratable implements Component
     public function getParameters()
     {
         return $this->parameters;
+    }
+
+    /**
+     *
+     */
+    public static function generateHash($string)
+    {
+        return intval(substr(md5($string), 0, 8), 16);
     }
 }
