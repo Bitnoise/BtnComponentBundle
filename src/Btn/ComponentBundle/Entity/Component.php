@@ -3,6 +3,7 @@
 namespace Btn\ComponentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Btn\ComponentBundle\Model\AbstractComponent;
 
 /**
@@ -20,6 +21,18 @@ class Component extends AbstractComponent
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @Gedmo\SortableGroup()
+     * @ORM\Column(name="container_hash", type="bigint")
+     */
+    protected $containerHash;
+
+    /**
+     * @Gedmo\SortablePosition()
+     * @ORM\Column(name="position", type="smallint")
+     */
+    protected $position;
 
     /**
      *

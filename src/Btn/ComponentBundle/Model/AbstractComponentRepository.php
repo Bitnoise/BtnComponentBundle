@@ -2,9 +2,9 @@
 
 namespace Btn\ComponentBundle\Model;
 
-use Doctrine\ORM\EntityRepository;
+use Gedmo\Sortable\Entity\Repository\SortableRepository;
 
-abstract class AbstractComponentRepository extends EntityRepository
+abstract class AbstractComponentRepository extends SortableRepository
 {
     public function getMaxPositionForContainer($container)
     {
