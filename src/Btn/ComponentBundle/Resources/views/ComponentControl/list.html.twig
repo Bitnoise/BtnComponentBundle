@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block list_table %}
-    <table class="{{ lst.table_class() }}" btn-sortable>
+    <table class="{{ lst.table_class() }}" {% if container.manageable %}btn-sortable="{{ path('btn_component_componentcontrol_position') }}"{% endif %}>
         <thead>
             <tr>
                 <th class="{{ lst.col_id_class() }}">{{ 'btn_component.component.id'|trans }}</th>

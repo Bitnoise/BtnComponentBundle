@@ -2,6 +2,7 @@
 
 namespace Btn\ComponentBundle\Controller;
 
+use Btn\AdminBundle\Annotation\EntityProvider;
 use Btn\AdminBundle\Controller\AbstractControlController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -9,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/component")
+ * @EntityProvider("btn_component.provider.component")
  */
 class ComponentControlController extends AbstractControlController
 {
@@ -136,6 +138,21 @@ class ComponentControlController extends AbstractControlController
             'btn_component_componentcontrol_list',
             array('containerId' => $container)
         ));
+    }
+
+    /**
+     * @Route("/position", methods={"POST"}, name="btn_component_componentcontrol_position")
+     */
+    public function positionAction(Request $request)
+    {
+        $entityProvider = $this->getEntityProvider();
+        $repo = $entityProvider->getRepository();
+        $data = json_decode($request->getContent(), true);
+
+        $repo->updatePositions($data[0]);
+        $this->get('doctrine.orm.entity_manager')->flush();
+
+        return $this->renderJson();
     }
 
     /**
