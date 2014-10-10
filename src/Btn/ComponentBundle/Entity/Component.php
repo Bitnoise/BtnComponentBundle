@@ -7,7 +7,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Btn\ComponentBundle\Model\AbstractComponent;
 
 /**
- * @ORM\Entity(repositoryClass="Btn\ControlBundle\Repository\ComponentRepository")
+ * @ORM\Entity(repositoryClass="Btn\ComponentBundle\Repository\ComponentRepository")
  * @ORM\Table(name="btn_component", indexes={
  *     @ORM\Index(name="container_idx", columns={"container", "position"}),
  *     @ORM\Index(name="type_idx", columns={"type", "container", "position"}),
