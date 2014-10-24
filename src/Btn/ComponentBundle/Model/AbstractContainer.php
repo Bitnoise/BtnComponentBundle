@@ -32,6 +32,11 @@ abstract class AbstractContainer extends AbstractHydratable implements Container
     protected $editable;
 
     /**
+     * @ORM\Column(name="sortable", type="boolean")
+     */
+    protected $sortable;
+
+    /**
      * @ORM\Column(name="parameters", type="array")
      */
     protected $parameters = array();
@@ -43,7 +48,8 @@ abstract class AbstractContainer extends AbstractHydratable implements Container
     {
         $this->setType(self::TYPE_DYNAMIC);
         $this->setEditable(true);
-        $this->setmanageable(true);
+        $this->setManageable(true);
+        $this->setSortable(true);
     }
 
     /**
@@ -116,6 +122,24 @@ abstract class AbstractContainer extends AbstractHydratable implements Container
     public function isEditable()
     {
         return $this->editable;
+    }
+
+    /**
+     *
+     */
+    public function setSortable($sortable)
+    {
+        $this->sortable = $sortable;
+
+        return $this;
+    }
+
+    /**
+     *
+     */
+    public function isSortable()
+    {
+        return $this->sortable;
     }
 
     /**

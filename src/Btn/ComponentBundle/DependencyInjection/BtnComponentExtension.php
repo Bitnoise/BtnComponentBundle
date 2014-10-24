@@ -19,6 +19,7 @@ class BtnComponentExtension extends AbstractExtension
         $container->setParameter('btn_component.component.class', $config['component']['class']);
         $container->setParameter('btn_component.container.class', $config['container']['class']);
         $container->setParameter('btn_component.container.manageable', $config['container']['manageable']);
+        $container->setParameter('btn_component.container.sortable', $config['container']['sortable']);
 
         $container->setParameter('btn_component.container.manager_id', $config['container']['manager_id']);
         $container->setParameter('btn_component.container.provider_id', $config['container']['provider_id']);

@@ -20,12 +20,14 @@
 {% endblock %}
 
 {% block list_table %}
-    <table class="{{ lst.table_class() }}" {% if container.manageable %}btn-sortable="{{ path('btn_component_componentcontrol_position') }}"{% endif %}>
+    <table class="{{ lst.table_class() }}" {% if container.sortable %}btn-sortable="{{ path('btn_component_componentcontrol_position') }}"{% endif %}>
         <thead>
             <tr>
                 <th class="{{ lst.col_id_class() }}">{{ 'btn_component.component.id'|trans }}</th>
                 <th>{{ 'btn_component.component.title'|trans }}</th>
-                <th>{{ 'btn_component.container.drop_and_down'|trans }}</th>
+                {% if container.sortable %}
+                    <th>{{ 'btn_component.container.drop_and_down'|trans }}</th>
+                {% endif %}
                 {% if container.manageable %}
                     <th>{{ 'btn_component.component.visible'|trans }}</th>
                 {% endif %}
@@ -37,7 +39,9 @@
             <tr data-id="{{ entity.id }}">
                 <td class="{{ lst.col_id_class() }}">{{ entity.id }}</td>
                 <td>{{ entity.title ?: entity.type|trans }}</td>
-                <td class="move-position text-center"><i class="glyphicon glyphicon-move"></i></td>
+                {% if container.sortable %}
+                    <td class="move-position text-center"><i class="glyphicon glyphicon-move"></i></td>
+                {% endif %}
                 {% if container.manageable %}
                     <td class="text-center">{{ entity.visible ? gi('ok') : gi('remove') }}</td>
                 {% endif %}
