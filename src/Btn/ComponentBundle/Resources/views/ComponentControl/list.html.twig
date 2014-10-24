@@ -25,6 +25,7 @@
             <tr>
                 <th class="{{ lst.col_id_class() }}">{{ 'btn_component.component.id'|trans }}</th>
                 <th>{{ 'btn_component.component.title'|trans }}</th>
+                <th>{{ 'btn_component.container.drop_and_down'|trans }}</th>
                 {% if container.manageable %}
                     <th>{{ 'btn_component.component.visible'|trans }}</th>
                 {% endif %}
@@ -36,8 +37,9 @@
             <tr data-id="{{ entity.id }}">
                 <td class="{{ lst.col_id_class() }}">{{ entity.id }}</td>
                 <td>{{ entity.title ?: entity.type|trans }}</td>
+                <td class="move-position text-center"><i class="glyphicon glyphicon-move"></i></td>
                 {% if container.manageable %}
-                    <td>{{ entity.visible ? gi('ok') : gi('remove') }}</td>
+                    <td class="text-center">{{ entity.visible ? gi('ok') : gi('remove') }}</td>
                 {% endif %}
                 <td class="{{ lst.col_act_class() }}">
                     {% if container.manageable or container.editable %}

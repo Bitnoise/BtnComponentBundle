@@ -11,9 +11,9 @@
     <table class="{{ lst.table_class() }}">
         <thead>
             <tr>
-                <th class="{{ lst.col_id_class() }}">{% trans %}btn_admin.id{% endtrans %}</th>
+                <th class="{{ lst.col_id_class() }}">{{ 'btn_admin.id'|trans }}</th>
                 <th>{{ 'btn_component.container.title'|trans }}</th>
-                <th class="{{ lst.col_act_class('lg') }}">{% trans %}btn_admin.actions{% endtrans %}</th>
+                <th class="{{ lst.col_act_class('lg') }}">{{ 'btn_admin.actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>

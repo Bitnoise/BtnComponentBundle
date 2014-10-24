@@ -25,3 +25,5 @@ btn_component.layout_node_content_provider.name: 'Layout provider'
 
 btn_component.type.layout.label: 'Layout'
 btn_component.type.layout.empty_value: 'Select layout'
+
+btn_component.container.drop_and_down: 'Change position'
