@@ -74,6 +74,9 @@ class Configuration implements ConfigurationInterface
                                 if (empty($value['id'])) {
                                     $v[$key]['id'] = $key;
                                 }
+                                if (!isset($value['sortable']) && isset($value['manageable'])) {
+                                    $v[$key]['sortable'] = $value['manageable'];
+                                }
                             }
 
                             return $v;
@@ -85,7 +88,7 @@ class Configuration implements ConfigurationInterface
                             ->scalarNode('title')->isRequired()->end()
                             ->booleanNode('editable')->defaultValue(false)->end()
                             ->booleanNode('manageable')->defaultValue(false)->end()
-                            ->booleanNode('sortable')->defaultValue(true)->end()
+                            ->booleanNode('sortable')->defaultValue(null)->end()
                             ->arrayNode('parameters')
                                     ->children()
                                         ->arrayNode('avalible_components')
