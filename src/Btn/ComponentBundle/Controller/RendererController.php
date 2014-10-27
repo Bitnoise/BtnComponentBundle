@@ -35,7 +35,7 @@ class RendererController extends Controller
     {
         return new Response(
             $this->get('btn_component.renderer')
-            ->componentGetAndRender($name, $container, $position, $containerParameters)
+                ->componentGetAndRender($name, $container, $position, $containerParameters)
         );
     }
 
