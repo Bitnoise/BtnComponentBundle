@@ -65,41 +65,40 @@ class Configuration implements ConfigurationInterface
     private function addContainers(ArrayNodeDefinition $node)
     {
         $node
-            ->children()
-                ->arrayNode('containers')
-                    ->beforeNormalization()
-                        ->ifArray()
-                        ->then(function ($v) {
-                            foreach ($v as $key => $value) {
-                                if (empty($value['id'])) {
-                                    $v[$key]['id'] = $key;
-                                }
-                                if (!isset($value['sortable']) && isset($value['manageable'])) {
-                                    $v[$key]['sortable'] = $value['manageable'];
-                                }
+        ->children()
+            ->arrayNode('containers')
+            ->beforeNormalization()
+                ->ifArray()
+                    ->then(function ($v) {
+                        foreach ($v as $key => $value) {
+                            if (empty($value['id'])) {
+                                $v[$key]['id'] = $key;
                             }
+                            if (!isset($value['sortable']) && isset($value['manageable'])) {
+                                $v[$key]['sortable'] = $value['manageable'];
+                            }
+                        }
 
-                            return $v;
-                        })
-                    ->end()
-                    ->prototype('array')
+                        return $v;
+                    })
+                ->end()
+            ->prototype('array')
+                ->children()
+                    ->scalarNode('id')->defaultValue(null)->end()
+                    ->scalarNode('title')->isRequired()->end()
+                    ->booleanNode('editable')->defaultValue(false)->end()
+                    ->booleanNode('manageable')->defaultValue(false)->end()
+                    ->booleanNode('sortable')->defaultValue(null)->end()
+                    ->arrayNode('parameters')
                         ->children()
-                            ->scalarNode('id')->defaultValue(null)->end()
-                            ->scalarNode('title')->isRequired()->end()
-                            ->booleanNode('editable')->defaultValue(false)->end()
-                            ->booleanNode('manageable')->defaultValue(false)->end()
-                            ->booleanNode('sortable')->defaultValue(null)->end()
-                            ->arrayNode('parameters')
-                                    ->children()
-                                        ->arrayNode('avalible_components')
-                                            ->prototype('scalar')->end()
-                                        ->end()
-                                    ->end()
+                            ->arrayNode('avalible_components')
+                                ->prototype('scalar')->end()
                             ->end()
                         ->end()
                     ->end()
                 ->end()
             ->end()
+        ->end()
         ;
     }
 
