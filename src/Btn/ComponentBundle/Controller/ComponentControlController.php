@@ -152,6 +152,10 @@ class ComponentControlController extends AbstractControlController
         $repo->updatePositions($data[0]);
         $this->get('doctrine.orm.entity_manager')->flush();
 
+        // quick fix for moving last element
+        $repo->updatePositions($data[0]);
+        $this->get('doctrine.orm.entity_manager')->flush();
+
         return $this->renderJson();
     }
 
