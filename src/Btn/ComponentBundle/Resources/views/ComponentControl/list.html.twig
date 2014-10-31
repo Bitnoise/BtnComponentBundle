@@ -25,11 +25,11 @@
             <tr>
                 <th class="{{ lst.col_id_class() }}">{{ 'btn_component.component.id'|trans }}</th>
                 <th>{{ 'btn_component.component.title'|trans }}</th>
-                {% if container.sortable %}
-                    <th>{{ 'btn_component.container.drop_and_down'|trans }}</th>
-                {% endif %}
                 {% if container.manageable %}
-                    <th>{{ 'btn_component.component.visible'|trans }}</th>
+                    <th class="text-center">{{ 'btn_component.component.visible'|trans }}</th>
+                {% endif %}
+                {% if container.sortable %}
+                    <th class="text-center">{{ 'btn_admin.change_position'|trans }}</th>
                 {% endif %}
                 <th class="{{ lst.col_act_class() }}">{% trans %}btn_admin.actions{% endtrans %}</th>
             </tr>
@@ -39,11 +39,11 @@
             <tr data-id="{{ entity.id }}">
                 <td class="{{ lst.col_id_class() }}">{{ entity.id }}</td>
                 <td>{{ entity.title ?: entity.type|trans }}</td>
-                {% if container.sortable %}
-                    <td class="move-position text-center"><i class="glyphicon glyphicon-move"></i></td>
-                {% endif %}
                 {% if container.manageable %}
                     <td class="text-center">{{ entity.visible ? gi('ok') : gi('remove') }}</td>
+                {% endif %}
+                {% if container.sortable %}
+                    <td class="move-position text-center"><i class="glyphicon glyphicon-move"></i></td>
                 {% endif %}
                 <td class="{{ lst.col_act_class() }}">
                     {% if container.manageable or container.editable %}
