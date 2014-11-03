@@ -25,7 +25,7 @@ class NodeLayoutSubscriber implements EventSubscriberInterface
         EntityProviderInterface $containerProvider,
         EntityProviderInterface $nodeProvider
     ) {
-        $this->layoutManager   = $layoutManager;
+        $this->layoutManager     = $layoutManager;
         $this->containerProvider = $containerProvider;
         $this->nodeProvider      = $nodeProvider;
     }
