@@ -27,3 +27,6 @@ btn_component.type.layout.label: 'Layout'
 btn_component.type.layout.empty_value: 'Select layout'
 
 btn_component.container.drop_and_down: 'Change position'
+
+btn_component.form.node_contant_provider.container.label: 'Container'
+btn_component.form.node_contant_provider.container.empty_value: 'Select container'

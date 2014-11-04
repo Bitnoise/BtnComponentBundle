@@ -13,7 +13,10 @@ class ContainerNodeContentProviderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('container', 'btn_container')
+            ->add('container', 'btn_container', array(
+                'label'       => 'btn_component.form.node_contant_provider.container.label',
+                'empty_value' => 'btn_component.form.node_contant_provider.container.empty_value',
+            ))
         ;
     }
 
