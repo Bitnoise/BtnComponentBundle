@@ -149,7 +149,10 @@ class ComponentControlController extends AbstractControlController
         $repo = $entityProvider->getRepository();
         $data = json_decode($request->getContent(), true);
 
-        $repo->updatePositions($data[0]);
+        $items  = isset($data['items']) ? $data['items'] : $data[0];
+        $offset = isset($data['offset']) ? (int) $data['offset'] : 0;
+
+        $repo->updatePositions($items, $offset);
         $repo->disableListener();
         $this->get('doctrine.orm.entity_manager')->flush();
         $repo->enableListener();
