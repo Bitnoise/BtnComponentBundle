@@ -46,7 +46,7 @@ class LayoutType extends AbstractType
      */
     public function getParent()
     {
-        return 'choice';
+        return 'btn_select2_choice';
     }
 
     /**
