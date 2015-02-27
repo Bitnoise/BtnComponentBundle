@@ -4,7 +4,7 @@ namespace Btn\ComponentBundle\Form;
 
 use Btn\AdminBundle\Form\AbstractForm as BaseAbstractForm;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Btn\ComponentBundle\Manager\ManagerInterface;
 
 abstract class AbstractForm extends BaseAbstractForm
@@ -23,7 +23,7 @@ abstract class AbstractForm extends BaseAbstractForm
     /**
      *
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         parent::setDefaultOptions($resolver);
 
