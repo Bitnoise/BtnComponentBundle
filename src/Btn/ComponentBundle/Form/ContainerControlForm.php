@@ -3,7 +3,7 @@
 namespace Btn\ComponentBundle\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ContainerControlForm extends AbstractForm
 {
@@ -24,7 +24,7 @@ class ContainerControlForm extends AbstractForm
     /**
      *
      */
-    public function setDefaultOptions(OptionsResolver $resolver)
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         parent::setDefaultOptions($resolver);
 

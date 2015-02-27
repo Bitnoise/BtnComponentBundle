@@ -3,7 +3,7 @@
 namespace Btn\ComponentBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Btn\ComponentBundle\Manager\ManagerInterface;
 use Btn\ComponentBundle\Provider\ContainerProviderInterface;
 
@@ -23,7 +23,7 @@ class ContainerType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolver $resolver)
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $choices = array();
 
