@@ -3,7 +3,7 @@
 namespace Btn\ComponentBundle\Form\Type;
 
 use Btn\AdminBundle\Form\Type\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class LayoutType extends AbstractType
 {
@@ -21,7 +21,7 @@ class LayoutType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         parent::setDefaultOptions($resolver);
 
