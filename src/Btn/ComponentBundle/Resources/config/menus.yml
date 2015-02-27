@@ -1,5 +1,6 @@
 services:
     btn_component.btn_admin_menu_top_item:
+        public: false
         class: %btn_admin.menu_item.class%
         factory: [@btn_admin.menu_builder, createMenu]
         arguments: ["@request", "btn_component.container.components", "btn_component_containercontrol_index", [], []]
