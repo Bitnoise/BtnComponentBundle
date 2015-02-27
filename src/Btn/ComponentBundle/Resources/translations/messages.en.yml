@@ -8,7 +8,7 @@ btn_component.component.title: 'Component name'
 btn_component.component.visible: 'Component visible'
 btn_component.component.title: 'Component title'
 btn_component.component.type: 'Component type'
-btn_component.component.type.empty_value: 'Select component type'
+btn_component.component.type.placeholder: 'Select component type'
 
 btn_component.container.list: 'Container list'
 btn_component.container.name: 'Container name'
@@ -24,9 +24,9 @@ btn_component.container_node_content_provider.name: 'Container provider'
 btn_component.layout_node_content_provider.name: 'Layout provider'
 
 btn_component.type.layout.label: 'Layout'
-btn_component.type.layout.empty_value: 'Select layout'
+btn_component.type.layout.placeholder: 'Select layout'
 
 btn_component.container.drop_and_down: 'Change position'
 
 btn_component.form.node_contant_provider.container.label: 'Container'
-btn_component.form.node_contant_provider.container.empty_value: 'Select container'
+btn_component.form.node_contant_provider.container.placeholder: 'Select container'

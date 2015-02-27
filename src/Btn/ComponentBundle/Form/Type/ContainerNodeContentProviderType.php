@@ -15,7 +15,7 @@ class ContainerNodeContentProviderType extends AbstractType
         $builder
             ->add('container', 'btn_container', array(
                 'label'       => 'btn_component.form.node_contant_provider.container.label',
-                'empty_value' => 'btn_component.form.node_contant_provider.container.empty_value',
+                'placeholder' => 'btn_component.form.node_contant_provider.container.placeholder',
             ))
         ;
     }

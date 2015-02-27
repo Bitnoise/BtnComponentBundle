@@ -35,7 +35,7 @@ class LayoutType extends AbstractType
 
         $resolver->setDefaults(array(
             'label'       => 'btn_component.type.layout.label',
-            'empty_value' => 'btn_component.type.layout.empty_value',
+            'placeholder' => 'btn_component.type.layout.placeholder',
             'choices'     => $choices,
             'expanded'    => false,
         ));
