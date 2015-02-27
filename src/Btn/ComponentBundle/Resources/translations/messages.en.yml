@@ -7,7 +7,7 @@ btn_component.component.list: 'Component list'
 btn_component.component.title: 'Component name'
 btn_component.component.visible: 'Component visible'
 btn_component.component.title: 'Component title'
-btn_component.component.type: 'Component type'
+btn_component.component.type.label: 'Component type'
 btn_component.component.type.placeholder: 'Select component type'
 
 btn_component.container.list: 'Container list'
