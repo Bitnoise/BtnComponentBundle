@@ -51,26 +51,28 @@ class BtnComponentExtension extends AbstractExtension
             $config['node_content_provider']['layout']
         );
 
-        $this->addClassesToCompile(array(
-            'Btn\\ComponentBundle\\EventListener\\HydratorSubscriber',
-            'Btn\\ComponentBundle\\Hydrator\\AbstractComponentHydrator',
-            'Btn\\ComponentBundle\\Hydrator\\ComponentHydratorInterface',
-            'Btn\\ComponentBundle\\Hydrator\\Hydrator',
-            'Btn\\ComponentBundle\\Hydrator\\HydratorInterface',
-            'Btn\\ComponentBundle\\Manager\\Manager',
-            'Btn\\ComponentBundle\\Manager\\ManagerInterface',
-            'Btn\\ComponentBundle\\Model\\ComponentInterface',
-            'Btn\\ComponentBundle\\Model\\HydratableInterface',
-            'Btn\\ComponentBundle\\Provider\\ContainerProvider',
-            'Btn\\ComponentBundle\\Provider\\ContainerProviderInterface',
-            'Btn\\ComponentBundle\\Provider\\ComponentProvider',
-            'Btn\\ComponentBundle\\Provider\\ComponentProviderInterface',
-            'Btn\\ComponentBundle\\Renderer\\AbstractComponentRenderer',
-            'Btn\\ComponentBundle\\Renderer\\ComponentRendererInterface',
-            'Btn\\ComponentBundle\\Renderer\\Renderer',
-            'Btn\\ComponentBundle\\Renderer\\RendererInterface',
-            'Btn\\ComponentBundle\\View\\ComponentView',
-            'Btn\\ComponentBundle\\View\\ContainerView',
-        ));
+        if ('dev' !== $container->getParameter('kernel.environment')) {
+            $this->addClassesToCompile(array(
+                'Btn\\ComponentBundle\\EventListener\\HydratorSubscriber',
+                'Btn\\ComponentBundle\\Hydrator\\AbstractComponentHydrator',
+                'Btn\\ComponentBundle\\Hydrator\\ComponentHydratorInterface',
+                'Btn\\ComponentBundle\\Hydrator\\Hydrator',
+                'Btn\\ComponentBundle\\Hydrator\\HydratorInterface',
+                'Btn\\ComponentBundle\\Manager\\Manager',
+                'Btn\\ComponentBundle\\Manager\\ManagerInterface',
+                'Btn\\ComponentBundle\\Model\\ComponentInterface',
+                'Btn\\ComponentBundle\\Model\\HydratableInterface',
+                'Btn\\ComponentBundle\\Provider\\ContainerProvider',
+                'Btn\\ComponentBundle\\Provider\\ContainerProviderInterface',
+                'Btn\\ComponentBundle\\Provider\\ComponentProvider',
+                'Btn\\ComponentBundle\\Provider\\ComponentProviderInterface',
+                'Btn\\ComponentBundle\\Renderer\\AbstractComponentRenderer',
+                'Btn\\ComponentBundle\\Renderer\\ComponentRendererInterface',
+                'Btn\\ComponentBundle\\Renderer\\Renderer',
+                'Btn\\ComponentBundle\\Renderer\\RendererInterface',
+                'Btn\\ComponentBundle\\View\\ComponentView',
+                'Btn\\ComponentBundle\\View\\ContainerView',
+            ));
+        }
     }
 }
