@@ -67,7 +67,7 @@ class AbstractComponentManager implements ComponentManagerInterface
         $this->em->remove($component);
 
         if ($andFlush) {
-            $this->em->flush($component);
+            $this->em->flush();
         }
     }
 }
