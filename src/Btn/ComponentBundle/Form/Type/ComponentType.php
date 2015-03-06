@@ -58,7 +58,7 @@ class ComponentType extends AbstractType
             'container'   => null,
         ));
 
-        $resolver->setOptional(array(
+        $resolver->setDefined(array(
             'container',
         ));
 
