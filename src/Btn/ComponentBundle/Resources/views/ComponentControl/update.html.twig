@@ -18,11 +18,10 @@
 {% block form_content %}
     {% set legend = 'btn_component.component.edit'|trans({'%component_title%': entity.title ?: entity.type|trans, '%container_title%' : container.title}) %}
     {% include 'BtnComponentBundle:ComponentControl:_form.html.twig' with {form: form, legend: legend} only %}
-
-    {{ lnk.back('btn_component_componentcontrol_list', {containerId: entity.container}) }}
 {% endblock %}
 
 {% block form_buttons %}
+    {{ lnk.back('btn_component_componentcontrol_list', {containerId: entity.container}) }}
     {% if container.manageable %}
         {{ lnk.delete('btn_component_componentcontrol_delete', {id: entity.id}) }}
     {% endif %}
