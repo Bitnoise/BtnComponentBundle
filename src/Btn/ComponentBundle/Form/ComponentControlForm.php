@@ -12,13 +12,15 @@ class ComponentControlForm extends AbstractForm
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $this->disableAddSaveButtonSubscriber();
-
-        parent::buildForm($builder, $options);
-
         $container  = $this->manager->getProvider()->getContainer($options['data']->getContainer());
         $manageable = $container->isManageable();
         $editable   = $container->isEditable();
+
+        if (!$manageable && !$editable) {
+            $this->disableAddSaveButtonSubscriber();
+        }
+
+        parent::buildForm($builder, $options);
 
         $builder
             ->add('title', null, array(
@@ -48,10 +50,6 @@ class ComponentControlForm extends AbstractForm
                     ))
                 ;
             }
-        }
-
-        if ($manageable || $editable) {
-            $builder->add('save', $options['data']->getId() ? 'btn_update' : 'btn_create');
         }
     }
 
