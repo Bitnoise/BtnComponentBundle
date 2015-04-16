@@ -1,0 +1,31 @@
+btn_component.component.edit: 'Edytuj %component_title% dla %container_title%'
+btn_component.component.create: 'Utwórz komponent dla %container_title%'
+btn_component.component.list: 'Lista komponentów w %container_title%'
+btn_component.component.list_secondary: 'dla twojego %container_title%'
+btn_component.component.id: 'Id'
+btn_component.component.list: 'Lista komponentów'
+btn_component.component.title: 'Nazwa komponentu'
+btn_component.component.visible: 'Widoczny'
+btn_component.component.title: 'Tutuł komponentu'
+btn_component.component.type.label: 'Typ komponentu'
+btn_component.component.type.empty_value: 'Wybierz typ komponentu'
+
+btn_component.container.list: 'Lista pojemników'
+btn_component.container.name: 'Nazwa pojemnika'
+btn_component.container.title: 'Tutuł pojemnika'
+
+btn_component.container.components: 'Komponenty'
+
+btn_component.container.create: 'Uwtórz pojemnik'
+btn_component.container.edit: 'Edytuj pojemnik'
+
+btn_component.container_node_content_provider.name: 'Pojemnik'
+btn_component.layout_node_content_provider.name: 'Layout'
+
+btn_component.type.layout.label: 'Layout'
+btn_component.type.layout.placeholder: 'Wybierz layout'
+
+btn_component.container.drop_and_down: 'Zmień pozycję'
+
+btn_component.form.node_contant_provider.container.label: 'Pojemnik'
+btn_component.form.node_contant_provider.container.placeholder: 'Wybierz pojemnik'
