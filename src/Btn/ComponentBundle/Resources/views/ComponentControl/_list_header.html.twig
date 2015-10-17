@@ -1,0 +1,6 @@
+{% import 'BtnAdminBundle:Macros:list.html.twig' as lst %}
+
+{{ lst.header(
+    'btn_component.component.list'|trans({'%container_title%': container.title}),
+    'btn_component.component.list_secondary'|trans({'%container_title%': container.title})
+) }}

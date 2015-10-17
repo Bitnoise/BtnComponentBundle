@@ -1,22 +1,14 @@
 {% from 'BtnAdminBundle:Macros:icon.html.twig' import gi %}
-{% from 'BtnAdminBundle:Macros:breadcrumb.html.twig' import bcr %}
 {% import 'BtnAdminBundle:Macros:link.html.twig' as lnk %}
 {% import 'BtnAdminBundle:Macros:list.html.twig' as lst %}
 {% extends 'BtnAdminBundle::list.html.twig' %}
 
 {% block breadcrumb %}
-    {{ bcr({
-        'btn_component_containercontrol_index': 'btn_component.container.list',
-        (app.request.attributes.get('_route')): 'btn_component.component.list'
-        })
-    }}
+    {% include 'BtnComponentBundle:ComponentControl:_list_breadcrumb.html.twig' with {container: container} only %}
 {% endblock %}
 
 {% block list_header %}
-    {{ lst.header(
-        'btn_component.component.list'|trans({'%container_title%': container.title}),
-        'btn_component.component.list_secondary'|trans({'%container_title%': container.title})
-    ) }}
+    {% include 'BtnComponentBundle:ComponentControl:_list_header.html.twig' with {container: container} only %}
 {% endblock %}
 
 {% block list_table %}
