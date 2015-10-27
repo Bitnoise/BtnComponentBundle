@@ -7,6 +7,7 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Btn\ComponentBundle\Manager\ManagerInterface;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
+use Btn\ComponentBundle\Model\AvalibleComponentsInterface;
 
 class ComponentType extends AbstractType
 {
@@ -39,11 +40,20 @@ class ComponentType extends AbstractType
 
             if ($options['container']) {
                 $parameters = $options['container']->getParameters();
+                $avalibleComponents = null;
 
-                if (isset($parameters['avalible_components']) && is_array($parameters['avalible_components'])) {
+                if (isset($parameters['avalible_components'])) {
+                    $avalibleComponents = $parameters['avalible_components'];
+                }
+
+                if ($options['container'] instanceof AvalibleComponentsInterface) {
+                    $avalibleComponents = $options['container']->getAvalibleComponents();
+                }
+
+                if (is_array($avalibleComponents)) {
                     foreach ($list as $name => $title) {
                         unset($title);
-                        if (!in_array($name, $parameters['avalible_components'])) {
+                        if (!in_array($name, $avalibleComponents)) {
                             unset($list[$name]);
                         }
                     }
