@@ -4,6 +4,7 @@
 {% block breadcrumb %}
     {% include 'BtnComponentBundle:ComponentControl:_create_breadcrumb.html.twig' with {entity: entity, container: container} only %}
 {% endblock %}
+
 {% block form_content %}
     {% set legend = 'btn_component.component.create'|trans({'%container_title%' : container.title}) %}
     {% include 'BtnComponentBundle:ComponentControl:_form.html.twig' with {form: form, legend: legend} only %}
