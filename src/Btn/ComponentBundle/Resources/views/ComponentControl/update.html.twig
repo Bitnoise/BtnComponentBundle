@@ -1,18 +1,8 @@
 {% import 'BtnAdminBundle:Macros:link.html.twig' as lnk %}
-{% from 'BtnAdminBundle:Macros:breadcrumb.html.twig' import bcr %}
 {% extends 'BtnAdminBundle::form.html.twig' %}
 
 {% block breadcrumb %}
-    {{ bcr({
-            'btn_component_containercontrol_index': 'btn_component.container.list',
-            component_list: {
-                'route': 'btn_component_componentcontrol_list',
-                'params': {'containerId': entity.container},
-                'label': 'btn_component.component.list'
-            },
-            (app.request.attributes.get('_route')): 'btn_admin.update'
-        })
-    }}
+    {% include 'BtnComponentBundle:ComponentControl:_update_breadcrumb.html.twig' with {entity: entity, container: container} only %}
 {% endblock %}
 
 {% block form_content %}
