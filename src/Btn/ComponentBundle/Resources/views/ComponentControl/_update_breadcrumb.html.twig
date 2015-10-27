@@ -1,0 +1,12 @@
+{% from 'BtnAdminBundle:Macros:breadcrumb.html.twig' import bcr %}
+
+{{ bcr({
+        'btn_component_containercontrol_index': 'btn_component.container.list',
+        component_list: {
+            'route': 'btn_component_componentcontrol_list',
+            'params': {'containerId': entity.container},
+            'label': 'btn_component.component.list'
+        },
+        (app.request.attributes.get('_route')): 'btn_admin.update'
+    })
+}}
