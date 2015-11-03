@@ -49,9 +49,6 @@
 {% endblock %}
 
 {% block list_buttons %}
-    {{ lnk.back('btn_component_containercontrol_index') }}
-    {% if container.manageable %}
-        {{ lnk.add('btn_component_componentcontrol_new', {containerId: container.id}) }}
-    {% endif %}
+    {% include 'BtnComponentBundle:ComponentControl:_list_buttons.html.twig' with {container: container} only %}
     {% include 'BtnComponentBundle:ComponentControl:_list_buttons_post.html.twig' ignore missing with {container: container} only %}
 {% endblock %}
