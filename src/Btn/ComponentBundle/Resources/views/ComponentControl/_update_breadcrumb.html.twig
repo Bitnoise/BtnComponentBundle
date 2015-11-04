@@ -5,7 +5,7 @@
         component_list: {
             'route': 'btn_component_componentcontrol_list',
             'params': {'containerId': entity.container},
-            'label': 'btn_component.component.list'
+            'label': 'btn_component.component.list'|trans({'%container_title%': container.title}),
         },
         (app.request.attributes.get('_route')): 'btn_admin.update'
     })
