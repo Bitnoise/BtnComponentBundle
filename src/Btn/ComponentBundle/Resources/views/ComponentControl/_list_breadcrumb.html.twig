@@ -2,6 +2,6 @@
 
 {{ bcr({
     'btn_component_containercontrol_index': 'btn_component.container.list',
-    (app.request.attributes.get('_route')): 'btn_component.component.list'
+    (app.request.attributes.get('_route')): 'btn_component.component.list'|trans({'%container_title%': container.title}),
     })
 }}
